@@ -3,8 +3,19 @@ using System.IO;
 
 namespace PASaveEditor.Model {
     class Node {
-        public string NodeType;
-        public string NodeLabel;
+        public virtual void ReadKey(string key, string value) {
+            AddProperty(key, value);
+        }
+
+
+        public virtual Node CreateNode(string label) {
+            Node newNode = new Node();
+            newNode.Label = label;
+            AddNode(label, newNode);
+            return newNode;
+        }
+
+        public string Label;
         public Dictionary<string, List<string>> Properties;
         public Dictionary<string, List<Node>> Nodes;
 
@@ -16,6 +27,18 @@ namespace PASaveEditor.Model {
             if (!Properties.TryGetValue(key, out list)) {
                 list = new List<string>();
                 Properties.Add(key,list);
+            }
+            list.Add(value);
+        }
+
+        public void AddNode(string key,Node value) {
+            if (Nodes == null) {
+                Nodes = new Dictionary<string, List<Node>>();
+            }
+            List<Node> list;
+            if (!Nodes.TryGetValue(key, out list)) {
+                list = new List<Node>();
+                Nodes.Add(key,list);
             }
             list.Add(value);
         }
@@ -40,6 +63,11 @@ namespace PASaveEditor.Model {
                 writer.Write(property.Value);
                 writer.Write("  ");
             }
+        }
+
+
+        public override string ToString() {
+            return "Node(" + Label + ")";
         }
     }
 }

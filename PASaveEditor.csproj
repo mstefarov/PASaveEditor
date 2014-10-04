@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,7 +55,7 @@
     <Compile Include="Model\Contraband.cs" />
     <Compile Include="Model\ContrabandItem.cs" />
     <Compile Include="Model\MisconductReport.cs" />
-    <Compile Include="Model\Node.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Model\Finance.cs" />
     <Compile Include="Model\Id.cs" />
     <Compile Include="Model\Informant.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Model\Tunnels.cs" />
     <Compile Include="Model\Victory.cs" />
     <Compile Include="Model\VictoryLogEntry.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">

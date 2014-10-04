@@ -1,17 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PASaveEditor {
     public partial class MainForm : Form {
         public MainForm() {
             InitializeComponent();
+        }
+
+
+        void miFileOpen_Click(object sender, EventArgs e) {
+            FileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK) {
+                using (FileStream fs = File.OpenRead(openFileDialog.FileName)) {
+                    new Parser().Load(fs);
+                }
+            }
         }
     }
 }
