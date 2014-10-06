@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Model\Contraband.cs" />
     <Compile Include="Model\ContrabandItem.cs" />
+    <Compile Include="Model\Informants.cs" />
     <Compile Include="Model\MisconductReport.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Model\Finance.cs" />

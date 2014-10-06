@@ -7,60 +7,54 @@ namespace PASaveEditor {
     internal class Parser {
         readonly List<string> tokens = new List<string>();
 
+
         public Prison Load(Stream stream) {
             StreamReader reader = new StreamReader(stream);
             Stack<Node> nodes = new Stack<Node>();
             Node currentNode = new Prison();
             int lineNum = 0;
 
-            using (StreamWriter sw = new StreamWriter(File.OpenWrite("dump.txt"))) {
-                string line;
-                while ((line = reader.ReadLine()) != null) {
-                    lineNum++;
-                    Tokenize(line);
+            string line;
+            while ((line = reader.ReadLine()) != null) {
+                lineNum++;
+                Tokenize(line);
 
-                    // skip blank lines
-                    if (tokens.Count == 0) continue;
+                // skip blank lines
+                if (tokens.Count == 0) continue;
 
-                    // start a new node
-                    if ("BEGIN".Equals(tokens[0])) {
-                        nodes.Push(currentNode);
+                // start a new node
+                if ("BEGIN".Equals(tokens[0])) {
+                    nodes.Push(currentNode);
 
-                        string label = tokens[1];
-                        sw.Write(new string(' ', (nodes.Count - 1)*4) + "BEGIN " + label);
-                        currentNode = currentNode.CreateNode(label);
+                    string label = tokens[1];
+                    currentNode = currentNode.CreateNode(label);
 
-                        if (tokens.Count > 2) {
-                            // inline node
-                            if (tokens.Count%2 != 1) {
-                                throw new FormatException(
-                                    "Unexpected number of tokens in an inline node definition on line " + lineNum);
-                            }
-                            if (!"END".Equals(tokens[tokens.Count - 1])) {
-                                throw new FormatException("Unexpected end of inline node definition on line " + lineNum);
-                            }
-                            for (int i = 2; i < tokens.Count - 1; i += 2) {
-                                string key = tokens[i];
-                                string value = tokens[i + 1];
-                                currentNode.ReadKey(key, value);
-                            }
-                            sw.WriteLine(" END");
-                            currentNode = nodes.Pop();
-                        } else {
-                            sw.WriteLine();
+                    if (tokens.Count > 2) {
+                        // inline node
+                        if (tokens.Count%2 != 1) {
+                            throw new FormatException(
+                                "Unexpected number of tokens in an inline node definition on line " + lineNum);
                         }
-
-                    } else if ("END".Equals(tokens[0])) {
-                        // end of multi-line section
-                        sw.WriteLine(new string(' ', (nodes.Count - 1)*4) + "END");
+                        if (!"END".Equals(tokens[tokens.Count - 1])) {
+                            throw new FormatException("Unexpected end of inline node definition on line " + lineNum);
+                        }
+                        for (int i = 2; i < tokens.Count - 1; i += 2) {
+                            string key = tokens[i];
+                            string value = tokens[i + 1];
+                            currentNode.ReadKey(key, value);
+                        }
                         currentNode = nodes.Pop();
+                    } else {}
 
-                    } else {
-                        // inside a multi-line section
-                        string key = tokens[0];
-                        string value = tokens[1];
-                        currentNode.ReadKey(key, value);
-                    }
+                } else if ("END".Equals(tokens[0])) {
+                    // end of multi-line section
+                    currentNode = nodes.Pop();
+
+                } else {
+                    // inside a multi-line section
+                    string key = tokens[0];
+                    string value = tokens[1];
+                    currentNode.ReadKey(key, value);
                 }
             }
             if (nodes.Count != 0) {

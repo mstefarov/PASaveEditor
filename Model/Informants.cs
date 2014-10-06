@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
 namespace PASaveEditor.Model {
-    internal class Contraband : Node {
-        public readonly Dictionary<int, ContrabandItem> Prisoners = new Dictionary<int, ContrabandItem>();
-        
+    class Informants : Node {
+        public readonly List<Informant> Prisoners = new List<Informant>();
+
         public override void ReadKey(string key, string value) {
             if (!"Size".Equals(key)) {
                 // do not store size -- it will be counted and written at save-time
@@ -12,11 +12,14 @@ namespace PASaveEditor.Model {
         }
 
         public override Node CreateNode(string label) {
-            if (Id.IsI(label)) {
-                int prisonerId = Id.ParseI(label);
-                ContrabandItem item = new ContrabandItem(prisonerId);
-                Prisoners.Add(prisonerId, item);
-                return item;
+            if ("Informants".Equals(label)) {
+                // There are two nested "Informants" tags -- we can flatten the hierarchy a bit.
+                return this;
+
+            } else if (Id.IsI(label)) {
+                Informant informant = new Informant();
+                Prisoners.Add(informant);
+                return informant;
 
             } else {
                 return base.CreateNode(label);
