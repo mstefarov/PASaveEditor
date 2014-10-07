@@ -9,6 +9,11 @@ namespace PASaveEditor.Model {
         public double BankCreditRating;
         public int Ownership;
 
+
+        public Finance(string label)
+            : base(label) {}
+
+
         public override void ReadKey(string key, string value) {
             switch (key) {
                 case "Balance":

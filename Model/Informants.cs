@@ -4,6 +4,11 @@ namespace PASaveEditor.Model {
     class Informants : Node {
         public readonly List<Informant> Prisoners = new List<Informant>();
 
+
+        public Informants(string label)
+            : base(label) {}
+
+
         public override void ReadKey(string key, string value) {
             if (!"Size".Equals(key)) {
                 // do not store size -- it will be counted and written at save-time
@@ -17,7 +22,7 @@ namespace PASaveEditor.Model {
                 return this;
 
             } else if (Id.IsI(label)) {
-                Informant informant = new Informant();
+                Informant informant = new Informant(label);
                 Prisoners.Add(informant);
                 return informant;
 

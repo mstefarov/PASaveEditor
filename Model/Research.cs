@@ -2,5 +2,9 @@
     class Research : Node {
         public string Name;
         public float Progress;
+
+
+        public Research(string label)
+            : base(label) {}
     }
 }

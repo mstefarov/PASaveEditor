@@ -14,13 +14,15 @@ namespace PASaveEditor.Model {
         public Finance Finance;
         public Informants Informants;
         public Misconduct Misconduct;
-        public Dictionary<Id, ObjectBase> Objects;
+        public Objects Objects;
         public Penalties Penalties;
-        public Dictionary<Id, Prisoner> Prisoners;
         public Reform Reform;
         public Dictionary<string, Research> Research;
         public Tunnels Tunnels;
         public Victory Victory;
+
+
+        public Prison() : base("Prison") {}
 
 
         public override void ReadKey(string key, string value) {
@@ -53,16 +55,28 @@ namespace PASaveEditor.Model {
         public override Node CreateNode(string label) {
             switch (label) {
                 case "Contraband":
-                    Contraband = new Contraband();
+                    Contraband = new Contraband(label);
                     return Contraband;
 
                 case "Finance":
-                    Finance = new Finance();
+                    Finance = new Finance(label);
                     return Finance;
 
                 case "Informants":
-                    Informants = new Informants();
+                    Informants = new Informants(label);
                     return Informants;
+
+                case "Misconduct":
+                    Misconduct = new Misconduct(label);
+                    return Misconduct;
+
+                case "Objects":
+                    Objects = new Objects(label);
+                    return Objects;
+
+                case "Penalties":
+                    Penalties = new Penalties(label);
+                    return Penalties;
 
                 default:
                     return base.CreateNode(label);

@@ -64,7 +64,6 @@ namespace PASaveEditor {
         }
 
 
-
         void Tokenize(string line) {
             tokens.Clear();
             if (line.Length == 0) {

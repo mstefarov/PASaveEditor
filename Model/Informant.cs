@@ -8,6 +8,10 @@ namespace PASaveEditor.Model {
         public double HighestSuspicion;
 
 
+        public Informant(string label)
+            : base(label) {}
+
+
         public override void ReadKey(string key, string value) {
             switch (key) {
                 case "Prisoner.i":

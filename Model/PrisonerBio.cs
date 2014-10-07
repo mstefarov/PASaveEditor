@@ -4,5 +4,9 @@
         public float Age;
         public int Sentence;
         public float Served;
+
+
+        public PrisonerBio(string label)
+            : base(label) {}
     }
 }
