@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     class Informant : Node {
         public int PrisonerId;
         public double Coverage;

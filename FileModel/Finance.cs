@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     class Finance : Node {
         public int Balance;
         public int LastDay;

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     class Research : Node {
         public readonly List<ResearchItem> Items = new List<ResearchItem>(); 
 

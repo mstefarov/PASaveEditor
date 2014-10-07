@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class TunnelCell : Node {
         public Pos Pos;
         public bool IsEntrance;

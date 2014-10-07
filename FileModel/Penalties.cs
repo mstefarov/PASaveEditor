@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PASaveEditor;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class Penalties : Node {
         public readonly Dictionary<int, List<Penalty>> PenaltyList = new Dictionary<int, List<Penalty>>();
 

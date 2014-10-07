@@ -1,4 +1,4 @@
-﻿namespace PASaveEditor.Model {
+﻿namespace FileModel {
     internal class ReformProgram : Node {
         public ReformStudents Students;
 

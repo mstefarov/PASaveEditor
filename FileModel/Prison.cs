@@ -1,13 +1,16 @@
 ﻿using System;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class Prison : Node {
         public string Version;
         public double TimeIndex;
         public bool EnabledMisconduct;
-        public bool EnabledDecay;
+        public bool FailureConditions;
         public bool EnabledVisibility;
         public bool UnlimitedFunds;
+        public bool EnabledIntake;
+        public bool IntakeReqMin;
+        public bool IntakeReqMax;
 
         public Contraband Contraband;
         public Finance Finance;
@@ -35,14 +38,23 @@ namespace PASaveEditor.Model {
                 case "EnabledMisconduct":
                     EnabledMisconduct = Boolean.Parse(value);
                     break;
-                case "EnabledDecay":
-                    EnabledDecay = Boolean.Parse(value);
+                case "FailureConditions":
+                    FailureConditions = Boolean.Parse(value);
                     break;
                 case "EnabledVisibility":
                     EnabledVisibility = Boolean.Parse(value);
                     break;
                 case "UnlimitedFunds":
                     UnlimitedFunds = Boolean.Parse(value);
+                    break;
+                case "EnabledIntake":
+                    EnabledIntake = Boolean.Parse(value);
+                    break;
+                case "Intake.reqMin":
+                    IntakeReqMin = Boolean.Parse(value);
+                    break;
+                case "Intake.reqMax":
+                    IntakeReqMax = Boolean.Parse(value);
                     break;
                 default:
                     base.ReadKey(key, value);

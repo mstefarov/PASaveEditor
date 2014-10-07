@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using PASaveEditor;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class ReformPrograms : Node {
         public readonly List<ReformProgram> Programs = new List<ReformProgram>();
 

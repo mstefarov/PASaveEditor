@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class PrisonerBio : Node {
         public string Forname, Surname;
         public int Sentence;

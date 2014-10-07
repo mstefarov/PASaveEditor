@@ -1,8 +1,7 @@
 ﻿using System;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class ResearchItem : Node {
-        public string Name;
         public double Progress;
 
 
@@ -11,9 +10,7 @@ namespace PASaveEditor.Model {
 
 
         public override void ReadKey(string key, string value) {
-            if ("Name".Equals(key)) {
-                Name = value;
-            }else if ("Progress".Equals(key)) {
+            if ("Progress".Equals(key)) {
                 Progress = Double.Parse(value);
             } else {
                 base.ReadKey(key, value);

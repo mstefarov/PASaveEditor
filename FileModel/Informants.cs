@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PASaveEditor;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     class Informants : Node {
         public readonly List<Informant> Prisoners = new List<Informant>();
 

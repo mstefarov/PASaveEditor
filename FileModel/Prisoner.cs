@@ -1,4 +1,4 @@
-﻿namespace PASaveEditor.Model {
+﻿namespace FileModel {
     class Prisoner : ObjectBase {
         public string Category;
         public PrisonerBio Bio;

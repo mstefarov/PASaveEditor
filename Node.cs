@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class Node {
         public Node(string label) {
             Label = label;

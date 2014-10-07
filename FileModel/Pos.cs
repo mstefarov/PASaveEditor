@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     struct Pos {
         public int X, Y;
 

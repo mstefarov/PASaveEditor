@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     class Tunnels : Node {
         public readonly List<TunnelCell> TunnelCells = new List<TunnelCell>(); 
         public Tunnels(string label)

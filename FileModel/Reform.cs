@@ -1,4 +1,4 @@
-﻿namespace PASaveEditor.Model {
+﻿namespace FileModel {
     class Reform : Node {
         public ReformPrograms Programs;
 

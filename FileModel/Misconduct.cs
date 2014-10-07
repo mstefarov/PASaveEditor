@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using PASaveEditor;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     internal class Misconduct : Node {
         public double TimeWithoutIncident;
         public readonly Dictionary<int, Node> MisconductReports = new Dictionary<int, Node>();

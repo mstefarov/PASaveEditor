@@ -1,4 +1,6 @@
-﻿namespace PASaveEditor.Model {
+﻿using PASaveEditor;
+
+namespace FileModel {
     internal class ObjectBase : Node {
         public ObjectBase(string label)
             : base(label) {

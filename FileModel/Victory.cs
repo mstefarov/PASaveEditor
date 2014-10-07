@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PASaveEditor;
 
-namespace PASaveEditor.Model {
+namespace FileModel {
     class Victory : Node {
         public readonly List<VictoryLogEntry> Log = new List<VictoryLogEntry>();
 
