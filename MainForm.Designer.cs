@@ -23,36 +23,36 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.Label lOwnershipUnits;
+            System.Windows.Forms.Label lBankLoanAmontUnits;
+            System.Windows.Forms.Label lBankLoanAmount;
+            System.Windows.Forms.Label lCreditRating;
+            System.Windows.Forms.Label lCreditRatingUnits;
+            System.Windows.Forms.Label lOwnership;
+            System.Windows.Forms.Label lBalance;
+            System.Windows.Forms.Label lBalanceUnits;
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.xMisconduct = new System.Windows.Forms.CheckBox();
+            this.xFogOfWar = new System.Windows.Forms.CheckBox();
+            this.xFailureConditions = new System.Windows.Forms.CheckBox();
+            this.xContinuousIntake = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.cAmPm = new System.Windows.Forms.ComboBox();
+            this.tTime = new System.Windows.Forms.MaskedTextBox();
+            this.nDay = new System.Windows.Forms.NumericUpDown();
+            this.lDay = new System.Windows.Forms.Label();
+            this.lTime = new System.Windows.Forms.Label();
             this.tpPrisoners = new System.Windows.Forms.TabPage();
             this.tpResearch = new System.Windows.Forms.TabPage();
             this.clbResearch = new System.Windows.Forms.CheckedListBox();
             this.tpFinance = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nOwnership = new System.Windows.Forms.NumericUpDown();
+            this.xUnlimitedFunds = new System.Windows.Forms.CheckBox();
+            this.nBankLoanAmount = new System.Windows.Forms.NumericUpDown();
+            this.nCreditRating = new System.Windows.Forms.NumericUpDown();
+            this.nBalance = new System.Windows.Forms.NumericUpDown();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miFileOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,26 +71,34 @@
             this.removeTunnelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unlockAllResearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeAllTreesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            lOwnershipUnits = new System.Windows.Forms.Label();
+            lBankLoanAmontUnits = new System.Windows.Forms.Label();
+            lBankLoanAmount = new System.Windows.Forms.Label();
+            lCreditRating = new System.Windows.Forms.Label();
+            lCreditRatingUnits = new System.Windows.Forms.Label();
+            lOwnership = new System.Windows.Forms.Label();
+            lBalance = new System.Windows.Forms.Label();
+            lBalanceUnits = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nDay)).BeginInit();
             this.tpResearch.SuspendLayout();
             this.tpFinance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nOwnership)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nBankLoanAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nCreditRating)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nBalance)).BeginInit();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabs
             // 
             this.tabs.Controls.Add(this.tpGeneral);
+            this.tabs.Controls.Add(this.tpFinance);
             this.tabs.Controls.Add(this.tpPrisoners);
             this.tabs.Controls.Add(this.tpResearch);
-            this.tabs.Controls.Add(this.tpFinance);
             this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabs.Location = new System.Drawing.Point(0, 24);
             this.tabs.Name = "tabs";
@@ -111,10 +119,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.xMisconduct);
+            this.groupBox2.Controls.Add(this.xFogOfWar);
+            this.groupBox2.Controls.Add(this.xFailureConditions);
+            this.groupBox2.Controls.Add(this.xContinuousIntake);
             this.groupBox2.Location = new System.Drawing.Point(8, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(560, 123);
@@ -122,53 +130,53 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prison Settings";
             // 
-            // checkBox5
+            // xMisconduct
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(23, 88);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(81, 17);
-            this.checkBox5.TabIndex = 3;
-            this.checkBox5.Text = "Misconduct";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.xMisconduct.AutoSize = true;
+            this.xMisconduct.Location = new System.Drawing.Point(23, 88);
+            this.xMisconduct.Name = "xMisconduct";
+            this.xMisconduct.Size = new System.Drawing.Size(81, 17);
+            this.xMisconduct.TabIndex = 3;
+            this.xMisconduct.Text = "Misconduct";
+            this.xMisconduct.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // xFogOfWar
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(23, 65);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(76, 17);
-            this.checkBox4.TabIndex = 2;
-            this.checkBox4.Text = "Fog of war";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.xFogOfWar.AutoSize = true;
+            this.xFogOfWar.Location = new System.Drawing.Point(23, 65);
+            this.xFogOfWar.Name = "xFogOfWar";
+            this.xFogOfWar.Size = new System.Drawing.Size(76, 17);
+            this.xFogOfWar.TabIndex = 2;
+            this.xFogOfWar.Text = "Fog of war";
+            this.xFogOfWar.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // xFailureConditions
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(23, 42);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(108, 17);
-            this.checkBox3.TabIndex = 1;
-            this.checkBox3.Text = "Failure conditions";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.xFailureConditions.AutoSize = true;
+            this.xFailureConditions.Location = new System.Drawing.Point(23, 42);
+            this.xFailureConditions.Name = "xFailureConditions";
+            this.xFailureConditions.Size = new System.Drawing.Size(108, 17);
+            this.xFailureConditions.TabIndex = 1;
+            this.xFailureConditions.Text = "Failure conditions";
+            this.xFailureConditions.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // xContinuousIntake
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(23, 19);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(111, 17);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Continuous intake";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.xContinuousIntake.AutoSize = true;
+            this.xContinuousIntake.Location = new System.Drawing.Point(23, 19);
+            this.xContinuousIntake.Name = "xContinuousIntake";
+            this.xContinuousIntake.Size = new System.Drawing.Size(111, 17);
+            this.xContinuousIntake.TabIndex = 0;
+            this.xContinuousIntake.Text = "Continuous intake";
+            this.xContinuousIntake.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cAmPm);
+            this.groupBox1.Controls.Add(this.tTime);
+            this.groupBox1.Controls.Add(this.nDay);
+            this.groupBox1.Controls.Add(this.lDay);
+            this.groupBox1.Controls.Add(this.lTime);
             this.groupBox1.Location = new System.Drawing.Point(8, 132);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(560, 95);
@@ -176,51 +184,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In-game time";
             // 
-            // comboBox1
+            // cAmPm
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cAmPm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cAmPm.FormattingEnabled = true;
+            this.cAmPm.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.comboBox1.Location = new System.Drawing.Point(108, 53);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(44, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cAmPm.Location = new System.Drawing.Point(108, 53);
+            this.cAmPm.Name = "cAmPm";
+            this.cAmPm.Size = new System.Drawing.Size(44, 21);
+            this.cAmPm.TabIndex = 4;
             // 
-            // maskedTextBox1
+            // tTime
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(52, 53);
-            this.maskedTextBox1.Mask = "90:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(50, 20);
-            this.maskedTextBox1.TabIndex = 3;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.tTime.Location = new System.Drawing.Point(52, 53);
+            this.tTime.Mask = "90:00";
+            this.tTime.Name = "tTime";
+            this.tTime.Size = new System.Drawing.Size(50, 20);
+            this.tTime.TabIndex = 3;
+            this.tTime.ValidatingType = typeof(System.DateTime);
             // 
-            // numericUpDown1
+            // nDay
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(52, 27);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDown1.TabIndex = 2;
+            this.nDay.Location = new System.Drawing.Point(52, 27);
+            this.nDay.Name = "nDay";
+            this.nDay.Size = new System.Drawing.Size(50, 20);
+            this.nDay.TabIndex = 2;
             // 
-            // label1
+            // lDay
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Day";
+            this.lDay.AutoSize = true;
+            this.lDay.Location = new System.Drawing.Point(20, 29);
+            this.lDay.Name = "lDay";
+            this.lDay.Size = new System.Drawing.Size(26, 13);
+            this.lDay.TabIndex = 0;
+            this.lDay.Text = "Day";
             // 
-            // label2
+            // lTime
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Time";
+            this.lTime.AutoSize = true;
+            this.lTime.Location = new System.Drawing.Point(16, 56);
+            this.lTime.Name = "lTime";
+            this.lTime.Size = new System.Drawing.Size(30, 13);
+            this.lTime.TabIndex = 1;
+            this.lTime.Text = "Time";
             // 
             // tpPrisoners
             // 
@@ -252,19 +260,19 @@
             // 
             // tpFinance
             // 
-            this.tpFinance.Controls.Add(this.label10);
-            this.tpFinance.Controls.Add(this.numericUpDown5);
-            this.tpFinance.Controls.Add(this.checkBox1);
-            this.tpFinance.Controls.Add(this.label9);
-            this.tpFinance.Controls.Add(this.label6);
-            this.tpFinance.Controls.Add(this.numericUpDown4);
-            this.tpFinance.Controls.Add(this.label5);
-            this.tpFinance.Controls.Add(this.label8);
-            this.tpFinance.Controls.Add(this.label7);
-            this.tpFinance.Controls.Add(this.numericUpDown3);
-            this.tpFinance.Controls.Add(this.label4);
-            this.tpFinance.Controls.Add(this.label3);
-            this.tpFinance.Controls.Add(this.numericUpDown2);
+            this.tpFinance.Controls.Add(lOwnershipUnits);
+            this.tpFinance.Controls.Add(this.nOwnership);
+            this.tpFinance.Controls.Add(this.xUnlimitedFunds);
+            this.tpFinance.Controls.Add(lBankLoanAmontUnits);
+            this.tpFinance.Controls.Add(lBankLoanAmount);
+            this.tpFinance.Controls.Add(this.nBankLoanAmount);
+            this.tpFinance.Controls.Add(lCreditRating);
+            this.tpFinance.Controls.Add(lCreditRatingUnits);
+            this.tpFinance.Controls.Add(lOwnership);
+            this.tpFinance.Controls.Add(this.nCreditRating);
+            this.tpFinance.Controls.Add(lBalance);
+            this.tpFinance.Controls.Add(lBalanceUnits);
+            this.tpFinance.Controls.Add(this.nBalance);
             this.tpFinance.Location = new System.Drawing.Point(4, 22);
             this.tpFinance.Name = "tpFinance";
             this.tpFinance.Padding = new System.Windows.Forms.Padding(3);
@@ -273,131 +281,146 @@
             this.tpFinance.Text = "Finance";
             this.tpFinance.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // lOwnershipUnits
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(183, 110);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(15, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "%";
+            lOwnershipUnits.AutoSize = true;
+            lOwnershipUnits.Location = new System.Drawing.Point(178, 121);
+            lOwnershipUnits.Name = "lOwnershipUnits";
+            lOwnershipUnits.Size = new System.Drawing.Size(15, 13);
+            lOwnershipUnits.TabIndex = 15;
+            lOwnershipUnits.Text = "%";
             // 
-            // numericUpDown5
+            // nOwnership
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(115, 108);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(62, 20);
-            this.numericUpDown5.TabIndex = 14;
-            this.numericUpDown5.Value = new decimal(new int[] {
+            this.nOwnership.Location = new System.Drawing.Point(110, 119);
+            this.nOwnership.Name = "nOwnership";
+            this.nOwnership.Size = new System.Drawing.Size(62, 20);
+            this.nOwnership.TabIndex = 14;
+            this.nOwnership.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
             // 
-            // checkBox1
+            // xUnlimitedFunds
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(31, 6);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Unlimited funds";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.xUnlimitedFunds.AutoSize = true;
+            this.xUnlimitedFunds.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.xUnlimitedFunds.Location = new System.Drawing.Point(26, 17);
+            this.xUnlimitedFunds.Name = "xUnlimitedFunds";
+            this.xUnlimitedFunds.Size = new System.Drawing.Size(98, 17);
+            this.xUnlimitedFunds.TabIndex = 7;
+            this.xUnlimitedFunds.Text = "Unlimited funds";
+            this.xUnlimitedFunds.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // lBankLoanAmontUnits
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(183, 58);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(13, 13);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "$";
+            lBankLoanAmontUnits.AutoSize = true;
+            lBankLoanAmontUnits.Location = new System.Drawing.Point(178, 69);
+            lBankLoanAmontUnits.Name = "lBankLoanAmontUnits";
+            lBankLoanAmontUnits.Size = new System.Drawing.Size(13, 13);
+            lBankLoanAmontUnits.TabIndex = 13;
+            lBankLoanAmontUnits.Text = "$";
             // 
-            // label6
+            // lBankLoanAmount
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Bank loan amount";
+            lBankLoanAmount.AutoSize = true;
+            lBankLoanAmount.Location = new System.Drawing.Point(11, 69);
+            lBankLoanAmount.Name = "lBankLoanAmount";
+            lBankLoanAmount.Size = new System.Drawing.Size(93, 13);
+            lBankLoanAmount.TabIndex = 5;
+            lBankLoanAmount.Text = "Bank loan amount";
             // 
-            // numericUpDown4
+            // nBankLoanAmount
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(115, 56);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(62, 20);
-            this.numericUpDown4.TabIndex = 12;
+            this.nBankLoanAmount.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nBankLoanAmount.Location = new System.Drawing.Point(110, 67);
+            this.nBankLoanAmount.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nBankLoanAmount.Name = "nBankLoanAmount";
+            this.nBankLoanAmount.Size = new System.Drawing.Size(62, 20);
+            this.nBankLoanAmount.TabIndex = 12;
             // 
-            // label5
+            // lCreditRating
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 84);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Credit rating";
+            lCreditRating.AutoSize = true;
+            lCreditRating.Location = new System.Drawing.Point(41, 95);
+            lCreditRating.Name = "lCreditRating";
+            lCreditRating.Size = new System.Drawing.Size(63, 13);
+            lCreditRating.TabIndex = 4;
+            lCreditRating.Text = "Credit rating";
             // 
-            // label8
+            // lCreditRatingUnits
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(183, 84);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "%";
+            lCreditRatingUnits.AutoSize = true;
+            lCreditRatingUnits.Location = new System.Drawing.Point(178, 95);
+            lCreditRatingUnits.Name = "lCreditRatingUnits";
+            lCreditRatingUnits.Size = new System.Drawing.Size(15, 13);
+            lCreditRatingUnits.TabIndex = 11;
+            lCreditRatingUnits.Text = "%";
             // 
-            // label7
+            // lOwnership
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(52, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Ownership";
+            lOwnership.AutoSize = true;
+            lOwnership.Location = new System.Drawing.Point(47, 121);
+            lOwnership.Name = "lOwnership";
+            lOwnership.Size = new System.Drawing.Size(57, 13);
+            lOwnership.TabIndex = 6;
+            lOwnership.Text = "Ownership";
             // 
-            // numericUpDown3
+            // nCreditRating
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(115, 82);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(62, 20);
-            this.numericUpDown3.TabIndex = 10;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.nCreditRating.Location = new System.Drawing.Point(110, 93);
+            this.nCreditRating.Name = "nCreditRating";
+            this.nCreditRating.Size = new System.Drawing.Size(62, 20);
+            this.nCreditRating.TabIndex = 10;
+            this.nCreditRating.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
             // 
-            // label4
+            // lBalance
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(63, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Balance";
+            lBalance.AutoSize = true;
+            lBalance.Location = new System.Drawing.Point(58, 43);
+            lBalance.Name = "lBalance";
+            lBalance.Size = new System.Drawing.Size(46, 13);
+            lBalance.TabIndex = 3;
+            lBalance.Text = "Balance";
             // 
-            // label3
+            // lBalanceUnits
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "$";
+            lBalanceUnits.AutoSize = true;
+            lBalanceUnits.Location = new System.Drawing.Point(178, 43);
+            lBalanceUnits.Name = "lBalanceUnits";
+            lBalanceUnits.Size = new System.Drawing.Size(13, 13);
+            lBalanceUnits.TabIndex = 9;
+            lBalanceUnits.Text = "$";
             // 
-            // numericUpDown2
+            // nBalance
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(115, 30);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            9999999,
+            this.nBalance.Location = new System.Drawing.Point(110, 41);
+            this.nBalance.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(62, 20);
-            this.numericUpDown2.TabIndex = 8;
+            this.nBalance.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.nBalance.Name = "nBalance";
+            this.nBalance.Size = new System.Drawing.Size(62, 20);
+            this.nBalance.TabIndex = 8;
             // 
             // menu
             // 
@@ -546,14 +569,14 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nDay)).EndInit();
             this.tpResearch.ResumeLayout(false);
             this.tpFinance.ResumeLayout(false);
             this.tpFinance.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nOwnership)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nBankLoanAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nCreditRating)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nBalance)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);
@@ -574,30 +597,22 @@
         private System.Windows.Forms.ToolStripMenuItem miFileSaveAs;
         private System.Windows.Forms.ToolStripMenuItem miExit;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cAmPm;
+        private System.Windows.Forms.MaskedTextBox tTime;
+        private System.Windows.Forms.NumericUpDown nDay;
+        private System.Windows.Forms.Label lDay;
+        private System.Windows.Forms.Label lTime;
         private System.Windows.Forms.TabPage tpFinance;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nOwnership;
+        private System.Windows.Forms.CheckBox xUnlimitedFunds;
+        private System.Windows.Forms.NumericUpDown nBankLoanAmount;
+        private System.Windows.Forms.NumericUpDown nCreditRating;
+        private System.Windows.Forms.NumericUpDown nBalance;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox xFailureConditions;
+        private System.Windows.Forms.CheckBox xContinuousIntake;
+        private System.Windows.Forms.CheckBox xFogOfWar;
+        private System.Windows.Forms.CheckBox xMisconduct;
         private System.Windows.Forms.ToolStripMenuItem shortcutsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem releasePrisonersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minToolStripMenuItem;
