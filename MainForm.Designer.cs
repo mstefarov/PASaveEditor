@@ -32,6 +32,9 @@
             System.Windows.Forms.Label lBalance;
             System.Windows.Forms.Label lBalanceUnits;
             System.Windows.Forms.ToolStripSeparator sReleasePrisonersSeparator;
+            System.Windows.Forms.Label lSurname;
+            System.Windows.Forms.Label lName;
+            System.Windows.Forms.Label lCategory;
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -52,6 +55,12 @@
             this.nCreditRating = new System.Windows.Forms.NumericUpDown();
             this.nBalance = new System.Windows.Forms.NumericUpDown();
             this.tpPrisoners = new System.Windows.Forms.TabPage();
+            this.cCategory = new System.Windows.Forms.ComboBox();
+            this.tSurname = new System.Windows.Forms.TextBox();
+            this.tName = new System.Windows.Forms.TextBox();
+            this.bRelease = new System.Windows.Forms.Button();
+            this.tPrisonerSearch = new System.Windows.Forms.TextBox();
+            this.lbPrisoners = new System.Windows.Forms.ListBox();
             this.tpResearch = new System.Windows.Forms.TabPage();
             this.clbResearch = new System.Windows.Forms.CheckedListBox();
             this.menu = new System.Windows.Forms.MenuStrip();
@@ -80,6 +89,9 @@
             lBalance = new System.Windows.Forms.Label();
             lBalanceUnits = new System.Windows.Forms.Label();
             sReleasePrisonersSeparator = new System.Windows.Forms.ToolStripSeparator();
+            lSurname = new System.Windows.Forms.Label();
+            lName = new System.Windows.Forms.Label();
+            lCategory = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBankLoanAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nCreditRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBalance)).BeginInit();
+            this.tpPrisoners.SuspendLayout();
             this.tpResearch.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -165,6 +178,41 @@
             lBalanceUnits.Size = new System.Drawing.Size(13, 13);
             lBalanceUnits.TabIndex = 9;
             lBalanceUnits.Text = "$";
+            // 
+            // sReleasePrisonersSeparator
+            // 
+            sReleasePrisonersSeparator.Name = "sReleasePrisonersSeparator";
+            sReleasePrisonersSeparator.Size = new System.Drawing.Size(171, 6);
+            // 
+            // lSurname
+            // 
+            lSurname.AutoSize = true;
+            lSurname.Location = new System.Drawing.Point(143, 58);
+            lSurname.Name = "lSurname";
+            lSurname.Size = new System.Drawing.Size(49, 13);
+            lSurname.TabIndex = 5;
+            lSurname.Text = "Surname";
+            lSurname.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lName
+            // 
+            lName.AutoSize = true;
+            lName.Location = new System.Drawing.Point(157, 32);
+            lName.Name = "lName";
+            lName.Size = new System.Drawing.Size(35, 13);
+            lName.TabIndex = 3;
+            lName.Text = "Name";
+            lName.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lCategory
+            // 
+            lCategory.AutoSize = true;
+            lCategory.Location = new System.Drawing.Point(143, 84);
+            lCategory.Name = "lCategory";
+            lCategory.Size = new System.Drawing.Size(49, 13);
+            lCategory.TabIndex = 8;
+            lCategory.Text = "Category";
+            lCategory.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // tabs
             // 
@@ -401,12 +449,83 @@
             // 
             // tpPrisoners
             // 
+            this.tpPrisoners.Controls.Add(lCategory);
+            this.tpPrisoners.Controls.Add(this.cCategory);
+            this.tpPrisoners.Controls.Add(this.tSurname);
+            this.tpPrisoners.Controls.Add(lSurname);
+            this.tpPrisoners.Controls.Add(this.tName);
+            this.tpPrisoners.Controls.Add(lName);
+            this.tpPrisoners.Controls.Add(this.bRelease);
+            this.tpPrisoners.Controls.Add(this.tPrisonerSearch);
+            this.tpPrisoners.Controls.Add(this.lbPrisoners);
             this.tpPrisoners.Location = new System.Drawing.Point(4, 22);
             this.tpPrisoners.Name = "tpPrisoners";
             this.tpPrisoners.Size = new System.Drawing.Size(476, 362);
             this.tpPrisoners.TabIndex = 2;
             this.tpPrisoners.Text = "Prisoners";
             this.tpPrisoners.UseVisualStyleBackColor = true;
+            // 
+            // cCategory
+            // 
+            this.cCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cCategory.FormattingEnabled = true;
+            this.cCategory.Items.AddRange(new object[] {
+            "Protective Custody",
+            "Minimum Security",
+            "Normal Security",
+            "Maximum Security",
+            "SuperMax"});
+            this.cCategory.Location = new System.Drawing.Point(198, 81);
+            this.cCategory.Name = "cCategory";
+            this.cCategory.Size = new System.Drawing.Size(121, 21);
+            this.cCategory.TabIndex = 7;
+            this.cCategory.SelectedIndexChanged += new System.EventHandler(this.cCategory_SelectedIndexChanged);
+            // 
+            // tSurname
+            // 
+            this.tSurname.Location = new System.Drawing.Point(198, 55);
+            this.tSurname.Name = "tSurname";
+            this.tSurname.Size = new System.Drawing.Size(121, 20);
+            this.tSurname.TabIndex = 6;
+            this.tSurname.TextChanged += new System.EventHandler(this.tSurname_TextChanged);
+            // 
+            // tName
+            // 
+            this.tName.Location = new System.Drawing.Point(198, 29);
+            this.tName.Name = "tName";
+            this.tName.Size = new System.Drawing.Size(121, 20);
+            this.tName.TabIndex = 4;
+            this.tName.TextChanged += new System.EventHandler(this.tName_TextChanged);
+            // 
+            // bRelease
+            // 
+            this.bRelease.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bRelease.Location = new System.Drawing.Point(393, 331);
+            this.bRelease.Name = "bRelease";
+            this.bRelease.Size = new System.Drawing.Size(75, 23);
+            this.bRelease.TabIndex = 2;
+            this.bRelease.Text = "Release";
+            this.bRelease.UseVisualStyleBackColor = true;
+            this.bRelease.Click += new System.EventHandler(this.bRelease_Click);
+            // 
+            // tPrisonerSearch
+            // 
+            this.tPrisonerSearch.Location = new System.Drawing.Point(8, 3);
+            this.tPrisonerSearch.Name = "tPrisonerSearch";
+            this.tPrisonerSearch.Size = new System.Drawing.Size(120, 20);
+            this.tPrisonerSearch.TabIndex = 1;
+            this.tPrisonerSearch.TextChanged += new System.EventHandler(this.tPrisonerSearch_TextChanged);
+            // 
+            // lbPrisoners
+            // 
+            this.lbPrisoners.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbPrisoners.FormattingEnabled = true;
+            this.lbPrisoners.Location = new System.Drawing.Point(8, 29);
+            this.lbPrisoners.Name = "lbPrisoners";
+            this.lbPrisoners.Size = new System.Drawing.Size(120, 329);
+            this.lbPrisoners.TabIndex = 0;
+            this.lbPrisoners.SelectedIndexChanged += new System.EventHandler(this.lbPrisoners_SelectedIndexChanged);
             // 
             // tpResearch
             // 
@@ -452,26 +571,26 @@
             // miFileOpen
             // 
             this.miFileOpen.Name = "miFileOpen";
-            this.miFileOpen.Size = new System.Drawing.Size(152, 22);
+            this.miFileOpen.Size = new System.Drawing.Size(123, 22);
             this.miFileOpen.Text = "Open...";
             this.miFileOpen.Click += new System.EventHandler(this.miFileOpen_Click);
             // 
             // miFileSave
             // 
             this.miFileSave.Name = "miFileSave";
-            this.miFileSave.Size = new System.Drawing.Size(152, 22);
+            this.miFileSave.Size = new System.Drawing.Size(123, 22);
             this.miFileSave.Text = "Save";
             // 
             // miFileSaveAs
             // 
             this.miFileSaveAs.Name = "miFileSaveAs";
-            this.miFileSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.miFileSaveAs.Size = new System.Drawing.Size(123, 22);
             this.miFileSaveAs.Text = "Save As...";
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(152, 22);
+            this.miExit.Size = new System.Drawing.Size(123, 22);
             this.miExit.Text = "Exit";
             // 
             // miShortcuts
@@ -534,11 +653,6 @@
             this.miReleaseSuperMax.Text = "SuperMax";
             this.miReleaseSuperMax.Click += new System.EventHandler(this.miReleaseSuperMax_Click);
             // 
-            // sReleasePrisonersSeparator
-            // 
-            sReleasePrisonersSeparator.Name = "sReleasePrisonersSeparator";
-            sReleasePrisonersSeparator.Size = new System.Drawing.Size(171, 6);
-            // 
             // miReleaseAll
             // 
             this.miReleaseAll.Name = "miReleaseAll";
@@ -589,6 +703,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBankLoanAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nCreditRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBalance)).EndInit();
+            this.tpPrisoners.ResumeLayout(false);
+            this.tpPrisoners.PerformLayout();
             this.tpResearch.ResumeLayout(false);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
@@ -638,6 +754,12 @@
         private System.Windows.Forms.ToolStripMenuItem miUnlockAllResearch;
         private System.Windows.Forms.ToolStripMenuItem miRemoveAllTrees;
         private System.Windows.Forms.CheckedListBox clbResearch;
+        private System.Windows.Forms.TextBox tPrisonerSearch;
+        private System.Windows.Forms.ListBox lbPrisoners;
+        private System.Windows.Forms.Button bRelease;
+        private System.Windows.Forms.TextBox tSurname;
+        private System.Windows.Forms.TextBox tName;
+        private System.Windows.Forms.ComboBox cCategory;
     }
 }
 

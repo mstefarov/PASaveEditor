@@ -15,18 +15,23 @@ namespace PASaveEditor {
         public static int Release(Prison prison, Predicate<Prisoner> predicate) {
             int[] idsToRemove = FindPrisoners(prison, predicate);
             foreach (int id in idsToRemove) {
-                prison.Objects.Prisoners.Remove(id);
-                prison.Contraband.Prisoners.Remove(id);
-                prison.Informants.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
-                prison.Misconduct.MisconductReports.Remove(id);
-                prison.Penalties.PenaltyList.Remove(id);
-                foreach (ReformProgram program in prison.Reform.Programs.Programs) {
-                    program.Students.Students.Remove(id);
-                }
-                // TODO Diggers
-                prison.Victory.Log.RemoveAll(entry => entry.PrisonerId == id);
+                ReleasePrisoner(prison, id);
             }
             return idsToRemove.Length;
+        }
+
+
+        public static void ReleasePrisoner(Prison prison, int id) {
+            prison.Objects.Prisoners.Remove(id);
+            prison.Contraband.Prisoners.Remove(id);
+            prison.Informants.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
+            prison.Misconduct.MisconductReports.Remove(id);
+            prison.Penalties.PenaltyList.Remove(id);
+            foreach (ReformProgram program in prison.Reform.Programs.Programs) {
+                program.Students.Students.Remove(id);
+            }
+            // TODO Diggers
+            prison.Victory.Log.RemoveAll(entry => entry.PrisonerId == id);
         }
     }
 }
