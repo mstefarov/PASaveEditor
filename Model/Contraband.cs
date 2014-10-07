@@ -17,9 +17,9 @@ namespace PASaveEditor.Model {
         }
 
         public override Node CreateNode(string label) {
-            if (Id.IsI(label)) {
-                int prisonerId = Id.ParseI(label);
-                Node item = new Node(label);
+            if (Parser.IsId(label)) {
+                int prisonerId = Parser.ParseId(label);
+                var item = new Node(label);
                 Prisoners.Add(prisonerId, item);
                 return item;
 

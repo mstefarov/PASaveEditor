@@ -83,11 +83,24 @@ namespace PASaveEditor.Model {
         }
 
 
+        public void CopyNodes(Node other) {
+            foreach (var property in other.ListNodes()) {
+                PushNode(property.Key,property.Value);
+            }
+        }
+
 
         public IEnumerable<KeyValuePair<string, string>> ListProperties() {
             return Properties.SelectMany(
                 propList => propList.Value,
                 (propList, propValue) => new KeyValuePair<string, string>(propList.Key, propValue));
+        }
+
+
+        public IEnumerable<KeyValuePair<string, Node>> ListNodes() {
+            return Nodes.SelectMany(
+                nodeList => nodeList.Value,
+                (nodeList, nodeValue) => new KeyValuePair<string, Node>(nodeList.Key, nodeValue));
         }
 
 

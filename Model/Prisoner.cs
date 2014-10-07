@@ -7,11 +7,10 @@
         public Prisoner(ObjectBase baseObj)
             : base(baseObj.Label) {
             Id = baseObj.Id;
-            Pos = baseObj.Pos;
             Type = baseObj.Type;
             
             ReparseProperties(baseObj);
-
+            CopyNodes(baseObj);
             Bio = (PrisonerBio)PopNode("Bio");
         }
 

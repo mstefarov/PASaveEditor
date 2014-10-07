@@ -21,8 +21,8 @@ namespace PASaveEditor.Model {
                 // There are two nested "Informants" tags -- we can flatten the hierarchy a bit.
                 return this;
 
-            } else if (Id.IsI(label)) {
-                Informant informant = new Informant(label);
+            } else if (Parser.IsId(label)) {
+                var informant = new Informant(label);
                 Prisoners.Add(informant);
                 return informant;
 

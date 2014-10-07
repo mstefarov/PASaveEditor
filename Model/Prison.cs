@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PASaveEditor.Model {
     internal class Prison : Node {
@@ -17,7 +16,7 @@ namespace PASaveEditor.Model {
         public Objects Objects;
         public Penalties Penalties;
         public Reform Reform;
-        public Dictionary<string, Research> Research;
+        public Research Research;
         public Tunnels Tunnels;
         public Victory Victory;
 
@@ -77,6 +76,22 @@ namespace PASaveEditor.Model {
                 case "Penalties":
                     Penalties = new Penalties(label);
                     return Penalties;
+
+                case "Reform":
+                    Reform = new Reform(label);
+                    return Reform;
+
+                case "Research":
+                    Research = new Research(label);
+                    return Research;
+
+                case "Tunnels":
+                    Tunnels = new Tunnels(label);
+                    return Tunnels;
+
+                case "Victory":
+                    Victory = new Victory(label);
+                    return Victory;
 
                 default:
                     return base.CreateNode(label);

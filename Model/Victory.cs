@@ -2,10 +2,23 @@
 
 namespace PASaveEditor.Model {
     class Victory : Node {
-        public List<VictoryLogEntry> Log;
+        public readonly List<VictoryLogEntry> Log = new List<VictoryLogEntry>();
 
 
         public Victory(string label)
             : base(label) {}
+
+
+        public override Node CreateNode(string label) {
+            if ("Log".Equals(label)) {
+                return this;
+            }else if (Parser.IsId(label)) {
+                var entry = new VictoryLogEntry(label);
+                Log.Add(entry);
+                return entry;
+            } else {
+                return base.CreateNode(label);
+            }
+        }
     }
 }

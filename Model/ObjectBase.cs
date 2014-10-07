@@ -1,15 +1,12 @@
-﻿using System;
-
-namespace PASaveEditor.Model {
+﻿namespace PASaveEditor.Model {
     internal class ObjectBase : Node {
         public ObjectBase(string label)
             : base(label) {
-            Id = Model.Id.ParseI(label);
+            Id = Parser.ParseId(label);
         }
 
 
         public int Id;
-        public Pos Pos;
         public string Type;
 
 
@@ -17,12 +14,6 @@ namespace PASaveEditor.Model {
             switch (key) {
                 case "Type":
                     Type = value;
-                    break;
-                case "Pos.x":
-                    Pos.X = Double.Parse(value);
-                    break;
-                case "Pos.y":
-                    Pos.Y = Double.Parse(value);
                     break;
                 default:
                     base.ReadKey(key, value);
@@ -33,7 +24,9 @@ namespace PASaveEditor.Model {
 
         public override Node CreateNode(string label) {
             if (Type.Equals("Prisoner") && label.Equals("Bio")) {
-                return new PrisonerBio(label);
+                var bio = new PrisonerBio(label);
+                PushNode(label,bio);
+                return bio;
             } else {
                 return base.CreateNode(label);
             }

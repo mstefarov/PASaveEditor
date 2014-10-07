@@ -23,9 +23,9 @@ namespace PASaveEditor.Model {
         public override Node CreateNode(string label) {
             if ("MisconductReports".Equals(label)) {
                 return this;
-            } else if (Id.IsI(label)) {
-                Node report = new Node(label);
-                int prisonerId = Id.ParseI(label);
+            } else if (Parser.IsId(label)) {
+                var report = new Node(label);
+                int prisonerId = Parser.ParseId(label);
                 MisconductReports.Add(prisonerId, report);
                 return report;
             } else {

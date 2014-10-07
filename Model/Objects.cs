@@ -18,17 +18,17 @@ namespace PASaveEditor.Model {
 
 
         public override Node CreateNode(string label) {
-            ObjectBase newObj = new ObjectBase(label);
+            var newObj = new ObjectBase(label);
             OtherObjects.Add(newObj.Id,newObj);
             return newObj;
         }
 
 
         public override void FinishedReadingNode(Node node) {
-            ObjectBase obj = (ObjectBase)node;
+            var obj = (ObjectBase)node;
             if ("Prisoner".Equals(obj.Type) ) {
                 OtherObjects.Remove(obj.Id);
-                Prisoner prisoner = new Prisoner(obj);
+                var prisoner = new Prisoner(obj);
                 Prisoners.Add(prisoner.Id,prisoner);
             }
         }

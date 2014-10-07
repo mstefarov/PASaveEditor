@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using PASaveEditor.Model;
 
 namespace PASaveEditor {
     internal class Parser {
+        static Regex IRegex = new Regex("^\\[i \\d+\\]$", RegexOptions.Compiled);
         readonly List<string> tokens = new List<string>();
 
 
@@ -43,12 +45,16 @@ namespace PASaveEditor {
                             string value = tokens[i + 1];
                             currentNode.ReadKey(key, value);
                         }
-                        currentNode = nodes.Pop();
+                        Node upperNode = nodes.Pop();
+                        upperNode.FinishedReadingNode(currentNode);
+                        currentNode = upperNode;
                     } else {}
 
                 } else if ("END".Equals(tokens[0])) {
                     // end of multi-line section
-                    currentNode = nodes.Pop();
+                    Node upperNode = nodes.Pop();
+                    upperNode.FinishedReadingNode(currentNode);
+                    currentNode = upperNode;
 
                 } else {
                     // inside a multi-line section
@@ -83,7 +89,7 @@ namespace PASaveEditor {
                 } else if (c == '"') {
                     // skip ahead to the next quote
                     int endQuotes = line.IndexOf('"', i + 1);
-                    tokens.Add(line.Substring(i + 1, endQuotes - i-1));
+                    tokens.Add(line.Substring(i + 1, endQuotes - i - 1));
                     i = endQuotes;
                     tokenStart = i + 1;
                 } else {
@@ -96,6 +102,18 @@ namespace PASaveEditor {
                 // append the remainder of the string, after we ran out of spaces
                 tokens.Add(line.Substring(tokenStart, line.Length - tokenStart));
             }
+        }
+
+
+        public static bool IsId(string str) {
+            return IRegex.IsMatch(str);
+        }
+
+
+        public static int ParseId(string str) {
+            int idxOfSpace = str.IndexOf(' ');
+            string numStr = str.Substring(idxOfSpace + 1, str.Length - idxOfSpace - 2);
+            return Int32.Parse(numStr);
         }
     }
 }
