@@ -6,13 +6,13 @@ using FileModel;
 
 namespace PASaveEditor {
     internal class Parser {
-        static Regex IRegex = new Regex("^\\[i \\d+\\]$", RegexOptions.Compiled);
+        static readonly Regex IRegex = new Regex("^\\[i \\d+\\]$", RegexOptions.Compiled);
         readonly List<string> tokens = new List<string>();
 
 
         public Prison Load(Stream stream) {
-            StreamReader reader = new StreamReader(stream);
-            Stack<Node> nodes = new Stack<Node>();
+            var reader = new StreamReader(stream);
+            var nodes = new Stack<Node>();
             Node currentNode = new Prison();
             int lineNum = 0;
 

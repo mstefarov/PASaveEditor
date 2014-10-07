@@ -9,8 +9,6 @@ namespace FileModel {
         public bool EnabledVisibility;
         public bool UnlimitedFunds;
         public bool EnabledIntake;
-        public bool IntakeReqMin;
-        public bool IntakeReqMax;
 
         public Contraband Contraband;
         public Finance Finance;
@@ -49,12 +47,6 @@ namespace FileModel {
                     break;
                 case "EnabledIntake":
                     EnabledIntake = Boolean.Parse(value);
-                    break;
-                case "Intake.reqMin":
-                    IntakeReqMin = Boolean.Parse(value);
-                    break;
-                case "Intake.reqMax":
-                    IntakeReqMax = Boolean.Parse(value);
                     break;
                 default:
                     base.ReadKey(key, value);

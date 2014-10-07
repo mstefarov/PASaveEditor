@@ -31,6 +31,7 @@
             System.Windows.Forms.Label lOwnership;
             System.Windows.Forms.Label lBalance;
             System.Windows.Forms.Label lBalanceUnits;
+            System.Windows.Forms.ToolStripSeparator sReleasePrisonersSeparator;
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -44,33 +45,32 @@
             this.nDay = new System.Windows.Forms.NumericUpDown();
             this.lDay = new System.Windows.Forms.Label();
             this.lTime = new System.Windows.Forms.Label();
-            this.tpPrisoners = new System.Windows.Forms.TabPage();
-            this.tpResearch = new System.Windows.Forms.TabPage();
-            this.clbResearch = new System.Windows.Forms.CheckedListBox();
             this.tpFinance = new System.Windows.Forms.TabPage();
             this.nOwnership = new System.Windows.Forms.NumericUpDown();
             this.xUnlimitedFunds = new System.Windows.Forms.CheckBox();
             this.nBankLoanAmount = new System.Windows.Forms.NumericUpDown();
             this.nCreditRating = new System.Windows.Forms.NumericUpDown();
             this.nBalance = new System.Windows.Forms.NumericUpDown();
+            this.tpPrisoners = new System.Windows.Forms.TabPage();
+            this.tpResearch = new System.Windows.Forms.TabPage();
+            this.clbResearch = new System.Windows.Forms.CheckedListBox();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miFileOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.miFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.miFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.shortcutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.releasePrisonersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minimumSecurityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.normalSecurityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maximumSecurityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.superMaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeTunnelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unlockAllResearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAllTreesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miShortcuts = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleasePrisoners = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseProtectiveCustody = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseMinimumSecurity = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseNormalSecurity = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseMaximumSecurity = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseSuperMax = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveTunnels = new System.Windows.Forms.ToolStripMenuItem();
+            this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
@@ -79,19 +79,92 @@
             lOwnership = new System.Windows.Forms.Label();
             lBalance = new System.Windows.Forms.Label();
             lBalanceUnits = new System.Windows.Forms.Label();
+            sReleasePrisonersSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.tabs.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nDay)).BeginInit();
-            this.tpResearch.SuspendLayout();
             this.tpFinance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOwnership)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBankLoanAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nCreditRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBalance)).BeginInit();
+            this.tpResearch.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lOwnershipUnits
+            // 
+            lOwnershipUnits.AutoSize = true;
+            lOwnershipUnits.Location = new System.Drawing.Point(178, 121);
+            lOwnershipUnits.Name = "lOwnershipUnits";
+            lOwnershipUnits.Size = new System.Drawing.Size(15, 13);
+            lOwnershipUnits.TabIndex = 15;
+            lOwnershipUnits.Text = "%";
+            // 
+            // lBankLoanAmontUnits
+            // 
+            lBankLoanAmontUnits.AutoSize = true;
+            lBankLoanAmontUnits.Location = new System.Drawing.Point(178, 69);
+            lBankLoanAmontUnits.Name = "lBankLoanAmontUnits";
+            lBankLoanAmontUnits.Size = new System.Drawing.Size(13, 13);
+            lBankLoanAmontUnits.TabIndex = 13;
+            lBankLoanAmontUnits.Text = "$";
+            // 
+            // lBankLoanAmount
+            // 
+            lBankLoanAmount.AutoSize = true;
+            lBankLoanAmount.Location = new System.Drawing.Point(11, 69);
+            lBankLoanAmount.Name = "lBankLoanAmount";
+            lBankLoanAmount.Size = new System.Drawing.Size(93, 13);
+            lBankLoanAmount.TabIndex = 5;
+            lBankLoanAmount.Text = "Bank loan amount";
+            // 
+            // lCreditRating
+            // 
+            lCreditRating.AutoSize = true;
+            lCreditRating.Location = new System.Drawing.Point(41, 95);
+            lCreditRating.Name = "lCreditRating";
+            lCreditRating.Size = new System.Drawing.Size(63, 13);
+            lCreditRating.TabIndex = 4;
+            lCreditRating.Text = "Credit rating";
+            // 
+            // lCreditRatingUnits
+            // 
+            lCreditRatingUnits.AutoSize = true;
+            lCreditRatingUnits.Location = new System.Drawing.Point(178, 95);
+            lCreditRatingUnits.Name = "lCreditRatingUnits";
+            lCreditRatingUnits.Size = new System.Drawing.Size(15, 13);
+            lCreditRatingUnits.TabIndex = 11;
+            lCreditRatingUnits.Text = "%";
+            // 
+            // lOwnership
+            // 
+            lOwnership.AutoSize = true;
+            lOwnership.Location = new System.Drawing.Point(47, 121);
+            lOwnership.Name = "lOwnership";
+            lOwnership.Size = new System.Drawing.Size(57, 13);
+            lOwnership.TabIndex = 6;
+            lOwnership.Text = "Ownership";
+            // 
+            // lBalance
+            // 
+            lBalance.AutoSize = true;
+            lBalance.Location = new System.Drawing.Point(58, 43);
+            lBalance.Name = "lBalance";
+            lBalance.Size = new System.Drawing.Size(46, 13);
+            lBalance.TabIndex = 3;
+            lBalance.Text = "Balance";
+            // 
+            // lBalanceUnits
+            // 
+            lBalanceUnits.AutoSize = true;
+            lBalanceUnits.Location = new System.Drawing.Point(178, 43);
+            lBalanceUnits.Name = "lBalanceUnits";
+            lBalanceUnits.Size = new System.Drawing.Size(13, 13);
+            lBalanceUnits.TabIndex = 9;
+            lBalanceUnits.Text = "$";
             // 
             // tabs
             // 
@@ -103,7 +176,7 @@
             this.tabs.Location = new System.Drawing.Point(0, 24);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(584, 388);
+            this.tabs.Size = new System.Drawing.Size(484, 388);
             this.tabs.TabIndex = 0;
             // 
             // tpGeneral
@@ -112,20 +185,22 @@
             this.tpGeneral.Controls.Add(this.groupBox1);
             this.tpGeneral.Location = new System.Drawing.Point(4, 22);
             this.tpGeneral.Name = "tpGeneral";
-            this.tpGeneral.Size = new System.Drawing.Size(576, 362);
+            this.tpGeneral.Size = new System.Drawing.Size(476, 362);
             this.tpGeneral.TabIndex = 4;
             this.tpGeneral.Text = "General";
             this.tpGeneral.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.xMisconduct);
             this.groupBox2.Controls.Add(this.xFogOfWar);
             this.groupBox2.Controls.Add(this.xFailureConditions);
             this.groupBox2.Controls.Add(this.xContinuousIntake);
             this.groupBox2.Location = new System.Drawing.Point(8, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(560, 123);
+            this.groupBox2.Size = new System.Drawing.Size(460, 123);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prison Settings";
@@ -172,6 +247,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.cAmPm);
             this.groupBox1.Controls.Add(this.tTime);
             this.groupBox1.Controls.Add(this.nDay);
@@ -179,7 +256,7 @@
             this.groupBox1.Controls.Add(this.lTime);
             this.groupBox1.Location = new System.Drawing.Point(8, 132);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(560, 95);
+            this.groupBox1.Size = new System.Drawing.Size(460, 95);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In-game time";
@@ -230,34 +307,6 @@
             this.lTime.TabIndex = 1;
             this.lTime.Text = "Time";
             // 
-            // tpPrisoners
-            // 
-            this.tpPrisoners.Location = new System.Drawing.Point(4, 22);
-            this.tpPrisoners.Name = "tpPrisoners";
-            this.tpPrisoners.Size = new System.Drawing.Size(576, 362);
-            this.tpPrisoners.TabIndex = 2;
-            this.tpPrisoners.Text = "Prisoners";
-            this.tpPrisoners.UseVisualStyleBackColor = true;
-            // 
-            // tpResearch
-            // 
-            this.tpResearch.Controls.Add(this.clbResearch);
-            this.tpResearch.Location = new System.Drawing.Point(4, 22);
-            this.tpResearch.Name = "tpResearch";
-            this.tpResearch.Size = new System.Drawing.Size(576, 362);
-            this.tpResearch.TabIndex = 3;
-            this.tpResearch.Text = "Research";
-            this.tpResearch.UseVisualStyleBackColor = true;
-            // 
-            // clbResearch
-            // 
-            this.clbResearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clbResearch.FormattingEnabled = true;
-            this.clbResearch.Location = new System.Drawing.Point(0, 0);
-            this.clbResearch.Name = "clbResearch";
-            this.clbResearch.Size = new System.Drawing.Size(576, 362);
-            this.clbResearch.TabIndex = 0;
-            // 
             // tpFinance
             // 
             this.tpFinance.Controls.Add(lOwnershipUnits);
@@ -276,19 +325,10 @@
             this.tpFinance.Location = new System.Drawing.Point(4, 22);
             this.tpFinance.Name = "tpFinance";
             this.tpFinance.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFinance.Size = new System.Drawing.Size(576, 362);
+            this.tpFinance.Size = new System.Drawing.Size(476, 362);
             this.tpFinance.TabIndex = 5;
             this.tpFinance.Text = "Finance";
             this.tpFinance.UseVisualStyleBackColor = true;
-            // 
-            // lOwnershipUnits
-            // 
-            lOwnershipUnits.AutoSize = true;
-            lOwnershipUnits.Location = new System.Drawing.Point(178, 121);
-            lOwnershipUnits.Name = "lOwnershipUnits";
-            lOwnershipUnits.Size = new System.Drawing.Size(15, 13);
-            lOwnershipUnits.TabIndex = 15;
-            lOwnershipUnits.Text = "%";
             // 
             // nOwnership
             // 
@@ -313,24 +353,6 @@
             this.xUnlimitedFunds.Text = "Unlimited funds";
             this.xUnlimitedFunds.UseVisualStyleBackColor = true;
             // 
-            // lBankLoanAmontUnits
-            // 
-            lBankLoanAmontUnits.AutoSize = true;
-            lBankLoanAmontUnits.Location = new System.Drawing.Point(178, 69);
-            lBankLoanAmontUnits.Name = "lBankLoanAmontUnits";
-            lBankLoanAmontUnits.Size = new System.Drawing.Size(13, 13);
-            lBankLoanAmontUnits.TabIndex = 13;
-            lBankLoanAmontUnits.Text = "$";
-            // 
-            // lBankLoanAmount
-            // 
-            lBankLoanAmount.AutoSize = true;
-            lBankLoanAmount.Location = new System.Drawing.Point(11, 69);
-            lBankLoanAmount.Name = "lBankLoanAmount";
-            lBankLoanAmount.Size = new System.Drawing.Size(93, 13);
-            lBankLoanAmount.TabIndex = 5;
-            lBankLoanAmount.Text = "Bank loan amount";
-            // 
             // nBankLoanAmount
             // 
             this.nBankLoanAmount.Increment = new decimal(new int[] {
@@ -348,33 +370,6 @@
             this.nBankLoanAmount.Size = new System.Drawing.Size(62, 20);
             this.nBankLoanAmount.TabIndex = 12;
             // 
-            // lCreditRating
-            // 
-            lCreditRating.AutoSize = true;
-            lCreditRating.Location = new System.Drawing.Point(41, 95);
-            lCreditRating.Name = "lCreditRating";
-            lCreditRating.Size = new System.Drawing.Size(63, 13);
-            lCreditRating.TabIndex = 4;
-            lCreditRating.Text = "Credit rating";
-            // 
-            // lCreditRatingUnits
-            // 
-            lCreditRatingUnits.AutoSize = true;
-            lCreditRatingUnits.Location = new System.Drawing.Point(178, 95);
-            lCreditRatingUnits.Name = "lCreditRatingUnits";
-            lCreditRatingUnits.Size = new System.Drawing.Size(15, 13);
-            lCreditRatingUnits.TabIndex = 11;
-            lCreditRatingUnits.Text = "%";
-            // 
-            // lOwnership
-            // 
-            lOwnership.AutoSize = true;
-            lOwnership.Location = new System.Drawing.Point(47, 121);
-            lOwnership.Name = "lOwnership";
-            lOwnership.Size = new System.Drawing.Size(57, 13);
-            lOwnership.TabIndex = 6;
-            lOwnership.Text = "Ownership";
-            // 
             // nCreditRating
             // 
             this.nCreditRating.Location = new System.Drawing.Point(110, 93);
@@ -386,24 +381,6 @@
             0,
             0,
             0});
-            // 
-            // lBalance
-            // 
-            lBalance.AutoSize = true;
-            lBalance.Location = new System.Drawing.Point(58, 43);
-            lBalance.Name = "lBalance";
-            lBalance.Size = new System.Drawing.Size(46, 13);
-            lBalance.TabIndex = 3;
-            lBalance.Text = "Balance";
-            // 
-            // lBalanceUnits
-            // 
-            lBalanceUnits.AutoSize = true;
-            lBalanceUnits.Location = new System.Drawing.Point(178, 43);
-            lBalanceUnits.Name = "lBalanceUnits";
-            lBalanceUnits.Size = new System.Drawing.Size(13, 13);
-            lBalanceUnits.TabIndex = 9;
-            lBalanceUnits.Text = "$";
             // 
             // nBalance
             // 
@@ -422,14 +399,42 @@
             this.nBalance.Size = new System.Drawing.Size(62, 20);
             this.nBalance.TabIndex = 8;
             // 
+            // tpPrisoners
+            // 
+            this.tpPrisoners.Location = new System.Drawing.Point(4, 22);
+            this.tpPrisoners.Name = "tpPrisoners";
+            this.tpPrisoners.Size = new System.Drawing.Size(476, 362);
+            this.tpPrisoners.TabIndex = 2;
+            this.tpPrisoners.Text = "Prisoners";
+            this.tpPrisoners.UseVisualStyleBackColor = true;
+            // 
+            // tpResearch
+            // 
+            this.tpResearch.Controls.Add(this.clbResearch);
+            this.tpResearch.Location = new System.Drawing.Point(4, 22);
+            this.tpResearch.Name = "tpResearch";
+            this.tpResearch.Size = new System.Drawing.Size(476, 362);
+            this.tpResearch.TabIndex = 3;
+            this.tpResearch.Text = "Research";
+            this.tpResearch.UseVisualStyleBackColor = true;
+            // 
+            // clbResearch
+            // 
+            this.clbResearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbResearch.FormattingEnabled = true;
+            this.clbResearch.Location = new System.Drawing.Point(0, 0);
+            this.clbResearch.Name = "clbResearch";
+            this.clbResearch.Size = new System.Drawing.Size(476, 362);
+            this.clbResearch.TabIndex = 0;
+            // 
             // menu
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miFile,
-            this.shortcutsToolStripMenuItem});
+            this.miShortcuts});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(584, 24);
+            this.menu.Size = new System.Drawing.Size(484, 24);
             this.menu.TabIndex = 1;
             this.menu.Text = "menuStrip1";
             // 
@@ -447,117 +452,125 @@
             // miFileOpen
             // 
             this.miFileOpen.Name = "miFileOpen";
-            this.miFileOpen.Size = new System.Drawing.Size(123, 22);
+            this.miFileOpen.Size = new System.Drawing.Size(152, 22);
             this.miFileOpen.Text = "Open...";
             this.miFileOpen.Click += new System.EventHandler(this.miFileOpen_Click);
             // 
             // miFileSave
             // 
             this.miFileSave.Name = "miFileSave";
-            this.miFileSave.Size = new System.Drawing.Size(123, 22);
+            this.miFileSave.Size = new System.Drawing.Size(152, 22);
             this.miFileSave.Text = "Save";
             // 
             // miFileSaveAs
             // 
             this.miFileSaveAs.Name = "miFileSaveAs";
-            this.miFileSaveAs.Size = new System.Drawing.Size(123, 22);
+            this.miFileSaveAs.Size = new System.Drawing.Size(152, 22);
             this.miFileSaveAs.Text = "Save As...";
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(123, 22);
+            this.miExit.Size = new System.Drawing.Size(152, 22);
             this.miExit.Text = "Exit";
             // 
-            // shortcutsToolStripMenuItem
+            // miShortcuts
             // 
-            this.shortcutsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.releasePrisonersToolStripMenuItem,
-            this.removeTunnelsToolStripMenuItem,
-            this.unlockAllResearchToolStripMenuItem,
-            this.removeAllTreesToolStripMenuItem});
-            this.shortcutsToolStripMenuItem.Name = "shortcutsToolStripMenuItem";
-            this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.shortcutsToolStripMenuItem.Text = "Shortcuts";
+            this.miShortcuts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miReleasePrisoners,
+            this.miRemoveTunnels,
+            this.miUnlockAllResearch,
+            this.miRemoveAllTrees});
+            this.miShortcuts.Name = "miShortcuts";
+            this.miShortcuts.Size = new System.Drawing.Size(69, 20);
+            this.miShortcuts.Text = "Shortcuts";
             // 
-            // releasePrisonersToolStripMenuItem
+            // miReleasePrisoners
             // 
-            this.releasePrisonersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.minToolStripMenuItem,
-            this.minimumSecurityToolStripMenuItem,
-            this.normalSecurityToolStripMenuItem,
-            this.maximumSecurityToolStripMenuItem,
-            this.superMaxToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.allToolStripMenuItem});
-            this.releasePrisonersToolStripMenuItem.Name = "releasePrisonersToolStripMenuItem";
-            this.releasePrisonersToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.releasePrisonersToolStripMenuItem.Text = "Release prisoners";
+            this.miReleasePrisoners.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miReleaseProtectiveCustody,
+            this.miReleaseMinimumSecurity,
+            this.miReleaseNormalSecurity,
+            this.miReleaseMaximumSecurity,
+            this.miReleaseSuperMax,
+            sReleasePrisonersSeparator,
+            this.miReleaseAll});
+            this.miReleasePrisoners.Name = "miReleasePrisoners";
+            this.miReleasePrisoners.Size = new System.Drawing.Size(173, 22);
+            this.miReleasePrisoners.Text = "Release prisoners";
             // 
-            // minToolStripMenuItem
+            // miReleaseProtectiveCustody
             // 
-            this.minToolStripMenuItem.Name = "minToolStripMenuItem";
-            this.minToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.minToolStripMenuItem.Text = "Protective Custody";
+            this.miReleaseProtectiveCustody.Name = "miReleaseProtectiveCustody";
+            this.miReleaseProtectiveCustody.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseProtectiveCustody.Text = "Protective Custody";
+            this.miReleaseProtectiveCustody.Click += new System.EventHandler(this.miReleaseProtectiveCustody_Click);
             // 
-            // minimumSecurityToolStripMenuItem
+            // miReleaseMinimumSecurity
             // 
-            this.minimumSecurityToolStripMenuItem.Name = "minimumSecurityToolStripMenuItem";
-            this.minimumSecurityToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.minimumSecurityToolStripMenuItem.Text = "Minimum Security";
+            this.miReleaseMinimumSecurity.Name = "miReleaseMinimumSecurity";
+            this.miReleaseMinimumSecurity.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseMinimumSecurity.Text = "Minimum Security";
+            this.miReleaseMinimumSecurity.Click += new System.EventHandler(this.miReleaseMinimumSecurity_Click);
             // 
-            // normalSecurityToolStripMenuItem
+            // miReleaseNormalSecurity
             // 
-            this.normalSecurityToolStripMenuItem.Name = "normalSecurityToolStripMenuItem";
-            this.normalSecurityToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.normalSecurityToolStripMenuItem.Text = "Normal Security";
+            this.miReleaseNormalSecurity.Name = "miReleaseNormalSecurity";
+            this.miReleaseNormalSecurity.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseNormalSecurity.Text = "Normal Security";
+            this.miReleaseNormalSecurity.Click += new System.EventHandler(this.miReleaseNormalSecurity_Click);
             // 
-            // maximumSecurityToolStripMenuItem
+            // miReleaseMaximumSecurity
             // 
-            this.maximumSecurityToolStripMenuItem.Name = "maximumSecurityToolStripMenuItem";
-            this.maximumSecurityToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.maximumSecurityToolStripMenuItem.Text = "Maximum Security";
+            this.miReleaseMaximumSecurity.Name = "miReleaseMaximumSecurity";
+            this.miReleaseMaximumSecurity.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseMaximumSecurity.Text = "Maximum Security";
+            this.miReleaseMaximumSecurity.Click += new System.EventHandler(this.miReleaseMaximumSecurity_Click);
             // 
-            // superMaxToolStripMenuItem
+            // miReleaseSuperMax
             // 
-            this.superMaxToolStripMenuItem.Name = "superMaxToolStripMenuItem";
-            this.superMaxToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.superMaxToolStripMenuItem.Text = "SuperMax";
+            this.miReleaseSuperMax.Name = "miReleaseSuperMax";
+            this.miReleaseSuperMax.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseSuperMax.Text = "SuperMax";
+            this.miReleaseSuperMax.Click += new System.EventHandler(this.miReleaseSuperMax_Click);
             // 
-            // toolStripSeparator1
+            // sReleasePrisonersSeparator
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(171, 6);
+            sReleasePrisonersSeparator.Name = "sReleasePrisonersSeparator";
+            sReleasePrisonersSeparator.Size = new System.Drawing.Size(171, 6);
             // 
-            // allToolStripMenuItem
+            // miReleaseAll
             // 
-            this.allToolStripMenuItem.Name = "allToolStripMenuItem";
-            this.allToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.allToolStripMenuItem.Text = "All";
+            this.miReleaseAll.Name = "miReleaseAll";
+            this.miReleaseAll.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseAll.Text = "All";
+            this.miReleaseAll.Click += new System.EventHandler(this.miReleaseAll_Click);
             // 
-            // removeTunnelsToolStripMenuItem
+            // miRemoveTunnels
             // 
-            this.removeTunnelsToolStripMenuItem.Name = "removeTunnelsToolStripMenuItem";
-            this.removeTunnelsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.removeTunnelsToolStripMenuItem.Text = "Remove tunnels";
+            this.miRemoveTunnels.Name = "miRemoveTunnels";
+            this.miRemoveTunnels.Size = new System.Drawing.Size(173, 22);
+            this.miRemoveTunnels.Text = "Remove tunnels";
             // 
-            // unlockAllResearchToolStripMenuItem
+            // miUnlockAllResearch
             // 
-            this.unlockAllResearchToolStripMenuItem.Name = "unlockAllResearchToolStripMenuItem";
-            this.unlockAllResearchToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.unlockAllResearchToolStripMenuItem.Text = "Unlock all research";
+            this.miUnlockAllResearch.Name = "miUnlockAllResearch";
+            this.miUnlockAllResearch.Size = new System.Drawing.Size(173, 22);
+            this.miUnlockAllResearch.Text = "Unlock all research";
+            this.miUnlockAllResearch.Click += new System.EventHandler(this.miUnlockAllResearch_Click);
             // 
-            // removeAllTreesToolStripMenuItem
+            // miRemoveAllTrees
             // 
-            this.removeAllTreesToolStripMenuItem.Name = "removeAllTreesToolStripMenuItem";
-            this.removeAllTreesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.removeAllTreesToolStripMenuItem.Text = "Remove all trees";
+            this.miRemoveAllTrees.Name = "miRemoveAllTrees";
+            this.miRemoveAllTrees.Size = new System.Drawing.Size(173, 22);
+            this.miRemoveAllTrees.Text = "Remove all trees";
+            this.miRemoveAllTrees.Click += new System.EventHandler(this.miRemoveAllTrees_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 412);
+            this.ClientSize = new System.Drawing.Size(484, 412);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
@@ -570,13 +583,13 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nDay)).EndInit();
-            this.tpResearch.ResumeLayout(false);
             this.tpFinance.ResumeLayout(false);
             this.tpFinance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOwnership)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBankLoanAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nCreditRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBalance)).EndInit();
+            this.tpResearch.ResumeLayout(false);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);
@@ -613,18 +626,17 @@
         private System.Windows.Forms.CheckBox xContinuousIntake;
         private System.Windows.Forms.CheckBox xFogOfWar;
         private System.Windows.Forms.CheckBox xMisconduct;
-        private System.Windows.Forms.ToolStripMenuItem shortcutsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem releasePrisonersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem minToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem minimumSecurityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem normalSecurityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem maximumSecurityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem superMaxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeTunnelsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unlockAllResearchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeAllTreesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miShortcuts;
+        private System.Windows.Forms.ToolStripMenuItem miReleasePrisoners;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseProtectiveCustody;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseMinimumSecurity;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseNormalSecurity;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseMaximumSecurity;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseSuperMax;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseAll;
+        private System.Windows.Forms.ToolStripMenuItem miRemoveTunnels;
+        private System.Windows.Forms.ToolStripMenuItem miUnlockAllResearch;
+        private System.Windows.Forms.ToolStripMenuItem miRemoveAllTrees;
         private System.Windows.Forms.CheckedListBox clbResearch;
     }
 }

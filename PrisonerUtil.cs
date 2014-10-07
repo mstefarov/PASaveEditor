@@ -1,0 +1,32 @@
+﻿using System;
+using System.Linq;
+using FileModel;
+
+namespace PASaveEditor {
+    internal static class PrisonerUtil {
+        public static int[] FindPrisoners(Prison prison, Predicate<Prisoner> predicate) {
+            return prison.Objects.Prisoners.Values
+                                    .Where(prisoner => predicate(prisoner))
+                                    .Select(prisoner => prisoner.Id)
+                                    .ToArray();
+        }
+
+
+        public static int Release(Prison prison, Predicate<Prisoner> predicate) {
+            int[] idsToRemove = FindPrisoners(prison, predicate);
+            foreach (int id in idsToRemove) {
+                prison.Objects.Prisoners.Remove(id);
+                prison.Contraband.Prisoners.Remove(id);
+                prison.Informants.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
+                prison.Misconduct.MisconductReports.Remove(id);
+                prison.Penalties.PenaltyList.Remove(id);
+                foreach (ReformProgram program in prison.Reform.Programs.Programs) {
+                    program.Students.Students.Remove(id);
+                }
+                // TODO Diggers
+                prison.Victory.Log.RemoveAll(entry => entry.PrisonerId == id);
+            }
+            return idsToRemove.Length;
+        }
+    }
+}

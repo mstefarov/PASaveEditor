@@ -15,6 +15,7 @@ namespace FileModel {
             } else {
                 return base.CreateNode(label);
             }
+            // TODO Diggers
         }
     }
 }

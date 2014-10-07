@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace PASaveEditor {
-    class TimeConversion {
+    static class TimeConversion {
         const int MinutesPerDay = 60*24,
             MinutesPerHour = 60;
 

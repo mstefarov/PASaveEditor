@@ -78,6 +78,7 @@
     <Compile Include="FileModel\Victory.cs" />
     <Compile Include="FileModel\VictoryLogEntry.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="PrisonerUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResearchData.cs" />

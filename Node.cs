@@ -8,7 +8,7 @@ namespace FileModel {
             Label = label;
         }
 
-        public string Label;
+        public readonly string Label;
         public Dictionary<string, List<string>> Properties;
         public Dictionary<string, List<Node>> Nodes;
 
@@ -18,8 +18,7 @@ namespace FileModel {
 
 
         public virtual Node CreateNode(string label) {
-            Node newNode = new Node(label);
-            newNode.Label = label;
+            var newNode = new Node(label);
             PushNode(label, newNode);
             return newNode;
         }
@@ -78,7 +77,7 @@ namespace FileModel {
 
         public void ReparseProperties(Node other) {
             foreach (var property in other.ListProperties()) {
-                PushProperty(property.Key,property.Value);
+                ReadKey(property.Key, property.Value);
             }
         }
 
