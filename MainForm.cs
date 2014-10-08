@@ -8,14 +8,42 @@ using FileModel;
 
 namespace PASaveEditor {
     public partial class MainForm : Form {
+        const string FileFilter = "Prison Architect saves (*.prison)|*.prison|All Files (*.*)|*.*";
+        const string AppName = "Prison Architect Save Editor";
         string fileName;
         Prison prison;
+        string[] prisonerNames;
+        Prisoner selectedPrisoner;
+        
+        readonly OpenFileDialog openDialog;
+        readonly SaveFileDialog saveAsDialog;
+
+        Dictionary<string, string> CategoryNames = new Dictionary<string, string> {
+            { "Protected", "Protective Custody" },
+            { "MinSec", "Minimum Security" },
+            { "Normal", "Normal Security" },
+            { "MaxSec", "Maximum Security" },
+            { "SuperMax", "SuperMax" }
+        };
 
 
         public MainForm() {
             InitializeComponent();
             clbResearch.Items.AddRange(ResearchData.GetInGameNames());
             tPrisonerSearch.SetWatermark("Search");
+
+            string paSavePath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Introversion", "Prison Architect", "saves");
+
+            openDialog = new OpenFileDialog {
+                Filter = FileFilter,
+                InitialDirectory = paSavePath
+            };
+            saveAsDialog = new SaveFileDialog {
+                Filter = FileFilter,
+                InitialDirectory = paSavePath
+            };
             Enabled = false;
         }
 
@@ -24,18 +52,17 @@ namespace PASaveEditor {
             base.OnShown(e);
             miFileOpen.PerformClick();
         }
-
+        
 
         void miFileOpen_Click(object sender, EventArgs e) {
-            FileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                fileName = openFileDialog.FileName;
-                using (FileStream fs = File.OpenRead(openFileDialog.FileName)) {
-                    Text = String.Format("Loading {0} | Prison Architect Save Editor", Path.GetFileName(fileName));
+            if (openDialog.ShowDialog() == DialogResult.OK) {
+                fileName = openDialog.FileName;
+                using (FileStream fs = File.OpenRead(openDialog.FileName)) {
+                    Text = String.Format("Loading {0} | {1}", Path.GetFileName(fileName),AppName);
                     prison = new Parser().Load(fs);
                     LoadPrisonToGui();
                     Enabled = true;
-                    Text = String.Format("{0} | Prison Architect Save Editor", Path.GetFileName(fileName));
+                    Text = String.Format("{0} | {1}", Path.GetFileName(fileName),AppName);
                 }
             }
         }
@@ -150,7 +177,6 @@ namespace PASaveEditor {
 
 
         void UpdatePrisonerCounts() {
-
             int countProtected = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "Protected").Length;
             miReleaseProtectiveCustody.Text = string.Format("Protective Custody ({0})", countProtected);
             miReleaseProtectiveCustody.Enabled = (countProtected > 0);
@@ -177,8 +203,6 @@ namespace PASaveEditor {
         }
 
 
-        string[] prisonerNames;
-
 
         void UpdatePrisoners() {
             lbPrisoners.Items.Clear();
@@ -196,15 +220,6 @@ namespace PASaveEditor {
         void lbPrisoners_SelectedIndexChanged(object sender, EventArgs e) {
             SelectedPrisoner = prison.Objects.Prisoners.Values.ToArray()[lbPrisoners.SelectedIndex];
         }
-
-
-        Dictionary<string, string> CategoryNames = new Dictionary<string, string> {
-            { "Protected", "Protective Custody" },
-            { "MinSec", "Minimum Security" },
-            { "Normal", "Normal Security" },
-            { "MaxSec", "Maximum Security" },
-            { "SuperMax", "SuperMax" }
-        };
 
 
         static bool ContainsIgnoreCase(string haystack, string needle) {
@@ -243,7 +258,6 @@ namespace PASaveEditor {
         }
 
         
-        Prisoner selectedPrisoner;
         Prisoner SelectedPrisoner {
             get { return selectedPrisoner; }
             set {
@@ -266,6 +280,33 @@ namespace PASaveEditor {
                     cCategory.SelectedIndex = Array.IndexOf(CategoryNames.Keys.ToArray(), selectedPrisoner.Category);
                 }
             }
+        }
+
+        private void miFileSaveAs_Click(object sender, EventArgs e) {
+            if (saveAsDialog.ShowDialog() == DialogResult.OK) {
+                fileName = saveAsDialog.FileName;
+                miFileSave.PerformClick();
+            }
+        }
+
+        private void miFileSave_Click(object sender, EventArgs e) {
+            Enabled = false;
+            Text = String.Format("Saving {0} | {1}", Path.GetFileName(fileName), AppName);
+
+            string tempFileName = Path.GetTempFileName();
+            using (FileStream fs = File.Create(tempFileName)) {
+                using (var writer = new Writer(fs)) {
+                    writer.WritePrison(prison);
+                }
+            }
+            if (File.Exists(fileName)) {
+                File.Replace(tempFileName, fileName, fileName + ".bak");
+            } else {
+                File.Move(tempFileName, fileName);
+            }
+
+            Text = String.Format("{0} | {1}", Path.GetFileName(fileName), AppName);
+            Enabled = true;
         }
     }
 }

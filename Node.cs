@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using PASaveEditor;
 
 namespace FileModel {
     internal class Node {
@@ -103,27 +103,9 @@ namespace FileModel {
         }
 
 
-        public void WriteProperties(StringWriter writer, int indent) {
-            foreach (var property in Properties) {
-                for (int i = 0; i < indent; i++) {
-                    writer.Write("    ");
-                }
-                writer.Write(property.Key);
-                writer.Write(" ");
-                writer.Write(property.Value);
-                writer.Write("\n");
-            }
-        }
 
-        public void WritePropertiesInline(StringWriter writer) {
-            foreach (var property in Properties) {
-                writer.Write(property.Key);
-                writer.Write(" ");
-                writer.Write(property.Value);
-                writer.Write("  ");
-            }
+        public virtual void WriteStuff(Writer writer) {
         }
-
 
         public override string ToString() {
             return "Node(" + Label + ")";

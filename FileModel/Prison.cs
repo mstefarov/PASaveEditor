@@ -1,4 +1,5 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     internal class Prison : Node {
@@ -21,6 +22,38 @@ namespace FileModel {
         public Tunnels Tunnels;
         public Victory Victory;
 
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Version", Version);
+            writer.WriteProperty("TimeIndex", TimeIndex);
+            if (EnabledMisconduct) {
+                writer.WriteProperty("EnabledMisconduct", EnabledMisconduct);
+            }
+            if (FailureConditions) {
+                writer.WriteProperty("FailureConditions", FailureConditions);
+            }
+            if (EnabledVisibility) {
+                writer.WriteProperty("EnabledVisibility", EnabledVisibility);
+            } else {
+                Nodes.Remove("Visibility");
+            }
+            if (UnlimitedFunds) {
+                writer.WriteProperty("UnlimitedFunds", UnlimitedFunds);
+            }
+            if (EnabledIntake) {
+                writer.WriteProperty("EnabledIntake", EnabledIntake);
+            }
+            
+            writer.WriteNode(Contraband);
+            writer.WriteNode(Finance);
+            writer.WriteNode(Informants);
+            writer.WriteNode(Misconduct);
+            writer.WriteNode(Objects);
+            writer.WriteNode(Penalties);
+            writer.WriteNode(Reform);
+            writer.WriteNode(Research);
+            writer.WriteNode(Tunnels);
+            writer.WriteNode(Victory);
+        }
 
         public Prison() : base("Prison") {}
 
