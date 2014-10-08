@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using FileModel;
+using PASaveEditor.FileModel;
 
 namespace PASaveEditor {
     internal class Parser {

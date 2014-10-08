@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class Tunnels : Node {
         public readonly List<TunnelCell> TunnelCells = new List<TunnelCell>();
 

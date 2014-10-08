@@ -1,7 +1,6 @@
 ﻿using System;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class ResearchItem : Node {
         public double Progress;
 

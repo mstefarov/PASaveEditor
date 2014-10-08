@@ -1,7 +1,6 @@
 ﻿using System;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     class Penalty: Node {
         public int ObjectId;
 

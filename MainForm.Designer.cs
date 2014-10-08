@@ -80,6 +80,7 @@
             this.miRemoveTunnels = new System.Windows.Forms.ToolStripMenuItem();
             this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
@@ -606,7 +607,8 @@
             this.miReleasePrisoners,
             this.miRemoveTunnels,
             this.miUnlockAllResearch,
-            this.miRemoveAllTrees});
+            this.miRemoveAllTrees,
+            this.miRemoveAllContraband});
             this.miShortcuts.Name = "miShortcuts";
             this.miShortcuts.Size = new System.Drawing.Size(69, 20);
             this.miShortcuts.Text = "Shortcuts";
@@ -622,7 +624,7 @@
             sReleasePrisonersSeparator,
             this.miReleaseAll});
             this.miReleasePrisoners.Name = "miReleasePrisoners";
-            this.miReleasePrisoners.Size = new System.Drawing.Size(173, 22);
+            this.miReleasePrisoners.Size = new System.Drawing.Size(196, 22);
             this.miReleasePrisoners.Text = "Release prisoners";
             // 
             // miReleaseProtectiveCustody
@@ -670,22 +672,30 @@
             // miRemoveTunnels
             // 
             this.miRemoveTunnels.Name = "miRemoveTunnels";
-            this.miRemoveTunnels.Size = new System.Drawing.Size(173, 22);
+            this.miRemoveTunnels.Size = new System.Drawing.Size(196, 22);
             this.miRemoveTunnels.Text = "Remove tunnels";
             // 
             // miUnlockAllResearch
             // 
             this.miUnlockAllResearch.Name = "miUnlockAllResearch";
-            this.miUnlockAllResearch.Size = new System.Drawing.Size(173, 22);
+            this.miUnlockAllResearch.Size = new System.Drawing.Size(196, 22);
             this.miUnlockAllResearch.Text = "Unlock all research";
             this.miUnlockAllResearch.Click += new System.EventHandler(this.miUnlockAllResearch_Click);
             // 
             // miRemoveAllTrees
             // 
             this.miRemoveAllTrees.Name = "miRemoveAllTrees";
-            this.miRemoveAllTrees.Size = new System.Drawing.Size(173, 22);
+            this.miRemoveAllTrees.Size = new System.Drawing.Size(196, 22);
             this.miRemoveAllTrees.Text = "Remove all trees";
             this.miRemoveAllTrees.Click += new System.EventHandler(this.miRemoveAllTrees_Click);
+            // 
+            // miRemoveAllContraband
+            // 
+            this.miRemoveAllContraband.Enabled = false;
+            this.miRemoveAllContraband.Name = "miRemoveAllContraband";
+            this.miRemoveAllContraband.Size = new System.Drawing.Size(196, 22);
+            this.miRemoveAllContraband.Text = "Remove all contraband";
+            this.miRemoveAllContraband.Click += new System.EventHandler(this.miRemoveAllContraband_Click);
             // 
             // MainForm
             // 
@@ -768,6 +778,7 @@
         private System.Windows.Forms.TextBox tName;
         private System.Windows.Forms.ComboBox cCategory;
         private System.Windows.Forms.CheckBox xDecay;
+        private System.Windows.Forms.ToolStripMenuItem miRemoveAllContraband;
     }
 }
 

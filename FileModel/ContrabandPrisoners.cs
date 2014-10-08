@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class ContrabandPrisoners : Node {
         public readonly Dictionary<int, Node> Prisoners = new Dictionary<int, Node>();
 

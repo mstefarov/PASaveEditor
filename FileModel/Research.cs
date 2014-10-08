@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     class Research : Node {
         public readonly List<ResearchItem> Items = new List<ResearchItem>();
 

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class Prison : Node {
         public string Version;
         public double TimeIndex;
@@ -13,16 +12,16 @@ namespace FileModel {
         public bool UnlimitedFunds;
         public bool EnabledIntake;
 
-        public Contraband Contraband;
+        public WrapperNode<ContrabandPrisoners> Contraband;
         public Finance Finance;
-        public Informants Informants;
+        public WrapperNode<Informants> Informants;
         public Misconduct Misconduct;
         public Objects Objects;
-        public Penalties Penalties;
+        public WrapperNode<Penalties> Penalties;
         public Reform Reform;
         public Research Research;
         public Tunnels Tunnels;
-        public Victory Victory;
+        public WrapperNode<VictoryLog> Victory;
 
 
         public Prison()
@@ -65,7 +64,7 @@ namespace FileModel {
         public override Node CreateNode(string label) {
             switch (label) {
                 case "Contraband":
-                    Contraband = new Contraband(label);
+                    Contraband = new WrapperNode<ContrabandPrisoners>(label, "Prisoners", l => new ContrabandPrisoners(l));
                     return Contraband;
 
                 case "Finance":
@@ -73,7 +72,7 @@ namespace FileModel {
                     return Finance;
 
                 case "Informants":
-                    Informants = new Informants(label);
+                    Informants = new WrapperNode<Informants>(label, "Informants", l => new Informants(l));
                     return Informants;
 
                 case "Misconduct":
@@ -85,7 +84,7 @@ namespace FileModel {
                     return Objects;
 
                 case "Penalties":
-                    Penalties = new Penalties(label);
+                    Penalties = new WrapperNode<Penalties>(label, "Penalties", l => new Penalties(l));
                     return Penalties;
 
                 case "Reform":
@@ -101,7 +100,7 @@ namespace FileModel {
                     return Tunnels;
 
                 case "Victory":
-                    Victory = new Victory(label);
+                    Victory = new WrapperNode<VictoryLog>(label, "Log", l => new VictoryLog(l));
                     return Victory;
 
                 default:

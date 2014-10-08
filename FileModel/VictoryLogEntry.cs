@@ -1,7 +1,6 @@
 ﻿using System;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class VictoryLogEntry : Node {
         public string Type;
         public int PrisonerId;

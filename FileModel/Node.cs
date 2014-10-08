@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class Node {
         public Node(string label, bool doNotInline = false) {
             Label = label;
+            DoNotInline = doNotInline;
         }
 
 

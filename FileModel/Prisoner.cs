@@ -1,9 +1,7 @@
-﻿using PASaveEditor;
-
-namespace FileModel {
+﻿namespace PASaveEditor.FileModel {
     internal class Prisoner : ObjectBase {
         public string Category;
-        public PrisonerBio Bio;
+        public readonly PrisonerBio Bio;
 
 
         public Prisoner(ObjectBase baseObj)

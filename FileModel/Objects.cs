@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PASaveEditor;
+﻿using System.Collections.Generic;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     class Objects : Node {
         public readonly Dictionary<int, ObjectBase> OtherObjects = new Dictionary<int, ObjectBase>();
         public readonly Dictionary<int, Prisoner> Prisoners = new Dictionary<int, Prisoner>();

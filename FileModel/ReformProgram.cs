@@ -1,6 +1,4 @@
-﻿using PASaveEditor;
-
-namespace FileModel {
+﻿namespace PASaveEditor.FileModel {
     internal class ReformProgram : Node {
         public ReformStudents Students;
 

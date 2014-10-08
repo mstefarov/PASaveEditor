@@ -1,24 +1,43 @@
-﻿using PASaveEditor;
+﻿using System.Collections.Generic;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class Informants : Node {
-        public Informants2 Informants2;
+        public readonly List<Informant> Prisoners = new List<Informant>();
+
 
         public Informants(string label)
             : base(label, true) {}
 
 
+        public override void ReadKey(string key, string value) {
+            if (!"Size".Equals(key)) {
+                // do not store size -- it will be counted and written at save-time
+                base.ReadKey(key, value);
+            }
+        }
+
+
         public override Node CreateNode(string label) {
-            if ("Informants".Equals(label)) {
-                return (Informants2 = new Informants2(label));
+            if (Parser.IsId(label)) {
+                var informant = new Informant(label);
+                Prisoners.Add(informant);
+                return informant;
+
             } else {
                 return base.CreateNode(label);
             }
         }
 
 
+        public override void WriteProperties(Writer writer) {
+            writer.WriteProperty("Size", Prisoners.Count);
+        }
+
+
         public override void WriteNodes(Writer writer) {
-            writer.WriteNode(Informants2);
+            foreach (Informant informant in Prisoners) {
+                writer.WriteNode(informant);
+            }
         }
     }
 }

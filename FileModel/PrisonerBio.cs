@@ -1,7 +1,6 @@
 ﻿using System;
-using PASaveEditor;
 
-namespace FileModel {
+namespace PASaveEditor.FileModel {
     internal class PrisonerBio : Node {
         public string Forname, Surname; // TODO: investigate prisoners with blank names
         public int Sentence;

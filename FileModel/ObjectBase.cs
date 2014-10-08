@@ -1,6 +1,4 @@
-﻿using PASaveEditor;
-
-namespace FileModel {
+﻿namespace PASaveEditor.FileModel {
     internal class ObjectBase : Node {
         public ObjectBase(string label, bool doNotInline)
             : base(label, doNotInline) {
