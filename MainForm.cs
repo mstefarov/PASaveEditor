@@ -9,7 +9,7 @@ using FileModel;
 namespace PASaveEditor {
     public partial class MainForm : Form {
         const string FileFilter = "Prison Architect saves (*.prison)|*.prison|All Files (*.*)|*.*";
-        const string AppName = "Prison Architect Save Editor";
+        const string AppName = "Prison Architect Save Editor | alpha25b";
         string fileName;
         Prison prison;
         string[] prisonerNames;
@@ -18,7 +18,7 @@ namespace PASaveEditor {
         readonly OpenFileDialog openDialog;
         readonly SaveFileDialog saveAsDialog;
 
-        Dictionary<string, string> CategoryNames = new Dictionary<string, string> {
+        readonly Dictionary<string, string> CategoryNames = new Dictionary<string, string> {
             { "Protected", "Protective Custody" },
             { "MinSec", "Minimum Security" },
             { "Normal", "Normal Security" },
