@@ -29,6 +29,11 @@ namespace FileModel {
         }
 
 
+        public override void WriteProperties(Writer writer) {
+            writer.WriteProperty("TimeWithoutIncident", TimeWithoutIncident);
+        }
+
+
         public override void WriteNodes(Writer writer) {
             writer.WriteNode(Reports);
         }

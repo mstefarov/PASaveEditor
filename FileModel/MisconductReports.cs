@@ -10,12 +10,6 @@ namespace FileModel {
             : base(label, true) {}
 
 
-        public override void ReadKey(string key, string value) {
-            if (!"Size".Equals(key)) {
-                base.ReadKey(key, value);
-            }
-        }
-
         public override Node CreateNode(string label) {
             if (Parser.IsId(label)) {
                 var report = new Node(label);
@@ -25,11 +19,6 @@ namespace FileModel {
             } else {
                 return base.CreateNode(label);
             }
-        }
-
-
-        public override void WriteProperties(Writer writer) {
-            writer.WriteProperty("Size",Reports.Count);
         }
 
 

@@ -26,7 +26,7 @@ namespace PASaveEditor {
 
 
         public void WriteProperty(string key, double value) {
-            WriteProperty(key, value.ToString(CultureInfo.InvariantCulture));
+            WriteProperty(key, value.ToString("#.0####",CultureInfo.InvariantCulture));
         }
 
 

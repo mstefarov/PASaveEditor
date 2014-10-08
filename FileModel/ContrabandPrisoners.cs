@@ -23,19 +23,6 @@ namespace FileModel {
         }
 
 
-        public override void ReadKey(string key, string value) {
-            if (!"Size".Equals(key)) {
-                // do not store size -- it will be counted and written at save-time
-                base.ReadKey(key, value);
-            }
-        }
-
-
-        public override void WriteProperties(Writer writer) {
-            writer.WriteProperty("Size", Prisoners.Keys.Max() + 1);
-        }
-
-
         public override void WriteNodes(Writer writer) {
             foreach (var prisoner in Prisoners) {
                 writer.WriteNode(prisoner.Value);
