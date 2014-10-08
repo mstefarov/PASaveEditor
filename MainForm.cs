@@ -29,7 +29,6 @@ namespace PASaveEditor {
 
         public MainForm() {
             InitializeComponent();
-            clbResearch.Items.AddRange(ResearchData.GetInGameNames());
             tPrisonerSearch.SetWatermark("Search");
 
             string paSavePath = Path.Combine(
@@ -80,6 +79,7 @@ namespace PASaveEditor {
             xContinuousIntake.Checked = prison.EnabledIntake;
             xFogOfWar.Checked = prison.EnabledVisibility;
             xFailureConditions.Checked = prison.FailureConditions;
+            xDecay.Checked = prison.EnabledDecay;
 
             // Load finances tab
             xUnlimitedFunds.Checked = prison.UnlimitedFunds;
@@ -93,6 +93,8 @@ namespace PASaveEditor {
             SelectedPrisoner = null;
 
             // Load research tab
+            clbResearch.Items.Clear();
+            clbResearch.Items.AddRange(ResearchData.GetInGameNames());
             if (prison.Research != null) {
                 foreach (ResearchItem item in prison.Research.Items) {
                     if (item.Label == "None") continue;
@@ -109,6 +111,38 @@ namespace PASaveEditor {
         }
 
 
+        void SaveGuiToPrison() {
+            // Store general tab
+            prison.TimeIndex = TimeConversion.ToIndex(
+                Convert.ToInt32(nDay.Value), tTime.Text, cAmPm.SelectedIndex == 1);
+
+            prison.EnabledMisconduct = xMisconduct.Checked;
+            prison.EnabledIntake = xContinuousIntake.Checked;
+            prison.EnabledVisibility = xFogOfWar.Checked;
+            prison.FailureConditions = xFailureConditions.Checked;
+            prison.EnabledDecay = xDecay.Checked;
+
+            // Store finances tab
+            prison.UnlimitedFunds = xUnlimitedFunds.Checked;
+            prison.Finance.Balance = Convert.ToInt32(nBalance.Value);
+            prison.Finance.BankLoan = Convert.ToInt32(nBankLoanAmount.Value);
+            prison.Finance.BankCreditRating = Convert.ToDouble(nCreditRating.Value)/100;
+            prison.Finance.Ownership = Convert.ToInt32(nOwnership.Value);
+            
+            // Prisoner tab is continuously saved already
+
+            // Store research tab
+            foreach (string itemName in ResearchData.AllResearch) {
+                if (itemName == "None") continue;
+                int idx = ResearchData.GetIndex(itemName);
+                bool isUnlocked = clbResearch.GetItemChecked(idx);
+                if (isUnlocked) {
+                    prison.Research.Unlock(itemName);
+                } else {
+                    prison.Research.Lock(itemName);
+                }
+            }
+        }
 
 
         void miRemoveAllTrees_Click(object sender, EventArgs e) {
@@ -292,6 +326,7 @@ namespace PASaveEditor {
         private void miFileSave_Click(object sender, EventArgs e) {
             Enabled = false;
             Text = String.Format("Saving {0} | {1}", Path.GetFileName(fileName), AppName);
+            SaveGuiToPrison();
 
             string tempFileName = Path.GetTempFileName();
             using (FileStream fs = File.Create(tempFileName)) {

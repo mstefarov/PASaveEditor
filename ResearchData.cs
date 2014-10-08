@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PASaveEditor {
     internal static class ResearchData {
-        static readonly List<string> AllResearch = new List<string> {
+        public static readonly List<string> AllResearch = new List<string> {
             "Warden",
             "Maintainance",
             "Security",

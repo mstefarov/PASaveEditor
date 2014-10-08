@@ -27,7 +27,6 @@
             System.Windows.Forms.Label lBankLoanAmontUnits;
             System.Windows.Forms.Label lBankLoanAmount;
             System.Windows.Forms.Label lCreditRating;
-            System.Windows.Forms.Label lCreditRatingUnits;
             System.Windows.Forms.Label lOwnership;
             System.Windows.Forms.Label lBalance;
             System.Windows.Forms.Label lBalanceUnits;
@@ -38,6 +37,7 @@
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.xDecay = new System.Windows.Forms.CheckBox();
             this.xMisconduct = new System.Windows.Forms.CheckBox();
             this.xFogOfWar = new System.Windows.Forms.CheckBox();
             this.xFailureConditions = new System.Windows.Forms.CheckBox();
@@ -84,7 +84,6 @@
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
             lCreditRating = new System.Windows.Forms.Label();
-            lCreditRatingUnits = new System.Windows.Forms.Label();
             lOwnership = new System.Windows.Forms.Label();
             lBalance = new System.Windows.Forms.Label();
             lBalanceUnits = new System.Windows.Forms.Label();
@@ -142,15 +141,6 @@
             lCreditRating.Size = new System.Drawing.Size(63, 13);
             lCreditRating.TabIndex = 4;
             lCreditRating.Text = "Credit rating";
-            // 
-            // lCreditRatingUnits
-            // 
-            lCreditRatingUnits.AutoSize = true;
-            lCreditRatingUnits.Location = new System.Drawing.Point(178, 95);
-            lCreditRatingUnits.Name = "lCreditRatingUnits";
-            lCreditRatingUnits.Size = new System.Drawing.Size(15, 13);
-            lCreditRatingUnits.TabIndex = 11;
-            lCreditRatingUnits.Text = "%";
             // 
             // lOwnership
             // 
@@ -242,16 +232,27 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.xDecay);
             this.groupBox2.Controls.Add(this.xMisconduct);
             this.groupBox2.Controls.Add(this.xFogOfWar);
             this.groupBox2.Controls.Add(this.xFailureConditions);
             this.groupBox2.Controls.Add(this.xContinuousIntake);
             this.groupBox2.Location = new System.Drawing.Point(8, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(460, 123);
+            this.groupBox2.Size = new System.Drawing.Size(460, 143);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prison Settings";
+            // 
+            // xDecay
+            // 
+            this.xDecay.AutoSize = true;
+            this.xDecay.Location = new System.Drawing.Point(23, 111);
+            this.xDecay.Name = "xDecay";
+            this.xDecay.Size = new System.Drawing.Size(57, 17);
+            this.xDecay.TabIndex = 4;
+            this.xDecay.Text = "Decay";
+            this.xDecay.UseVisualStyleBackColor = true;
             // 
             // xMisconduct
             // 
@@ -302,7 +303,7 @@
             this.groupBox1.Controls.Add(this.nDay);
             this.groupBox1.Controls.Add(this.lDay);
             this.groupBox1.Controls.Add(this.lTime);
-            this.groupBox1.Location = new System.Drawing.Point(8, 132);
+            this.groupBox1.Location = new System.Drawing.Point(8, 152);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(460, 95);
             this.groupBox1.TabIndex = 7;
@@ -364,7 +365,6 @@
             this.tpFinance.Controls.Add(lBankLoanAmount);
             this.tpFinance.Controls.Add(this.nBankLoanAmount);
             this.tpFinance.Controls.Add(lCreditRating);
-            this.tpFinance.Controls.Add(lCreditRatingUnits);
             this.tpFinance.Controls.Add(lOwnership);
             this.tpFinance.Controls.Add(this.nCreditRating);
             this.tpFinance.Controls.Add(lBalance);
@@ -421,6 +421,11 @@
             // nCreditRating
             // 
             this.nCreditRating.Location = new System.Drawing.Point(110, 93);
+            this.nCreditRating.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.nCreditRating.Name = "nCreditRating";
             this.nCreditRating.Size = new System.Drawing.Size(62, 20);
             this.nCreditRating.TabIndex = 10;
@@ -571,28 +576,28 @@
             // miFileOpen
             // 
             this.miFileOpen.Name = "miFileOpen";
-            this.miFileOpen.Size = new System.Drawing.Size(152, 22);
+            this.miFileOpen.Size = new System.Drawing.Size(123, 22);
             this.miFileOpen.Text = "Open...";
             this.miFileOpen.Click += new System.EventHandler(this.miFileOpen_Click);
             // 
             // miFileSave
             // 
             this.miFileSave.Name = "miFileSave";
-            this.miFileSave.Size = new System.Drawing.Size(152, 22);
+            this.miFileSave.Size = new System.Drawing.Size(123, 22);
             this.miFileSave.Text = "Save";
             this.miFileSave.Click += new System.EventHandler(this.miFileSave_Click);
             // 
             // miFileSaveAs
             // 
             this.miFileSaveAs.Name = "miFileSaveAs";
-            this.miFileSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.miFileSaveAs.Size = new System.Drawing.Size(123, 22);
             this.miFileSaveAs.Text = "Save As...";
             this.miFileSaveAs.Click += new System.EventHandler(this.miFileSaveAs_Click);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(152, 22);
+            this.miExit.Size = new System.Drawing.Size(123, 22);
             this.miExit.Text = "Exit";
             // 
             // miShortcuts
@@ -762,6 +767,7 @@
         private System.Windows.Forms.TextBox tSurname;
         private System.Windows.Forms.TextBox tName;
         private System.Windows.Forms.ComboBox cCategory;
+        private System.Windows.Forms.CheckBox xDecay;
     }
 }
 

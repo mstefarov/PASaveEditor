@@ -87,7 +87,7 @@ namespace FileModel {
 
         public void CopyNodes(Node other) {
             foreach (var property in other.ListNodes()) {
-                PushNode(property.Key, property.Value);
+                PushNode(property.Label, property);
             }
         }
 
@@ -99,10 +99,10 @@ namespace FileModel {
         }
 
 
-        public IEnumerable<KeyValuePair<string, Node>> ListNodes() {
+        public IEnumerable<Node> ListNodes() {
             return Nodes.SelectMany(
                 nodeList => nodeList.Value,
-                (nodeList, nodeValue) => new KeyValuePair<string, Node>(nodeList.Key, nodeValue));
+                (nodeList, nodeValue) => nodeValue);
         }
 
 

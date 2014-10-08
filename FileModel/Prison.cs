@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using PASaveEditor;
 
 namespace FileModel {
@@ -8,6 +9,7 @@ namespace FileModel {
         public bool EnabledMisconduct;
         public bool FailureConditions;
         public bool EnabledVisibility;
+        public bool EnabledDecay;
         public bool UnlimitedFunds;
         public bool EnabledIntake;
 
@@ -43,6 +45,9 @@ namespace FileModel {
                     break;
                 case "EnabledVisibility":
                     EnabledVisibility = Boolean.Parse(value);
+                    break;
+                case "EnabledDecay":
+                    EnabledDecay = Boolean.Parse(value);
                     break;
                 case "UnlimitedFunds":
                     UnlimitedFunds = Boolean.Parse(value);
@@ -118,6 +123,13 @@ namespace FileModel {
                 writer.WriteProperty("EnabledVisibility", EnabledVisibility);
             } else {
                 Nodes.Remove("Visibility");
+            }
+            if (EnabledDecay) {
+                writer.WriteProperty("EnabledDecay",EnabledDecay);
+            } else {
+                // erase all dirt
+                var cellNodes = Nodes["Cells"][0].ListNodes().ToList();
+                cellNodes.ForEach(node => node.Properties.Remove("Con"));
             }
             if (UnlimitedFunds) {
                 writer.WriteProperty("UnlimitedFunds", UnlimitedFunds);
