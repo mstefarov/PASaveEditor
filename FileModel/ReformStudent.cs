@@ -1,4 +1,5 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     class ReformStudent : Node {
@@ -14,6 +15,11 @@ namespace FileModel {
             } else {
                 base.ReadKey(key, value);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Id.i", Id);
         }
     }
 }

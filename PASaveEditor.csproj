@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="FileModel\ContrabandPrisoners.cs" />
     <Compile Include="FileModel\Informants2.cs" />
+    <Compile Include="FileModel\MisconductReports.cs" />
+    <Compile Include="FileModel\Penalties2.cs" />
+    <Compile Include="FileModel\VictoryLog.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +65,7 @@
     <Compile Include="FileModel\ReformStudents.cs" />
     <Compile Include="FileModel\ResearchItem.cs" />
     <Compile Include="FileModel\TunnelCell.cs" />
+    <Compile Include="MergeSorted.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="FileModel\Finance.cs" />
     <Compile Include="FileModel\Informant.cs" />

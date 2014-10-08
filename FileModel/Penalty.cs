@@ -1,4 +1,5 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     class Penalty: Node {
@@ -15,6 +16,11 @@ namespace FileModel {
             } else {
                 base.ReadKey(key, value);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("ObjectId.i", ObjectId);
         }
     }
 }

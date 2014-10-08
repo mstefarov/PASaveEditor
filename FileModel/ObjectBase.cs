@@ -27,11 +27,16 @@ namespace FileModel {
         public override Node CreateNode(string label) {
             if (Type.Equals("Prisoner") && label.Equals("Bio")) {
                 var bio = new PrisonerBio(label);
-                PushNode(label,bio);
+                PushNode(label, bio);
                 return bio;
             } else {
                 return base.CreateNode(label);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Type", Type);
         }
     }
 }

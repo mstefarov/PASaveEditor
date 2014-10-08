@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PASaveEditor;
 
 namespace FileModel {
     class Objects : Node {
@@ -18,18 +19,25 @@ namespace FileModel {
 
 
         public override Node CreateNode(string label) {
-            var newObj = new ObjectBase(label);
-            OtherObjects.Add(newObj.Id,newObj);
-            return newObj;
+            return new ObjectBase(label);
         }
 
 
         public override void FinishedReadingNode(Node node) {
             var obj = (ObjectBase)node;
-            if ("Prisoner".Equals(obj.Type) ) {
-                OtherObjects.Remove(obj.Id);
+            if ("Prisoner".Equals(obj.Type)) {
                 var prisoner = new Prisoner(obj);
-                Prisoners.Add(prisoner.Id,prisoner);
+                Prisoners.Add(prisoner.Id, prisoner);
+            } else {
+                OtherObjects.Add(obj.Id, obj);
+            }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            var mergedObjects = OtherObjects.Values.MergeSorted(Prisoners.Values, (o1, o2) => o1.Id - o2.Id);
+            foreach (var obj in mergedObjects) {
+                writer.WriteNode(obj);
             }
         }
     }

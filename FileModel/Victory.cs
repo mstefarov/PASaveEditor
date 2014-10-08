@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using PASaveEditor;
+﻿using PASaveEditor;
 
 namespace FileModel {
     class Victory : Node {
-        public readonly List<VictoryLogEntry> Log = new List<VictoryLogEntry>();
-
+        public VictoryLog Log;
 
         public Victory(string label)
             : base(label) {}
@@ -12,14 +10,15 @@ namespace FileModel {
 
         public override Node CreateNode(string label) {
             if ("Log".Equals(label)) {
-                return this;
-            }else if (Parser.IsId(label)) {
-                var entry = new VictoryLogEntry(label);
-                Log.Add(entry);
-                return entry;
-            } else {
+                return (Log = new VictoryLog(label));
+            }else  {
                 return base.CreateNode(label);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteNode(Log);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace FileModel {
+﻿using PASaveEditor;
+
+namespace FileModel {
     internal class ReformProgram : Node {
         public ReformStudents Students;
 
@@ -16,5 +18,8 @@
         }
 
 
+        public override void WriteStuff(Writer writer) {
+            writer.WriteNode(Students);
+        }
     }
 }

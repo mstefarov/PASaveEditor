@@ -39,6 +39,7 @@ namespace PASaveEditor {
 
 
         public void WriteProperty(string key, string value) {
+            if (value == null) return;
             if (!isInline) {
                 for (int i = 0; i < indent; i++) {
                     writer.Write("    ");
@@ -54,7 +55,7 @@ namespace PASaveEditor {
             if (node == null) return;
             inlineStack.Push(isInline);
             isInline = (node.Nodes == null) &&
-                (node.Properties == null || node.Properties.Count < 5) &&
+                (node.Properties == null || node.Properties.Count < 6) &&
                 !node.DoNotInline;
 
             for (int i = 0; i < indent; i++) {

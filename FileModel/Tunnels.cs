@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PASaveEditor;
 
 namespace FileModel {
     class Tunnels : Node {
@@ -16,6 +17,13 @@ namespace FileModel {
                 return base.CreateNode(label);
             }
             // TODO Diggers
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            foreach (TunnelCell cell in TunnelCells) {
+                writer.WriteNode(cell);
+            }
         }
     }
 }

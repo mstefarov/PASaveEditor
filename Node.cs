@@ -59,7 +59,7 @@ namespace FileModel {
             Node nodeToRemove = list[list.Count - 1];
             list.RemoveAt(list.Count-1);
             if (list.Count == 0) {
-                Nodes[key] = null;
+                Nodes.Remove(key);
             }
             return nodeToRemove;
         }
@@ -70,7 +70,7 @@ namespace FileModel {
             string valueToRemove = list[list.Count - 1];
             list.RemoveAt(list.Count-1);
             if (list.Count == 0) {
-                Nodes[key] = null;
+                Properties.Remove(key);
             }
             return valueToRemove;
         }

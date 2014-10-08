@@ -1,8 +1,9 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     internal class PrisonerBio : Node {
-        public string Forname, Surname;
+        public string Forname, Surname; // TODO: investigate prisoners with blank names
         public int Sentence;
         public double Served;
 
@@ -29,6 +30,14 @@ namespace FileModel {
                     base.ReadKey(key, value);
                     break;
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Forname", Forname);
+            writer.WriteProperty("Surname", Surname);
+            writer.WriteProperty("Sentence", Sentence);
+            writer.WriteProperty("Served", Served);
         }
     }
 }

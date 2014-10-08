@@ -5,6 +5,7 @@ namespace FileModel {
     internal class ReformPrograms : Node {
         public readonly List<ReformProgram> Programs = new List<ReformProgram>();
 
+
         public ReformPrograms(string label)
             : base(label) {}
 
@@ -15,6 +16,7 @@ namespace FileModel {
             }
         }
 
+
         public override Node CreateNode(string label) {
             if (Parser.IsId(label)) {
                 var program = new ReformProgram(label);
@@ -22,6 +24,14 @@ namespace FileModel {
                 return program;
             } else {
                 return base.CreateNode(label);
+            }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Size", Programs.Count);
+            foreach (ReformProgram program in Programs) {
+                writer.WriteNode(program);
             }
         }
     }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PASaveEditor;
 
 namespace FileModel {
     internal class ReformStudents : Node{
@@ -21,6 +22,14 @@ namespace FileModel {
             var studentNode = node as ReformStudent;
             if (studentNode != null) {
                 Students.Add(studentNode.Id, studentNode);
+            }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Size",Students.Count);
+            foreach (ReformStudent student in Students.Values) {
+                writer.WriteNode(student);
             }
         }
     }

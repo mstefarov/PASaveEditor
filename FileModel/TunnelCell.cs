@@ -1,4 +1,5 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     internal class TunnelCell : Node {
@@ -15,6 +16,13 @@ namespace FileModel {
                 IsEntrance = Boolean.Parse(value);
             } else {
                 base.ReadKey(key, value);
+            }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            if (IsEntrance) {
+                writer.WriteProperty("Entrance", IsEntrance);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     internal class VictoryLogEntry : Node {
@@ -13,11 +14,17 @@ namespace FileModel {
         public override void ReadKey(string key, string value) {
             if ("Type".Equals(key)) {
                 Type = value;
-            }else if ("PrisonerId.i".Equals(key)) {
+            } else if ("PrisonerId.i".Equals(key)) {
                 PrisonerId = Int32.Parse(value);
             } else {
                 base.ReadKey(key, value);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Type", Type);
+            writer.WriteProperty("PrisonerId.i", PrisonerId);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace FileModel {
+﻿using PASaveEditor;
+
+namespace FileModel {
     class Prisoner : ObjectBase {
         public string Category;
         public PrisonerBio Bio;
@@ -21,6 +23,12 @@
             } else {
                 base.ReadKey(key, value);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Category",Category);
+            writer.WriteNode(Bio);
         }
     }
 }

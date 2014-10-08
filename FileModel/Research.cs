@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PASaveEditor;
 
 namespace FileModel {
     class Research : Node {
@@ -12,6 +13,13 @@ namespace FileModel {
             var newItem = new ResearchItem(label);
             Items.Add(newItem);
             return newItem;
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            foreach (ResearchItem item in Items) {
+                writer.WriteNode(item);
+            }
         }
     }
 }

@@ -25,13 +25,13 @@ namespace PASaveEditor {
             prison.Objects.Prisoners.Remove(id);
             prison.Contraband.Prisoners.Prisoners.Remove(id);
             prison.Informants.Informants2.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
-            prison.Misconduct.MisconductReports.Remove(id);
-            prison.Penalties.PenaltyList.Remove(id);
+            prison.Misconduct.Reports.Reports.Remove(id);
+            prison.Penalties.Penalties2.Penalties.Remove(id);
             foreach (ReformProgram program in prison.Reform.Programs.Programs) {
                 program.Students.Students.Remove(id);
             }
             // TODO Diggers
-            prison.Victory.Log.RemoveAll(entry => entry.PrisonerId == id);
+            prison.Victory.Log.Log.RemoveAll(entry => entry.PrisonerId == id);
         }
     }
 }
