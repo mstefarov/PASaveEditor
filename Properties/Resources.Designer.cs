@@ -61,6 +61,15 @@ namespace PASaveEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This tool is designed to work with Prison Architect {0}. The given file is for version {1}. It might or might not work. Beware of bugs!.
+        /// </summary>
+        internal static string FileVersionWarning {
+            get {
+                return ResourceManager.GetString("FileVersionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When enabled you will always receive a random number of Prisoners every day,
         ///which you may not temporarily stop..
         /// </summary>

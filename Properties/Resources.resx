@@ -133,4 +133,7 @@ too many deaths, too many escapes, uncontrolled riot, and bankruptcy.</value>
   <data name="TipMisconduct" xml:space="preserve">
     <value>[CHEAT] If misconduct is disabled, prisoners will not break any rules. No fun!</value>
   </data>
+  <data name="FileVersionWarning" xml:space="preserve">
+    <value>This tool is designed to work with Prison Architect {0}. The given file is for version {1}. It might or might not work. Beware of bugs!</value>
+  </data>
 </root>

@@ -6,6 +6,8 @@ using PASaveEditor.FileModel;
 
 namespace PASaveEditor {
     internal class Parser {
+        public const string SupportedVersion = "alpha-25b";
+
         static readonly Regex IRegex = new Regex("^\\[i \\d+\\]$", RegexOptions.Compiled);
         readonly List<string> tokens = new List<string>();
 

@@ -17,7 +17,7 @@ namespace PASaveEditor {
 
         readonly OpenFileDialog openDialog;
         readonly SaveFileDialog saveAsDialog;
-        ToolTip toolTips;
+        readonly ToolTip toolTips;
 
 
         public MainForm() {
@@ -255,7 +255,18 @@ namespace PASaveEditor {
                 fileName = openDialog.FileName;
                 using (FileStream fs = File.OpenRead(openDialog.FileName)) {
                     Text = String.Format("Loading {0} | {1}", Path.GetFileName(fileName), AppName);
-                    prison = new Parser().Load(fs);
+                    try {
+                        prison = new Parser().Load(fs);
+                    } catch (Exception ex) {
+                        string msg = String.Format("An error occured while loading:{0}{1}{0}{2}",
+                                                   Environment.NewLine, ex.GetType().Name, ex.Message);
+                        MessageBox.Show(msg, String.Format("Error loading {0}", Path.GetFileName(fileName)),
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Close();
+                    }
+                    if (prison.Version != Parser.SupportedVersion) {
+                        MessageBox.Show(String.Format(Resources.FileVersionWarning, Parser.SupportedVersion, prison.Version));
+                    }
                     LoadPrisonToGui();
                     Enabled = true;
                     Text = String.Format("{0} | {1}", Path.GetFileName(fileName), AppName);
