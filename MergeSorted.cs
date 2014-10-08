@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace PASaveEditor {
+    // MergedSorted implementation by Brian Rasmussen @ http://stackoverflow.com/a/9809450
     internal static class MergeSortedExtension {
         public static IEnumerable<T> MergeSorted<T>(this IEnumerable<T> first, IEnumerable<T> second,
                                                     Func<T, T, int> comparer) {

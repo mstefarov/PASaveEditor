@@ -62,17 +62,17 @@ namespace PASaveEditor {
 
 
         static Dictionary<int, string> UnnamedPrisoners = new Dictionary<int, string> {
-            {93446,"SoulCake"},
-            {94805,"BrawnyFanta"},
-            {95177,"Neotin"},
-            {111475,"Squirrel"},
-            {114697,"DarkKnightPyro"},
-            {114969,"The Kracksquatch"},
-            {118793,"The Joker"},
-            {124835,"Heisenberg"},
-            {127230,"TotmasterT"},
-            {136059,"konflakes"}
-        }; 
+            { 93446, "SoulCake" },
+            { 94805, "BrawnyFanta" },
+            { 95177, "Neotin" },
+            { 111475, "Squirrel" },
+            { 114697, "DarkKnightPyro" },
+            { 114969, "The Kracksquatch" },
+            { 118793, "The Joker" },
+            { 124835, "Heisenberg" },
+            { 127230, "TotmasterT" },
+            { 136059, "konflakes" }
+        };
 
 
         public static string NamePrisoner(Prisoner prisoner) {

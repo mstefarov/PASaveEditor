@@ -68,10 +68,5 @@ namespace PASaveEditor {
             AllResearch.Add(inFileName);
             return AllResearch.Count - 1;
         }
-
-
-        public static string GetName(int index) {
-            return AllResearch[index];
-        }
     }
 }
