@@ -7,11 +7,12 @@ namespace FileModel {
 
 
         public ContrabandPrisoners(string label)
-            : base(label) {}
+            : base(label) { }
 
 
         public override Node CreateNode(string label) {
             if (Parser.IsId(label)) {
+                DoNotInline = true;
                 int prisonerId = Parser.ParseId(label);
                 var item = new Node(label);
                 Prisoners.Add(prisonerId, item);

@@ -1,4 +1,5 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
     class Informant : Node {
@@ -30,6 +31,14 @@ namespace FileModel {
                     base.ReadKey(key, value);
                     break;
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Prisoner.i",PrisonerId);
+            writer.WriteProperty("Coverage",Coverage);
+            writer.WriteProperty("Suspicion",Suspicion);
+            writer.WriteProperty("HighestSuspicion",HighestSuspicion);
         }
     }
 }

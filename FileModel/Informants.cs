@@ -1,35 +1,27 @@
-﻿using System.Collections.Generic;
-using PASaveEditor;
+﻿using PASaveEditor;
 
 namespace FileModel {
-    class Informants : Node {
-        public readonly List<Informant> Prisoners = new List<Informant>();
-
+    internal class Informants : Node {
+        public Informants2 Informants2;
 
         public Informants(string label)
             : base(label) {}
 
 
-        public override void ReadKey(string key, string value) {
-            if (!"Size".Equals(key)) {
-                // do not store size -- it will be counted and written at save-time
-                base.ReadKey(key,value);
-            }
-        }
-
         public override Node CreateNode(string label) {
             if ("Informants".Equals(label)) {
+                DoNotInline = true;
                 // There are two nested "Informants" tags -- we can flatten the hierarchy a bit.
-                return this;
-
-            } else if (Parser.IsId(label)) {
-                var informant = new Informant(label);
-                Prisoners.Add(informant);
-                return informant;
-
+                Informants2 = new Informants2(label);
+                return Informants2;
             } else {
                 return base.CreateNode(label);
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteNode(Informants2);
         }
     }
 }

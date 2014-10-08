@@ -24,7 +24,7 @@ namespace PASaveEditor {
         public static void ReleasePrisoner(Prison prison, int id) {
             prison.Objects.Prisoners.Remove(id);
             prison.Contraband.Prisoners.Prisoners.Remove(id);
-            prison.Informants.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
+            prison.Informants.Informants2.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
             prison.Misconduct.MisconductReports.Remove(id);
             prison.Penalties.PenaltyList.Remove(id);
             foreach (ReformProgram program in prison.Reform.Programs.Programs) {

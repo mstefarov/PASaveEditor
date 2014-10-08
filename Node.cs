@@ -11,6 +11,7 @@ namespace FileModel {
         public readonly string Label;
         public Dictionary<string, List<string>> Properties;
         public Dictionary<string, List<Node>> Nodes;
+        public bool DoNotInline;
 
         public virtual void ReadKey(string key, string value) {
             PushProperty(key, value);

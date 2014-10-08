@@ -1,7 +1,8 @@
 ﻿using System;
+using PASaveEditor;
 
 namespace FileModel {
-    class Finance : Node {
+    internal class Finance : Node {
         public int Balance;
         public int LastDay;
         public int LastHour;
@@ -38,6 +39,16 @@ namespace FileModel {
                     base.ReadKey(key, value);
                     break;
             }
+        }
+
+
+        public override void WriteStuff(Writer writer) {
+            writer.WriteProperty("Balance", Balance);
+            writer.WriteProperty("LastDay", LastDay);
+            writer.WriteProperty("LastHour", LastHour);
+            writer.WriteProperty("BankLoan", BankLoan);
+            writer.WriteProperty("BankCreditRating", BankCreditRating);
+            writer.WriteProperty("Ownership", Ownership);
         }
     }
 }
