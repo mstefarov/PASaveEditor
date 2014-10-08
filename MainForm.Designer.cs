@@ -34,6 +34,7 @@
             System.Windows.Forms.Label lSurname;
             System.Windows.Forms.Label lName;
             System.Windows.Forms.Label lCategory;
+            System.Windows.Forms.Label lDisclaimer;
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -81,7 +82,9 @@
             this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.miRevealReputations = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
@@ -93,6 +96,7 @@
             lSurname = new System.Windows.Forms.Label();
             lName = new System.Windows.Forms.Label();
             lCategory = new System.Windows.Forms.Label();
+            lDisclaimer = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -206,6 +210,18 @@
             lCategory.Text = "Category";
             lCategory.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // lDisclaimer
+            // 
+            lDisclaimer.AutoSize = true;
+            lDisclaimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            lDisclaimer.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            lDisclaimer.Location = new System.Drawing.Point(8, 250);
+            lDisclaimer.Name = "lDisclaimer";
+            lDisclaimer.Size = new System.Drawing.Size(384, 48);
+            lDisclaimer.TabIndex = 9;
+            lDisclaimer.Text = "This tool is still in development. It\'s probably buggy\r\nand may corrupt your save" +
+    "s. Don\'t overwrite any\r\nexisting savegames unless you are feeling very brave.";
+            // 
             // tabs
             // 
             this.tabs.Controls.Add(this.tpGeneral);
@@ -221,7 +237,7 @@
             // 
             // tpGeneral
             // 
-            this.tpGeneral.Controls.Add(this.label1);
+            this.tpGeneral.Controls.Add(lDisclaimer);
             this.tpGeneral.Controls.Add(this.groupBox2);
             this.tpGeneral.Controls.Add(this.groupBox1);
             this.tpGeneral.Location = new System.Drawing.Point(4, 22);
@@ -569,8 +585,10 @@
             // 
             this.miFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miFileOpen,
+            this.toolStripSeparator1,
             this.miFileSave,
             this.miFileSaveAs,
+            this.toolStripSeparator2,
             this.miExit});
             this.miFile.Name = "miFile";
             this.miFile.Size = new System.Drawing.Size(37, 20);
@@ -579,29 +597,30 @@
             // miFileOpen
             // 
             this.miFileOpen.Name = "miFileOpen";
-            this.miFileOpen.Size = new System.Drawing.Size(123, 22);
+            this.miFileOpen.Size = new System.Drawing.Size(152, 22);
             this.miFileOpen.Text = "Open...";
             this.miFileOpen.Click += new System.EventHandler(this.miFileOpen_Click);
             // 
             // miFileSave
             // 
             this.miFileSave.Name = "miFileSave";
-            this.miFileSave.Size = new System.Drawing.Size(123, 22);
+            this.miFileSave.Size = new System.Drawing.Size(152, 22);
             this.miFileSave.Text = "Save";
             this.miFileSave.Click += new System.EventHandler(this.miFileSave_Click);
             // 
             // miFileSaveAs
             // 
             this.miFileSaveAs.Name = "miFileSaveAs";
-            this.miFileSaveAs.Size = new System.Drawing.Size(123, 22);
+            this.miFileSaveAs.Size = new System.Drawing.Size(152, 22);
             this.miFileSaveAs.Text = "Save As...";
             this.miFileSaveAs.Click += new System.EventHandler(this.miFileSaveAs_Click);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(123, 22);
+            this.miExit.Size = new System.Drawing.Size(152, 22);
             this.miExit.Text = "Exit";
+            this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
             // miShortcuts
             // 
@@ -610,7 +629,8 @@
             this.miRemoveTunnels,
             this.miUnlockAllResearch,
             this.miRemoveAllTrees,
-            this.miRemoveAllContraband});
+            this.miRemoveAllContraband,
+            this.miRevealReputations});
             this.miShortcuts.Name = "miShortcuts";
             this.miShortcuts.Size = new System.Drawing.Size(69, 20);
             this.miShortcuts.Text = "Shortcuts";
@@ -699,17 +719,22 @@
             this.miRemoveAllContraband.Text = "Remove all contraband";
             this.miRemoveAllContraband.Click += new System.EventHandler(this.miRemoveAllContraband_Click);
             // 
-            // label1
+            // miRevealReputations
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(8, 250);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(384, 48);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "This tool is still in development. It\'s probably buggy\r\nand may corrupt your save" +
-    "s. Don\'t overwrite any\r\nexisting savegames unless you are feeling very brave.";
+            this.miRevealReputations.Name = "miRevealReputations";
+            this.miRevealReputations.Size = new System.Drawing.Size(196, 22);
+            this.miRevealReputations.Text = "Reveal reputations";
+            this.miRevealReputations.Click += new System.EventHandler(this.miRevealReputations_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // MainForm
             // 
@@ -794,7 +819,9 @@
         private System.Windows.Forms.ComboBox cCategory;
         private System.Windows.Forms.CheckBox xDecay;
         private System.Windows.Forms.ToolStripMenuItem miRemoveAllContraband;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem miRevealReputations;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

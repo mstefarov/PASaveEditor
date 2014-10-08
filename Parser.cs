@@ -5,10 +5,13 @@ using System.Text.RegularExpressions;
 using PASaveEditor.FileModel;
 
 namespace PASaveEditor {
+    // Parser for .prison file format, used by PrisonArchitect
     internal class Parser {
         public const string SupportedVersion = "alpha-25b";
 
-        static readonly Regex IRegex = new Regex("^\\[i \\d+\\]$", RegexOptions.Compiled);
+        static readonly Regex IdRegex = new Regex("^\\[i \\d+\\]$", RegexOptions.Compiled);
+
+        // Token list is reused by Tokenize() for every line, to reduce overhead
         readonly List<string> tokens = new List<string>();
 
 
@@ -74,6 +77,7 @@ namespace PASaveEditor {
         }
 
 
+        // Splits a given line into tokens at spaces. Treats quoted strings as single tokens (strips quotes).
         void Tokenize(string line) {
             tokens.Clear();
             if (line.Length == 0) {
@@ -110,7 +114,7 @@ namespace PASaveEditor {
 
 
         public static bool IsId(string str) {
-            return IRegex.IsMatch(str);
+            return IdRegex.IsMatch(str);
         }
 
 

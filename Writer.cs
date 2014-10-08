@@ -20,13 +20,12 @@ namespace PASaveEditor {
 
         public void WritePrison(Prison prison) {
             writer.Write('\n');
-            WriteProperty("Version", "alpha-25b");
             WriteNodeData(prison);
         }
 
 
         public void WriteProperty(string key, double value) {
-            WriteProperty(key, value.ToString("#.0####",CultureInfo.InvariantCulture));
+            WriteProperty(key, value.ToString("#.0####", CultureInfo.InvariantCulture));
         }
 
 
@@ -110,6 +109,7 @@ namespace PASaveEditor {
                 }
             }
         }
+
 
         void WriteValue(string value) {
             bool doQuote = (value.IndexOf(' ') >= 0);

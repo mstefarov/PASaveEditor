@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PASaveEditor.FileModel {
     internal class PrisonerBio : Node {
         public string Forname, Surname; // TODO: investigate prisoners with blank names
         public int Sentence;
         public double Served;
+        public int Nitg;
+        public List<string> Reputations;
+        public bool ReputationRevealed;
 
 
         public PrisonerBio(string label)
@@ -25,6 +29,18 @@ namespace PASaveEditor.FileModel {
                 case "Served":
                     Served = Double.Parse(value);
                     break;
+                case "Nitg":
+                    Nitg = Int32.Parse(value);
+                    break;
+                case "Reputation":
+                    if (Reputations == null) {
+                        Reputations = new List<string>();
+                    }
+                    Reputations.Add(value);
+                    break;
+                case "ReputationRevealed":
+                    ReputationRevealed = Boolean.Parse(value);
+                    break;
                 default:
                     base.ReadKey(key, value);
                     break;
@@ -37,6 +53,13 @@ namespace PASaveEditor.FileModel {
             writer.WriteProperty("Surname", Surname);
             writer.WriteProperty("Sentence", Sentence);
             writer.WriteProperty("Served", Served);
+            writer.WriteProperty("Nitg", Nitg);
+            if (Reputations != null) {
+                foreach (string reputation in Reputations) {
+                    writer.WriteProperty("Reputation", reputation);
+                }
+                writer.WriteProperty("ReputationRevealed", ReputationRevealed);
+            }
         }
     }
 }

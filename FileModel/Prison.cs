@@ -110,7 +110,7 @@ namespace PASaveEditor.FileModel {
 
 
         public override void WriteProperties(Writer writer) {
-            // we do not write Version here -- Writer takes care of it
+            writer.WriteProperty("Version", Version);
             writer.WriteProperty("TimeIndex", TimeIndex);
             if (EnabledMisconduct) {
                 writer.WriteProperty("EnabledMisconduct", EnabledMisconduct);

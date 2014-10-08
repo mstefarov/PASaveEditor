@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,7 @@ using PASaveEditor.Properties;
 namespace PASaveEditor {
     public partial class MainForm : Form {
         const string FileFilter = "Prison Architect saves (*.prison)|*.prison|All Files (*.*)|*.*";
-        const string AppName = "Prison Architect Save Editor | alpha25b";
+        const string AppName = "Prison Architect Save Editor | " + Parser.SupportedVersion;
         string fileName;
         Prison prison;
         string[] prisonerNames;
@@ -58,7 +59,7 @@ namespace PASaveEditor {
             base.OnShown(e);
             miFileOpen.PerformClick();
         }
-        
+
 
         // Tracks selected prisoner on the "Prisoners" tab.
         // GUI is automatically updated (or disabled) when this property is set.
@@ -113,16 +114,21 @@ namespace PASaveEditor {
             int countAll = prison.Objects.Prisoners.Count;
             miReleaseAll.Text = string.Format("All ({0})", countAll);
             miReleaseAll.Enabled = (countAll > 0);
+
+            int hiddenReputations =
+                prison.Objects.Prisoners.Values
+                      .Count(p => p.Bio.Reputations != null && !p.Bio.ReputationRevealed);
+            miRevealReputations.Text = String.Format("Reveal reputations ({0})", hiddenReputations);
+            miRevealReputations.Enabled = (hiddenReputations > 0);
         }
 
 
         // Updates list on the "Prisoners" tab. Resets SelectedPrisoner.
         void UpdatePrisoners() {
             lbPrisoners.Items.Clear();
-            prisonerNames =
-                prison.Objects.Prisoners.Values
-                      .Select(prisoner => prisoner.Bio.Forname + " " + prisoner.Bio.Surname)
-                      .ToArray();
+            prisonerNames = prison.Objects.Prisoners.Values
+                                  .Select(PrisonerUtil.NamePrisoner)
+                                  .ToArray();
             lbPrisoners.Items.AddRange(prisonerNames);
             UpdatePrisonerCounts();
         }
@@ -172,7 +178,11 @@ namespace PASaveEditor {
             SelectedPrisoner = null;
             UpdatePrisoners();
         }
+
         
+        private void miExit_Click(object sender, EventArgs e) {
+            Close();
+        }
 
         #region Shortcuts
 
@@ -245,6 +255,18 @@ namespace PASaveEditor {
             // TODO
         }
 
+
+        void miRevealReputations_Click(object sender, EventArgs e) {
+            var toReveal =
+                prison.Objects.Prisoners.Values
+                  .Where(p => p.Bio.Reputations != null && !p.Bio.ReputationRevealed)
+                  .ToList();
+            
+                  toReveal.ForEach(p => p.Bio.ReputationRevealed = true);
+            MessageBox.Show(string.Format("{0} prisoner reputations revealed.", toReveal.Count));
+            UpdatePrisonerCounts();
+        }
+
         #endregion
 
 
@@ -265,7 +287,8 @@ namespace PASaveEditor {
                         Close();
                     }
                     if (prison.Version != Parser.SupportedVersion) {
-                        MessageBox.Show(String.Format(Resources.FileVersionWarning, Parser.SupportedVersion, prison.Version));
+                        MessageBox.Show(String.Format(Resources.FileVersionWarning, Parser.SupportedVersion,
+                                                      prison.Version));
                     }
                     LoadPrisonToGui();
                     Enabled = true;
@@ -409,5 +432,6 @@ namespace PASaveEditor {
         }
 
         #endregion
+
     }
 }
