@@ -81,6 +81,7 @@
             this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
@@ -220,6 +221,7 @@
             // 
             // tpGeneral
             // 
+            this.tpGeneral.Controls.Add(this.label1);
             this.tpGeneral.Controls.Add(this.groupBox2);
             this.tpGeneral.Controls.Add(this.groupBox1);
             this.tpGeneral.Location = new System.Drawing.Point(4, 22);
@@ -697,6 +699,18 @@
             this.miRemoveAllContraband.Text = "Remove all contraband";
             this.miRemoveAllContraband.Click += new System.EventHandler(this.miRemoveAllContraband_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(8, 250);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(384, 48);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "This tool is still in development. It\'s probably buggy\r\nand may corrupt your save" +
+    "s. Don\'t overwrite any\r\nexisting savegames unless you are feeling very brave.";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,6 +723,7 @@
             this.Text = "Prison Architect Save Editor";
             this.tabs.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
+            this.tpGeneral.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -779,6 +794,7 @@
         private System.Windows.Forms.ComboBox cCategory;
         private System.Windows.Forms.CheckBox xDecay;
         private System.Windows.Forms.ToolStripMenuItem miRemoveAllContraband;
+        private System.Windows.Forms.Label label1;
     }
 }
 

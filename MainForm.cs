@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using PASaveEditor.FileModel;
+using PASaveEditor.Properties;
 
 namespace PASaveEditor {
     public partial class MainForm : Form {
@@ -16,11 +17,15 @@ namespace PASaveEditor {
 
         readonly OpenFileDialog openDialog;
         readonly SaveFileDialog saveAsDialog;
+        ToolTip toolTips;
 
 
         public MainForm() {
             InitializeComponent();
+            toolTips = new ToolTip();
             tPrisonerSearch.SetWatermark("Search");
+
+            AssignTooltips();
 
             string paSavePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -34,7 +39,18 @@ namespace PASaveEditor {
                 Filter = FileFilter,
                 InitialDirectory = paSavePath
             };
+
+            // Disable the GUI until a prison file is loaded
             Enabled = false;
+        }
+
+
+        void AssignTooltips() {
+            toolTips.SetToolTip(xContinuousIntake, Resources.TipContinuousIntake);
+            toolTips.SetToolTip(xDecay, Resources.TipDecay);
+            toolTips.SetToolTip(xFailureConditions, Resources.TipFailureConditions);
+            toolTips.SetToolTip(xFogOfWar, Resources.TipFogOfWar);
+            toolTips.SetToolTip(xMisconduct, Resources.TipMisconduct);
         }
 
 
@@ -44,6 +60,8 @@ namespace PASaveEditor {
         }
         
 
+        // Tracks selected prisoner on the "Prisoners" tab.
+        // GUI is automatically updated (or disabled) when this property is set.
         Prisoner SelectedPrisoner {
             get { return selectedPrisoner; }
             set {
@@ -69,6 +87,8 @@ namespace PASaveEditor {
         }
 
 
+        // Update counts in the menu items under "Release prisoners" shortcut menu.
+        // If there are no prisoners to release in this category, option is grayed out.
         void UpdatePrisonerCounts() {
             int countProtected = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "Protected").Length;
             miReleaseProtectiveCustody.Text = string.Format("Protective Custody ({0})", countProtected);
@@ -96,6 +116,7 @@ namespace PASaveEditor {
         }
 
 
+        // Updates list on the "Prisoners" tab. Resets SelectedPrisoner.
         void UpdatePrisoners() {
             lbPrisoners.Items.Clear();
             prisonerNames =

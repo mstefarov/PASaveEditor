@@ -114,4 +114,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TipContinuousIntake" xml:space="preserve">
+    <value>When enabled you will always receive a random number of Prisoners every day,
+which you may not temporarily stop.</value>
+  </data>
+  <data name="TipDecay" xml:space="preserve">
+    <value>[CHEAT] If disabled, everything would presumably stop getting dirty.
+Dirty things will stay clean once cleaned. Removes the need for janitors!</value>
+  </data>
+  <data name="TipFailureConditions" xml:space="preserve">
+    <value>Enable or disable failure conditions (ways to lose):
+too many deaths, too many escapes, uncontrolled riot, and bankruptcy.</value>
+  </data>
+  <data name="TipFogOfWar" xml:space="preserve">
+    <value>Enable or disable Fog of War
+(limited indoor visibility, based on where CCTV and guards are).</value>
+  </data>
+  <data name="TipMisconduct" xml:space="preserve">
+    <value>[CHEAT] If misconduct is disabled, prisoners will not break any rules. No fun!</value>
+  </data>
 </root>

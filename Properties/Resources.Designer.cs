@@ -59,5 +59,54 @@ namespace PASaveEditor.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled you will always receive a random number of Prisoners every day,
+        ///which you may not temporarily stop..
+        /// </summary>
+        internal static string TipContinuousIntake {
+            get {
+                return ResourceManager.GetString("TipContinuousIntake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [CHEAT] If disabled, everything would presumably stop getting dirty.
+        ///Dirty things will stay clean once cleaned. Removes the need for janitors!.
+        /// </summary>
+        internal static string TipDecay {
+            get {
+                return ResourceManager.GetString("TipDecay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable or disable failure conditions (ways to lose):
+        ///too many deaths, too many escapes, uncontrolled riot, and bankruptcy..
+        /// </summary>
+        internal static string TipFailureConditions {
+            get {
+                return ResourceManager.GetString("TipFailureConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable or disable Fog of War
+        ///(limited indoor visibility, based on where CCTV and guards are)..
+        /// </summary>
+        internal static string TipFogOfWar {
+            get {
+                return ResourceManager.GetString("TipFogOfWar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [CHEAT] If misconduct is disabled, prisoners will not break any rules. No fun!.
+        /// </summary>
+        internal static string TipMisconduct {
+            get {
+                return ResourceManager.GetString("TipMisconduct", resourceCulture);
+            }
+        }
     }
 }
