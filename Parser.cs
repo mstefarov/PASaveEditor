@@ -48,7 +48,9 @@ namespace PASaveEditor {
                         Node upperNode = nodes.Pop();
                         upperNode.FinishedReadingNode(currentNode);
                         currentNode = upperNode;
-                    } else {}
+                    } else {
+                        currentNode.DoNotInline = true;
+                    }
 
                 } else if ("END".Equals(tokens[0])) {
                     // end of multi-line section

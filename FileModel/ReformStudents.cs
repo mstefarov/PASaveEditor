@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using PASaveEditor;
 
 namespace FileModel {
-    internal class ReformStudents : Node{
+    internal class ReformStudents : Node {
         public readonly Dictionary<int, ReformStudent> Students = new Dictionary<int, ReformStudent>();
 
+
         public ReformStudents(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override Node CreateNode(string label) {
@@ -27,7 +28,7 @@ namespace FileModel {
 
 
         public override void WriteStuff(Writer writer) {
-            writer.WriteProperty("Size",Students.Count);
+            writer.WriteProperty("Size", Students.Count);
             foreach (ReformStudent student in Students.Values) {
                 writer.WriteNode(student);
             }

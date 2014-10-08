@@ -4,8 +4,9 @@ namespace FileModel {
     internal class Penalties : Node {
         public Penalties2 Penalties2;
 
+
         public Penalties(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override Node CreateNode(string label) {

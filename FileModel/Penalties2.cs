@@ -3,10 +3,11 @@ using PASaveEditor;
 
 namespace FileModel {
     internal class Penalties2 : Node {
-        public Penalties2(string label)
-            : base(label) {}
         public readonly Dictionary<int, List<Penalty>> Penalties = new Dictionary<int, List<Penalty>>();
-        
+
+
+        public Penalties2(string label)
+            : base(label, true) {}
 
 
         public override void ReadKey(string key, string value) {
@@ -14,6 +15,7 @@ namespace FileModel {
                 base.ReadKey(key, value);
             }
         }
+
 
         public override Node CreateNode(string label) {
             if (Parser.IsId(label)) {
@@ -36,8 +38,9 @@ namespace FileModel {
             }
         }
 
+
         public override void WriteStuff(Writer writer) {
-            writer.WriteProperty("Size",Penalties.Count);
+            writer.WriteProperty("Size", Penalties.Count);
             foreach (var prisoner in Penalties) {
                 foreach (Penalty penalty in prisoner.Value) {
                     writer.WriteNode(penalty);

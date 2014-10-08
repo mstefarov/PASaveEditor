@@ -1,17 +1,17 @@
 ﻿using PASaveEditor;
 
 namespace FileModel {
-    class Reform : Node {
+    internal class Reform : Node {
         public ReformPrograms Programs;
 
+
         public Reform(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override Node CreateNode(string label) {
             if (label.Equals("Programs")) {
-                Programs = new ReformPrograms(label);
-                return Programs;
+                return (Programs = new ReformPrograms(label));
             } else {
                 return base.CreateNode(label);
             }

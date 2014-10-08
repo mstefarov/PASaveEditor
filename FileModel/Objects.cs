@@ -8,7 +8,7 @@ namespace FileModel {
 
 
         public Objects(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override void ReadKey(string key, string value) {
@@ -19,7 +19,7 @@ namespace FileModel {
 
 
         public override Node CreateNode(string label) {
-            return new ObjectBase(label);
+            return new ObjectBase(label, false);
         }
 
 

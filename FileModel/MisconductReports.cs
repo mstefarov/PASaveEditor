@@ -7,7 +7,7 @@ namespace FileModel {
 
 
         public MisconductReports(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override void ReadKey(string key, string value) {

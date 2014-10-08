@@ -22,6 +22,11 @@ namespace FileModel {
         public Tunnels Tunnels;
         public Victory Victory;
 
+
+        public Prison()
+            : base("Prison", true) {}
+
+
         public override void WriteStuff(Writer writer) {
             writer.WriteProperty("Version", Version);
             writer.WriteProperty("TimeIndex", TimeIndex);
@@ -42,20 +47,18 @@ namespace FileModel {
             if (EnabledIntake) {
                 writer.WriteProperty("EnabledIntake", EnabledIntake);
             }
-            
-            writer.WriteNode(Contraband);
-            writer.WriteNode(Finance);
-            writer.WriteNode(Informants);
-            writer.WriteNode(Misconduct);
-            writer.WriteNode(Objects);
-            writer.WriteNode(Penalties);
-            writer.WriteNode(Reform);
-            writer.WriteNode(Research);
-            writer.WriteNode(Tunnels);
-            writer.WriteNode(Victory);
-        }
 
-        public Prison() : base("Prison") {}
+            writer.WriteNode(Objects);
+            writer.WriteNode(Finance);
+            writer.WriteNode(Research);
+            writer.WriteNode(Penalties);
+            writer.WriteNode(Misconduct);
+            writer.WriteNode(Contraband);
+            writer.WriteNode(Tunnels);
+            writer.WriteNode(Reform);
+            writer.WriteNode(Victory);
+            writer.WriteNode(Informants);
+        }
 
 
         public override void ReadKey(string key, string value) {

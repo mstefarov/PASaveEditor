@@ -5,7 +5,7 @@ namespace FileModel {
         public VictoryLog Log;
 
         public Victory(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override Node CreateNode(string label) {

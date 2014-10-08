@@ -1,16 +1,15 @@
 ﻿using PASaveEditor;
 
 namespace FileModel {
-    class Prisoner : ObjectBase {
+    internal class Prisoner : ObjectBase {
         public string Category;
         public PrisonerBio Bio;
 
 
         public Prisoner(ObjectBase baseObj)
-            : base(baseObj.Label) {
+            : base(baseObj.Label, true) {
             Id = baseObj.Id;
             Type = baseObj.Type;
-            
             ReparseProperties(baseObj);
             CopyNodes(baseObj);
             Bio = (PrisonerBio)PopNode("Bio");
@@ -27,7 +26,7 @@ namespace FileModel {
 
 
         public override void WriteStuff(Writer writer) {
-            writer.WriteProperty("Category",Category);
+            writer.WriteProperty("Category", Category);
             writer.WriteNode(Bio);
         }
     }

@@ -8,7 +8,7 @@ namespace FileModel {
 
 
         public Misconduct(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override void ReadKey(string key, string value) {
@@ -22,8 +22,7 @@ namespace FileModel {
 
         public override Node CreateNode(string label) {
             if ("MisconductReports".Equals(label)) {
-                Reports = new MisconductReports(label);
-                return Reports;
+                return (Reports = new MisconductReports(label));
             } else {
                 return base.CreateNode(label);
             }

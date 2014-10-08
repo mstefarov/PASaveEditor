@@ -3,10 +3,12 @@ using PASaveEditor;
 
 namespace FileModel {
     class Research : Node {
-        public readonly List<ResearchItem> Items = new List<ResearchItem>(); 
+        public readonly List<ResearchItem> Items = new List<ResearchItem>();
+
 
         public Research(string label)
-            : base(label) {}
+            : base(label, true) {
+        }
 
 
         public override Node CreateNode(string label) {

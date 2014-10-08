@@ -6,14 +6,12 @@ namespace FileModel {
 
 
         public Contraband(string label)
-            : base(label) {}
+            : base(label,true) {}
 
 
         public override Node CreateNode(string label) {
             if (label.Equals("Prisoners")) {
-                DoNotInline = true;
-                Prisoners = new ContrabandPrisoners(label);
-                return Prisoners;
+                return (Prisoners = new ContrabandPrisoners(label));
             } else {
                 return base.CreateNode(label);
             }

@@ -2,8 +2,8 @@
 
 namespace FileModel {
     internal class ObjectBase : Node {
-        public ObjectBase(string label)
-            : base(label) {
+        public ObjectBase(string label, bool doNotInline)
+            : base(label, doNotInline) {
             Id = Parser.ParseId(label);
         }
 

@@ -2,10 +2,12 @@
 using PASaveEditor;
 
 namespace FileModel {
-    class Tunnels : Node {
-        public readonly List<TunnelCell> TunnelCells = new List<TunnelCell>(); 
+    internal class Tunnels : Node {
+        public readonly List<TunnelCell> TunnelCells = new List<TunnelCell>();
+
+
         public Tunnels(string label)
-            : base(label) {}
+            : base(label, true) {}
 
 
         public override Node CreateNode(string label) {

@@ -4,7 +4,7 @@ using PASaveEditor;
 
 namespace FileModel {
     internal class Node {
-        public Node(string label) {
+        public Node(string label, bool doNotInline = false) {
             Label = label;
         }
 
