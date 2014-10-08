@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using PASaveEditor;
 
 namespace FileModel {
@@ -31,6 +33,11 @@ namespace FileModel {
             } else {
                 OtherObjects.Add(obj.Id, obj);
             }
+        }
+
+
+        public override void WriteProperties(Writer writer) {
+            writer.WriteProperty("Size", Math.Max(OtherObjects.Keys.Max(), Prisoners.Keys.Max()) + 1);
         }
 
 

@@ -10,6 +10,13 @@ namespace FileModel {
             : base(label, true) {}
 
 
+        public override void ReadKey(string key, string value) {
+            if (!key.Equals("Size")) {
+                base.ReadKey(key, value);
+            }
+        }
+
+
         public override Node CreateNode(string label) {
             if (Parser.IsId(label)) {
                 var entry = new VictoryLogEntry(label);

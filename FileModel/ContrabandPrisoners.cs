@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using PASaveEditor;
 
 namespace FileModel {
@@ -31,8 +32,9 @@ namespace FileModel {
 
 
         public override void WriteProperties(Writer writer) {
-            writer.WriteProperty("Size", Prisoners.Count);
+            writer.WriteProperty("Size", Prisoners.Keys.Max() + 1);
         }
+
 
         public override void WriteNodes(Writer writer) {
             foreach (var prisoner in Prisoners) {
