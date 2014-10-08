@@ -20,7 +20,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteNodes(Writer writer) {
             if (IsEntrance) {
                 writer.WriteProperty("Entrance", IsEntrance);
             }

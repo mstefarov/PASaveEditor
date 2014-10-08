@@ -33,7 +33,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
             writer.WriteProperty("Forname", Forname);
             writer.WriteProperty("Surname", Surname);
             writer.WriteProperty("Sentence", Sentence);

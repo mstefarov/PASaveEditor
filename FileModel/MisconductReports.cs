@@ -28,8 +28,12 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
             writer.WriteProperty("Size",Reports.Count);
+        }
+
+
+        public override void WriteNodes(Writer writer) {
             foreach (Node report in Reports.Values) {
                 writer.WriteNode(report);
             }

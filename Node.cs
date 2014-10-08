@@ -8,10 +8,12 @@ namespace FileModel {
             Label = label;
         }
 
+
         public readonly string Label;
         public Dictionary<string, List<string>> Properties;
         public Dictionary<string, List<Node>> Nodes;
         public bool DoNotInline;
+
 
         public virtual void ReadKey(string key, string value) {
             PushProperty(key, value);
@@ -25,30 +27,30 @@ namespace FileModel {
         }
 
 
-        public virtual void FinishedReadingNode(Node node) {
-        }
+        public virtual void FinishedReadingNode(Node node) {}
 
 
-        public void PushProperty(string key,string value) {
+        public void PushProperty(string key, string value) {
             if (Properties == null) {
                 Properties = new Dictionary<string, List<string>>();
             }
             List<string> list;
             if (!Properties.TryGetValue(key, out list)) {
                 list = new List<string>();
-                Properties.Add(key,list);
+                Properties.Add(key, list);
             }
             list.Add(value);
         }
 
-        public void PushNode(string key,Node value) {
+
+        public void PushNode(string key, Node value) {
             if (Nodes == null) {
                 Nodes = new Dictionary<string, List<Node>>();
             }
             List<Node> list;
             if (!Nodes.TryGetValue(key, out list)) {
                 list = new List<Node>();
-                Nodes.Add(key,list);
+                Nodes.Add(key, list);
             }
             list.Add(value);
         }
@@ -57,7 +59,7 @@ namespace FileModel {
         public Node PopNode(string key) {
             List<Node> list = Nodes[key];
             Node nodeToRemove = list[list.Count - 1];
-            list.RemoveAt(list.Count-1);
+            list.RemoveAt(list.Count - 1);
             if (list.Count == 0) {
                 Nodes.Remove(key);
             }
@@ -68,7 +70,7 @@ namespace FileModel {
         public string PopProperty(string key) {
             List<string> list = Properties[key];
             string valueToRemove = list[list.Count - 1];
-            list.RemoveAt(list.Count-1);
+            list.RemoveAt(list.Count - 1);
             if (list.Count == 0) {
                 Properties.Remove(key);
             }
@@ -85,7 +87,7 @@ namespace FileModel {
 
         public void CopyNodes(Node other) {
             foreach (var property in other.ListNodes()) {
-                PushNode(property.Key,property.Value);
+                PushNode(property.Key, property.Value);
             }
         }
 
@@ -104,9 +106,11 @@ namespace FileModel {
         }
 
 
+        public virtual void WriteProperties(Writer writer) {}
 
-        public virtual void WriteStuff(Writer writer) {
-        }
+
+        public virtual void WriteNodes(Writer writer) {}
+
 
         public override string ToString() {
             return "Node(" + Label + ")";

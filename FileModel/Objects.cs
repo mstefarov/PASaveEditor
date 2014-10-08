@@ -34,7 +34,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteNodes(Writer writer) {
             var mergedObjects = OtherObjects.Values.MergeSorted(Prisoners.Values, (o1, o2) => o1.Id - o2.Id);
             foreach (var obj in mergedObjects) {
                 writer.WriteNode(obj);

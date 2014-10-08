@@ -19,6 +19,8 @@ namespace PASaveEditor {
 
 
         public void WritePrison(Prison prison) {
+            writer.Write('\n');
+            WriteProperty("Version", "alpha-25b");
             WriteNodeData(prison);
         }
 
@@ -34,7 +36,7 @@ namespace PASaveEditor {
 
 
         public void WriteProperty(string key, bool value) {
-            WriteProperty(key, value.ToString(CultureInfo.InvariantCulture));
+            WriteProperty(key, value ? "true" : "false");
         }
 
 
@@ -45,9 +47,14 @@ namespace PASaveEditor {
                     writer.Write("    ");
                 }
             }
-            writer.Write(key);
+            WriteValue(key);
             writer.Write(' ');
             WriteValue(value);
+            if (isInline) {
+                writer.Write("  ");
+            } else {
+                writer.Write("\n");
+            }
         }
 
 
@@ -55,8 +62,8 @@ namespace PASaveEditor {
             if (node == null) return;
             inlineStack.Push(isInline);
             isInline = (node.Nodes == null) &&
-                (node.Properties == null || node.Properties.Count < 6) &&
-                !node.DoNotInline;
+                       (node.Properties == null || node.Properties.Count < 6) &&
+                       !node.DoNotInline;
 
             for (int i = 0; i < indent; i++) {
                 writer.Write("    ");
@@ -65,9 +72,14 @@ namespace PASaveEditor {
 
             writer.Write("BEGIN ");
             WriteValue(node.Label);
+            if (isInline) {
+                writer.Write("  ");
+            } else {
+                writer.Write("\n");
+            }
 
             WriteNodeData(node);
-            
+
             indent--;
             if (!isInline) {
                 for (int i = 0; i < indent; i++) {
@@ -81,6 +93,7 @@ namespace PASaveEditor {
 
 
         void WriteNodeData(Node node) {
+            node.WriteProperties(this);
             if (node.Properties != null) {
                 foreach (var property in node.Properties) {
                     foreach (string value in property.Value) {
@@ -88,7 +101,7 @@ namespace PASaveEditor {
                     }
                 }
             }
-            node.WriteStuff(this);
+            node.WriteNodes(this);
             if (node.Nodes != null) {
                 foreach (var nodeSet in node.Nodes) {
                     foreach (Node value in nodeSet.Value) {
@@ -98,7 +111,6 @@ namespace PASaveEditor {
             }
         }
 
-
         void WriteValue(string value) {
             bool doQuote = (value.IndexOf(' ') >= 0);
             if (doQuote) {
@@ -107,11 +119,6 @@ namespace PASaveEditor {
             writer.Write(value);
             if (doQuote) {
                 writer.Write('"');
-            }
-            if (isInline) {
-                writer.Write("  ");
-            } else {
-                writer.Write("\n");
             }
         }
 

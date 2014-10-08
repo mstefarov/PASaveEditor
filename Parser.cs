@@ -100,7 +100,7 @@ namespace PASaveEditor {
                     if (i < 0) break;
                 }
             }
-            if (tokenStart < line.Length - 1) {
+            if (tokenStart < line.Length) {
                 // append the remainder of the string, after we ran out of spaces
                 tokens.Add(line.Substring(tokenStart, line.Length - tokenStart));
             }

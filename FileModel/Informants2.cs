@@ -30,8 +30,12 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
             writer.WriteProperty("Size", Prisoners.Count);
+        }
+
+
+        public override void WriteNodes(Writer writer) {
             foreach (Informant informant in Prisoners) {
                 writer.WriteNode(informant);
             }

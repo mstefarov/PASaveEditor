@@ -34,7 +34,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
             writer.WriteProperty("Prisoner.i",PrisonerId);
             writer.WriteProperty("Coverage",Coverage);
             writer.WriteProperty("Suspicion",Suspicion);

@@ -9,6 +9,13 @@ namespace FileModel {
         public ReformStudents(string label)
             : base(label, true) {}
 
+        
+        public override void ReadKey(string key, string value) {
+            if (!key.Equals("Size")) {
+                base.ReadKey(key, value);
+            }
+        }
+
 
         public override Node CreateNode(string label) {
             if (label.Equals("i")) {
@@ -27,8 +34,12 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
             writer.WriteProperty("Size", Students.Count);
+        }
+
+
+        public override void WriteNodes(Writer writer) {
             foreach (ReformStudent student in Students.Values) {
                 writer.WriteNode(student);
             }

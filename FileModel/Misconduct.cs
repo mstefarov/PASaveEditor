@@ -29,7 +29,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteNodes(Writer writer) {
             writer.WriteNode(Reports);
         }
     }

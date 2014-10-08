@@ -22,7 +22,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteNodes(Writer writer) {
             foreach (TunnelCell cell in TunnelCells) {
                 writer.WriteNode(cell);
             }

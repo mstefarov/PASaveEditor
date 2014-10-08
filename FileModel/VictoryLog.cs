@@ -2,7 +2,7 @@
 using PASaveEditor;
 
 namespace FileModel {
-    internal class VictoryLog : Node{
+    internal class VictoryLog : Node {
         public readonly List<VictoryLogEntry> Log = new List<VictoryLogEntry>();
 
 
@@ -21,8 +21,12 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
-            writer.WriteProperty("Size",Log.Count);
+        public override void WriteProperties(Writer writer) {
+            writer.WriteProperty("Size", Log.Count);
+        }
+
+
+        public override void WriteNodes(Writer writer) {
             foreach (VictoryLogEntry entry in Log) {
                 writer.WriteNode(entry);
             }

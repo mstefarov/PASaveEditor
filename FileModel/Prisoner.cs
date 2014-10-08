@@ -25,8 +25,13 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
+            writer.WriteProperty("Type", Type);
             writer.WriteProperty("Category", Category);
+        }
+
+
+        public override void WriteNodes(Writer writer) {
             writer.WriteNode(Bio);
         }
     }

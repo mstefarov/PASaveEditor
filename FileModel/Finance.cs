@@ -42,7 +42,7 @@ namespace FileModel {
         }
 
 
-        public override void WriteStuff(Writer writer) {
+        public override void WriteProperties(Writer writer) {
             writer.WriteProperty("Balance", Balance);
             writer.WriteProperty("LastDay", LastDay);
             writer.WriteProperty("LastHour", LastHour);

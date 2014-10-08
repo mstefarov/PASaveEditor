@@ -27,40 +27,6 @@ namespace FileModel {
             : base("Prison", true) {}
 
 
-        public override void WriteStuff(Writer writer) {
-            writer.WriteProperty("Version", Version);
-            writer.WriteProperty("TimeIndex", TimeIndex);
-            if (EnabledMisconduct) {
-                writer.WriteProperty("EnabledMisconduct", EnabledMisconduct);
-            }
-            if (FailureConditions) {
-                writer.WriteProperty("FailureConditions", FailureConditions);
-            }
-            if (EnabledVisibility) {
-                writer.WriteProperty("EnabledVisibility", EnabledVisibility);
-            } else {
-                Nodes.Remove("Visibility");
-            }
-            if (UnlimitedFunds) {
-                writer.WriteProperty("UnlimitedFunds", UnlimitedFunds);
-            }
-            if (EnabledIntake) {
-                writer.WriteProperty("EnabledIntake", EnabledIntake);
-            }
-
-            writer.WriteNode(Objects);
-            writer.WriteNode(Finance);
-            writer.WriteNode(Research);
-            writer.WriteNode(Penalties);
-            writer.WriteNode(Misconduct);
-            writer.WriteNode(Contraband);
-            writer.WriteNode(Tunnels);
-            writer.WriteNode(Reform);
-            writer.WriteNode(Victory);
-            writer.WriteNode(Informants);
-        }
-
-
         public override void ReadKey(string key, string value) {
             switch (key) {
                 case "Version":
@@ -136,6 +102,43 @@ namespace FileModel {
                 default:
                     return base.CreateNode(label);
             }
+        }
+
+
+        public override void WriteProperties(Writer writer) {
+            // we do not write Version here -- Writer takes care of it
+            writer.WriteProperty("TimeIndex", TimeIndex);
+            if (EnabledMisconduct) {
+                writer.WriteProperty("EnabledMisconduct", EnabledMisconduct);
+            }
+            if (FailureConditions) {
+                writer.WriteProperty("FailureConditions", FailureConditions);
+            }
+            if (EnabledVisibility) {
+                writer.WriteProperty("EnabledVisibility", EnabledVisibility);
+            } else {
+                Nodes.Remove("Visibility");
+            }
+            if (UnlimitedFunds) {
+                writer.WriteProperty("UnlimitedFunds", UnlimitedFunds);
+            }
+            if (EnabledIntake) {
+                writer.WriteProperty("EnabledIntake", EnabledIntake);
+            }
+        }
+
+
+        public override void WriteNodes(Writer writer) {
+            writer.WriteNode(Objects);
+            writer.WriteNode(Finance);
+            writer.WriteNode(Research);
+            writer.WriteNode(Penalties);
+            writer.WriteNode(Misconduct);
+            writer.WriteNode(Contraband);
+            writer.WriteNode(Tunnels);
+            writer.WriteNode(Reform);
+            writer.WriteNode(Victory);
+            writer.WriteNode(Informants);
         }
     }
 }
