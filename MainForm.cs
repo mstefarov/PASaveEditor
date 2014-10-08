@@ -14,7 +14,7 @@ namespace PASaveEditor {
         Prison prison;
         string[] prisonerNames;
         Prisoner selectedPrisoner;
-        
+
         readonly OpenFileDialog openDialog;
         readonly SaveFileDialog saveAsDialog;
 
@@ -51,17 +51,21 @@ namespace PASaveEditor {
             base.OnShown(e);
             miFileOpen.PerformClick();
         }
-        
+
 
         void miFileOpen_Click(object sender, EventArgs e) {
             if (openDialog.ShowDialog() == DialogResult.OK) {
                 fileName = openDialog.FileName;
                 using (FileStream fs = File.OpenRead(openDialog.FileName)) {
-                    Text = String.Format("Loading {0} | {1}", Path.GetFileName(fileName),AppName);
+                    Text = String.Format("Loading {0} | {1}", Path.GetFileName(fileName), AppName);
                     prison = new Parser().Load(fs);
                     LoadPrisonToGui();
                     Enabled = true;
-                    Text = String.Format("{0} | {1}", Path.GetFileName(fileName),AppName);
+                    Text = String.Format("{0} | {1}", Path.GetFileName(fileName), AppName);
+                }
+            } else {
+                if (prison == null) {
+                    Close();
                 }
             }
         }
@@ -128,7 +132,7 @@ namespace PASaveEditor {
             prison.Finance.BankLoan = Convert.ToInt32(nBankLoanAmount.Value);
             prison.Finance.BankCreditRating = Convert.ToDouble(nCreditRating.Value)/100;
             prison.Finance.Ownership = Convert.ToInt32(nOwnership.Value);
-            
+
             // Prisoner tab is continuously saved already
 
             // Store research tab
@@ -249,8 +253,6 @@ namespace PASaveEditor {
         }
 
 
-
-
         void lbPrisoners_SelectedIndexChanged(object sender, EventArgs e) {
             SelectedPrisoner = prison.Objects.Prisoners.Values.ToArray()[lbPrisoners.SelectedIndex];
         }
@@ -258,40 +260,45 @@ namespace PASaveEditor {
 
         static bool ContainsIgnoreCase(string haystack, string needle) {
             return CultureInfo.InvariantCulture.CompareInfo
-                              .IndexOf(haystack, needle, CompareOptions.IgnoreCase) >=0;
+                              .IndexOf(haystack, needle, CompareOptions.IgnoreCase) >= 0;
         }
 
-        private void tPrisonerSearch_TextChanged(object sender, EventArgs e) {
+
+        void tPrisonerSearch_TextChanged(object sender, EventArgs e) {
             lbPrisoners.Items.Clear();
             lbPrisoners.Items.AddRange(
                 prisonerNames.Where(name => ContainsIgnoreCase(name, tPrisonerSearch.Text)).ToArray());
         }
 
-        private void tName_TextChanged(object sender, EventArgs e) {
+
+        void tName_TextChanged(object sender, EventArgs e) {
             if (SelectedPrisoner != null) {
                 SelectedPrisoner.Bio.Forname = tName.Text;
             }
         }
 
-        private void tSurname_TextChanged(object sender, EventArgs e) {
+
+        void tSurname_TextChanged(object sender, EventArgs e) {
             if (SelectedPrisoner != null) {
                 SelectedPrisoner.Bio.Surname = tSurname.Text;
             }
         }
 
-        private void cCategory_SelectedIndexChanged(object sender, EventArgs e) {
+
+        void cCategory_SelectedIndexChanged(object sender, EventArgs e) {
             if (SelectedPrisoner != null) {
                 SelectedPrisoner.Category = CategoryNames.Keys.ToArray()[cCategory.SelectedIndex];
             }
         }
 
-        private void bRelease_Click(object sender, EventArgs e) {
+
+        void bRelease_Click(object sender, EventArgs e) {
             PrisonerUtil.ReleasePrisoner(prison, SelectedPrisoner.Id);
             SelectedPrisoner = null;
             UpdatePrisoners();
         }
 
-        
+
         Prisoner SelectedPrisoner {
             get { return selectedPrisoner; }
             set {
@@ -316,14 +323,16 @@ namespace PASaveEditor {
             }
         }
 
-        private void miFileSaveAs_Click(object sender, EventArgs e) {
+
+        void miFileSaveAs_Click(object sender, EventArgs e) {
             if (saveAsDialog.ShowDialog() == DialogResult.OK) {
                 fileName = saveAsDialog.FileName;
                 miFileSave.PerformClick();
             }
         }
 
-        private void miFileSave_Click(object sender, EventArgs e) {
+
+        void miFileSave_Click(object sender, EventArgs e) {
             Enabled = false;
             Text = String.Format("Saving {0} | {1}", Path.GetFileName(fileName), AppName);
             SaveGuiToPrison();
