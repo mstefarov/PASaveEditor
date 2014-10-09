@@ -81,19 +81,19 @@
             this.miReleaseMaxSec = new System.Windows.Forms.ToolStripMenuItem();
             this.miReleaseSuperMax = new System.Windows.Forms.ToolStripMenuItem();
             this.miReleaseAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoveTunnels = new System.Windows.Forms.ToolStripMenuItem();
-            this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRevealReputations = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminatePrisoners = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminateProtected = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminateMinSec = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminateNormal = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminateMaxSec = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminateSuperMax = new System.Windows.Forms.ToolStripMenuItem();
-            this.miEliminateAll = new System.Windows.Forms.ToolStripMenuItem();
             this.sEliminatePrisonersSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.miEliminateAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRevealReputations = new System.Windows.Forms.ToolStripMenuItem();
+            this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveTunnels = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
@@ -233,6 +233,21 @@
             lDisclaimer.TabIndex = 9;
             lDisclaimer.Text = "This tool is still in development. It\'s probably buggy\r\nand may corrupt your save" +
     "s. Don\'t overwrite any\r\nexisting savegames unless you are feeling very brave.";
+            // 
+            // sFileSeparator1
+            // 
+            sFileSeparator1.Name = "sFileSeparator1";
+            sFileSeparator1.Size = new System.Drawing.Size(120, 6);
+            // 
+            // sFileSeparator2
+            // 
+            sFileSeparator2.Name = "sFileSeparator2";
+            sFileSeparator2.Size = new System.Drawing.Size(120, 6);
+            // 
+            // sShortcutsSeparator
+            // 
+            sShortcutsSeparator.Name = "sShortcutsSeparator";
+            sShortcutsSeparator.Size = new System.Drawing.Size(193, 6);
             // 
             // tabs
             // 
@@ -610,38 +625,28 @@
             // miFileOpen
             // 
             this.miFileOpen.Name = "miFileOpen";
-            this.miFileOpen.Size = new System.Drawing.Size(152, 22);
+            this.miFileOpen.Size = new System.Drawing.Size(123, 22);
             this.miFileOpen.Text = "Open...";
             this.miFileOpen.Click += new System.EventHandler(this.miFileOpen_Click);
-            // 
-            // sFileSeparator1
-            // 
-            sFileSeparator1.Name = "sFileSeparator1";
-            sFileSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // miFileSave
             // 
             this.miFileSave.Name = "miFileSave";
-            this.miFileSave.Size = new System.Drawing.Size(152, 22);
+            this.miFileSave.Size = new System.Drawing.Size(123, 22);
             this.miFileSave.Text = "Save";
             this.miFileSave.Click += new System.EventHandler(this.miFileSave_Click);
             // 
             // miFileSaveAs
             // 
             this.miFileSaveAs.Name = "miFileSaveAs";
-            this.miFileSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.miFileSaveAs.Size = new System.Drawing.Size(123, 22);
             this.miFileSaveAs.Text = "Save As...";
             this.miFileSaveAs.Click += new System.EventHandler(this.miFileSaveAs_Click);
-            // 
-            // sFileSeparator2
-            // 
-            sFileSeparator2.Name = "sFileSeparator2";
-            sFileSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(152, 22);
+            this.miExit.Size = new System.Drawing.Size(123, 22);
             this.miExit.Text = "Exit";
             // 
             // miShortcuts
@@ -652,8 +657,8 @@
             this.miRevealReputations,
             sShortcutsSeparator,
             this.miUnlockAllResearch,
-            this.miRemoveTunnels,
             this.miRemoveAllTrees,
+            this.miRemoveTunnels,
             this.miRemoveAllContraband});
             this.miShortcuts.Name = "miShortcuts";
             this.miShortcuts.Size = new System.Drawing.Size(69, 20);
@@ -670,8 +675,8 @@
             sReleasePrisonersSeparator,
             this.miReleaseAll});
             this.miReleasePrisoners.Name = "miReleasePrisoners";
-            this.miReleasePrisoners.Size = new System.Drawing.Size(230, 22);
-            this.miReleasePrisoners.Text = "Schedule prisoners for release";
+            this.miReleasePrisoners.Size = new System.Drawing.Size(196, 22);
+            this.miReleasePrisoners.Text = "Release prisoners";
             // 
             // miReleaseProtected
             // 
@@ -709,41 +714,6 @@
             this.miReleaseAll.Size = new System.Drawing.Size(174, 22);
             this.miReleaseAll.Text = "All";
             // 
-            // miRemoveTunnels
-            // 
-            this.miRemoveTunnels.Name = "miRemoveTunnels";
-            this.miRemoveTunnels.Size = new System.Drawing.Size(230, 22);
-            this.miRemoveTunnels.Text = "Remove all tunnels";
-            // 
-            // miUnlockAllResearch
-            // 
-            this.miUnlockAllResearch.Name = "miUnlockAllResearch";
-            this.miUnlockAllResearch.Size = new System.Drawing.Size(230, 22);
-            this.miUnlockAllResearch.Text = "Unlock all research";
-            this.miUnlockAllResearch.Click += new System.EventHandler(this.miUnlockAllResearch_Click);
-            // 
-            // miRemoveAllTrees
-            // 
-            this.miRemoveAllTrees.Name = "miRemoveAllTrees";
-            this.miRemoveAllTrees.Size = new System.Drawing.Size(230, 22);
-            this.miRemoveAllTrees.Text = "Remove all trees";
-            this.miRemoveAllTrees.Click += new System.EventHandler(this.miRemoveAllTrees_Click);
-            // 
-            // miRemoveAllContraband
-            // 
-            this.miRemoveAllContraband.Enabled = false;
-            this.miRemoveAllContraband.Name = "miRemoveAllContraband";
-            this.miRemoveAllContraband.Size = new System.Drawing.Size(230, 22);
-            this.miRemoveAllContraband.Text = "Remove all contraband";
-            this.miRemoveAllContraband.Click += new System.EventHandler(this.miRemoveAllContraband_Click);
-            // 
-            // miRevealReputations
-            // 
-            this.miRevealReputations.Name = "miRevealReputations";
-            this.miRevealReputations.Size = new System.Drawing.Size(230, 22);
-            this.miRevealReputations.Text = "Reveal reputations";
-            this.miRevealReputations.Click += new System.EventHandler(this.miRevealReputations_Click);
-            // 
             // miEliminatePrisoners
             // 
             this.miEliminatePrisoners.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -755,13 +725,8 @@
             this.sEliminatePrisonersSeparator,
             this.miEliminateAll});
             this.miEliminatePrisoners.Name = "miEliminatePrisoners";
-            this.miEliminatePrisoners.Size = new System.Drawing.Size(230, 22);
+            this.miEliminatePrisoners.Size = new System.Drawing.Size(196, 22);
             this.miEliminatePrisoners.Text = "Eliminate prisoners";
-            // 
-            // sShortcutsSeparator
-            // 
-            sShortcutsSeparator.Name = "sShortcutsSeparator";
-            sShortcutsSeparator.Size = new System.Drawing.Size(227, 6);
             // 
             // miEliminateProtected
             // 
@@ -793,16 +758,52 @@
             this.miEliminateSuperMax.Size = new System.Drawing.Size(174, 22);
             this.miEliminateSuperMax.Text = "SuperMax";
             // 
+            // sEliminatePrisonersSeparator
+            // 
+            this.sEliminatePrisonersSeparator.Name = "sEliminatePrisonersSeparator";
+            this.sEliminatePrisonersSeparator.Size = new System.Drawing.Size(171, 6);
+            // 
             // miEliminateAll
             // 
             this.miEliminateAll.Name = "miEliminateAll";
             this.miEliminateAll.Size = new System.Drawing.Size(174, 22);
             this.miEliminateAll.Text = "All";
             // 
-            // sEliminatePrisonersSeparator
+            // miRevealReputations
             // 
-            this.sEliminatePrisonersSeparator.Name = "sEliminatePrisonersSeparator";
-            this.sEliminatePrisonersSeparator.Size = new System.Drawing.Size(171, 6);
+            this.miRevealReputations.Name = "miRevealReputations";
+            this.miRevealReputations.Size = new System.Drawing.Size(196, 22);
+            this.miRevealReputations.Text = "Reveal reputations";
+            this.miRevealReputations.Click += new System.EventHandler(this.miRevealReputations_Click);
+            // 
+            // miUnlockAllResearch
+            // 
+            this.miUnlockAllResearch.Name = "miUnlockAllResearch";
+            this.miUnlockAllResearch.Size = new System.Drawing.Size(196, 22);
+            this.miUnlockAllResearch.Text = "Unlock all research";
+            this.miUnlockAllResearch.Click += new System.EventHandler(this.miUnlockAllResearch_Click);
+            // 
+            // miRemoveTunnels
+            // 
+            this.miRemoveTunnels.Enabled = false;
+            this.miRemoveTunnels.Name = "miRemoveTunnels";
+            this.miRemoveTunnels.Size = new System.Drawing.Size(196, 22);
+            this.miRemoveTunnels.Text = "Remove all tunnels";
+            // 
+            // miRemoveAllTrees
+            // 
+            this.miRemoveAllTrees.Name = "miRemoveAllTrees";
+            this.miRemoveAllTrees.Size = new System.Drawing.Size(196, 22);
+            this.miRemoveAllTrees.Text = "Remove all trees";
+            this.miRemoveAllTrees.Click += new System.EventHandler(this.miRemoveAllTrees_Click);
+            // 
+            // miRemoveAllContraband
+            // 
+            this.miRemoveAllContraband.Enabled = false;
+            this.miRemoveAllContraband.Name = "miRemoveAllContraband";
+            this.miRemoveAllContraband.Size = new System.Drawing.Size(196, 22);
+            this.miRemoveAllContraband.Text = "Remove all contraband";
+            this.miRemoveAllContraband.Click += new System.EventHandler(this.miRemoveAllContraband_Click);
             // 
             // MainForm
             // 

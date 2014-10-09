@@ -56,10 +56,13 @@ namespace PASaveEditor {
 
             miExit.Click += delegate { Close(); };
 
+            Shown += delegate {
+                miFileOpen.PerformClick();
+            };
+
             // Disable the GUI until a prison file is loaded
             Enabled = false;
         }
-
 
 
         void AssignTooltips() {
@@ -68,12 +71,6 @@ namespace PASaveEditor {
             toolTips.SetToolTip(xFailureConditions, Resources.TipFailureConditions);
             toolTips.SetToolTip(xFogOfWar, Resources.TipFogOfWar);
             toolTips.SetToolTip(xMisconduct, Resources.TipMisconduct);
-        }
-
-
-        protected override void OnShown(EventArgs e) {
-            base.OnShown(e);
-            miFileOpen.PerformClick();
         }
 
 
@@ -104,8 +101,27 @@ namespace PASaveEditor {
         }
 
 
-        void UpdatePrisonerCategoryItem(ToolStripMenuItem miEliminate, ToolStripMenuItem miRelease, string categoryName,
-                                        string label) {
+        // Update counts in the menu items under "Eliminate prisoners" shortcut menu.
+        // If there are no prisoners to release in this category, option is grayed out.
+        void UpdatePrisonerCounts() {
+            // Count all Protective Custody prisoners
+            UpdatePrisonerCategoryItem(miEliminateProtected, miReleaseProtected, "Protected", "Protective Custody");
+            UpdatePrisonerCategoryItem(miEliminateMinSec, miReleaseMinSec, "MinSec", "Minimum Security");
+            UpdatePrisonerCategoryItem(miEliminateNormal, miReleaseNormal, "Normal", "Normal Security");
+            UpdatePrisonerCategoryItem(miEliminateMaxSec, miReleaseMaxSec, "MaxSec", "Maximum Security");
+            UpdatePrisonerCategoryItem(miEliminateSuperMax, miReleaseSuperMax, "SuperMax", "SuperMax");
+            UpdatePrisonerCategoryItem(miEliminateAll, miReleaseAll, null, "All");
+
+            int hiddenReputations =
+                prison.Objects.Prisoners.Values
+                      .Count(p => p.Bio.Reputations != null && !p.Bio.ReputationRevealed);
+            miRevealReputations.Text = String.Format("Reveal reputations ({0})", hiddenReputations);
+            miRevealReputations.Enabled = (hiddenReputations > 0);
+        }
+
+
+        void UpdatePrisonerCategoryItem(ToolStripMenuItem miEliminate, ToolStripMenuItem miRelease,
+                                        string categoryName, string label) {
             int allCount;
             if (categoryName == null) {
                 allCount = prison.Objects.Prisoners.Count;
@@ -127,25 +143,6 @@ namespace PASaveEditor {
             }
             miRelease.Text = String.Format("{0} ({1})", label, nonReleasedCount);
             miRelease.Enabled = (nonReleasedCount > 0);
-        }
-
-
-        // Update counts in the menu items under "Eliminate prisoners" shortcut menu.
-        // If there are no prisoners to release in this category, option is grayed out.
-        void UpdatePrisonerCounts() {
-            // Count all Protective Custody prisoners
-            UpdatePrisonerCategoryItem(miEliminateProtected, miReleaseProtected, "Protected", "Protective Custody");
-            UpdatePrisonerCategoryItem(miEliminateMinSec, miReleaseMinSec, "MinSec", "Minimum Security");
-            UpdatePrisonerCategoryItem(miEliminateNormal, miReleaseNormal, "Normal", "Normal Security");
-            UpdatePrisonerCategoryItem(miEliminateMaxSec, miReleaseMaxSec, "MaxSec", "Maximum Security");
-            UpdatePrisonerCategoryItem(miEliminateSuperMax, miReleaseSuperMax, "SuperMax", "SuperMax");
-            UpdatePrisonerCategoryItem(miEliminateAll, miReleaseAll, null, "All");
-
-            int hiddenReputations =
-                prison.Objects.Prisoners.Values
-                      .Count(p => p.Bio.Reputations != null && !p.Bio.ReputationRevealed);
-            miRevealReputations.Text = String.Format("Reveal reputations ({0})", hiddenReputations);
-            miRevealReputations.Enabled = (hiddenReputations > 0);
         }
 
 
@@ -222,12 +219,10 @@ namespace PASaveEditor {
 
 
         void miUnlockAllResearch_Click(object sender, EventArgs e) {
-            foreach (ResearchItem item in prison.Research.Items) {
-                item.Progress = 1;
-            }
             for (int i = 0; i < clbResearch.Items.Count; i++) {
                 clbResearch.SetItemChecked(i, true);
             }
+            MessageBox.Show("All research unlocked!");
         }
 
 
