@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using PASaveEditor.FileModel;
 using PASaveEditor.Properties;
 
@@ -82,21 +83,29 @@ namespace PASaveEditor {
                     tName.Text = "";
                     tSurname.Text = "";
                     cCategory.SelectedIndex = -1;
+                    lServedStats.Text = "";
                     tName.Enabled = false;
                     tSurname.Enabled = false;
                     cCategory.Enabled = false;
+                    pbServed.Value = 0;
+                    bEliminate.Enabled = false;
                     bRelease.Enabled = false;
                 } else {
                     tName.Enabled = true;
                     tSurname.Enabled = true;
                     cCategory.Enabled = true;
-                    bRelease.Enabled = true;
-                    tName.Text = selectedPrisoner.Bio.Forname;
-                    tSurname.Text = selectedPrisoner.Bio.Surname;
+                    bEliminate.Enabled = true;
+                    PrisonerBio bio = selectedPrisoner.Bio;
+                    tName.Text = bio.Forname;
+                    tSurname.Text = bio.Surname;
                     cCategory.SelectedIndex = PrisonerUtil.CategoryNameToIndex(selectedPrisoner.Category);
+                    pbServed.Value = (int)Math.Round(bio.Served*100d/bio.Sentence);
+                    lServedStats.Text = String.Format("{0:0.#} of {1} years", bio.Served, bio.Sentence);
+                    bRelease.Enabled = (bio.Served < bio.Sentence);
                 }
             }
         }
+
 
         // Update counts in the menu items under "Eliminate prisoners" shortcut menu.
         // If there are no prisoners to release in this category, option is grayed out.
@@ -150,6 +159,9 @@ namespace PASaveEditor {
                                   .Select(PrisonerUtil.NamePrisoner)
                                   .ToArray();
             lbPrisoners.Items.AddRange(prisonerNames);
+            if (!prison.Objects.Prisoners.Values.Contains(selectedPrisoner)) {
+                SelectedPrisoner = null;
+            }
             UpdatePrisonerCounts();
         }
 
@@ -193,10 +205,15 @@ namespace PASaveEditor {
         }
 
 
-        void bRelease_Click(object sender, EventArgs e) {
+        void bEliminate_Click(object sender, EventArgs e) {
             PrisonerUtil.EliminatePrisoner(prison, SelectedPrisoner.Id);
             SelectedPrisoner = null;
             UpdatePrisoners();
+        }
+
+
+        void miAbout_Click(object sender, EventArgs e) {
+            new AboutBox().ShowDialog(this);
         }
 
 
@@ -212,6 +229,8 @@ namespace PASaveEditor {
             idsToRemove.ForEach(id => prison.Objects.OtherObjects.Remove(id));
 
             MessageBox.Show(String.Format("{0} trees removed.", idsToRemove.Count));
+            miRemoveAllTrees.Text = "Remove all trees (0)";
+            miRemoveAllTrees.Enabled = false;
         }
 
 
@@ -223,8 +242,22 @@ namespace PASaveEditor {
         }
 
 
+        int CountContraband() {
+            Node trackers = prison.Contraband.TryGetNode("Trackers");
+            if (trackers == null) return 0;
+            string sizeStr = trackers.TryGetProperty("Size");
+            if (sizeStr == null) return 0;
+            return Int32.Parse(sizeStr);
+        }
+
+
         void miRemoveAllContraband_Click(object sender, EventArgs e) {
-            // TODO
+            prison.Contraband.Child.Prisoners.Clear();
+            int numRemoved = CountContraband();
+            prison.Contraband.Nodes.Remove("Trackers");
+            MessageBox.Show(String.Format("{0} pieces of contraband removed!", numRemoved));
+            miRemoveAllContraband.Text = "Remove all contraband (0)";
+            miRemoveAllContraband.Enabled = false;
         }
 
 
@@ -277,10 +310,19 @@ namespace PASaveEditor {
             prison.Tunnels.Nodes.Remove("Rooms");
         }
 
+
+        void bRelease_Click(object sender, EventArgs e) {
+            PrisonerUtil.ReleasePrisoner(prison, selectedPrisoner.Id);
+            pbServed.Value = 100;
+            PrisonerBio bio = selectedPrisoner.Bio;
+            lServedStats.Text = String.Format("{0:0.#} of {1} years", bio.Served, bio.Sentence);
+            bRelease.Enabled = false;
+        }
+
         #endregion
 
 
-        #region Loading
+        #region Loading / Saving
 
         void miFileOpen_Click(object sender, EventArgs e) {
             if (openDialog.ShowDialog() == DialogResult.OK) {
@@ -353,12 +395,17 @@ namespace PASaveEditor {
                     }
                 }
             }
+
+            int numContraband = CountContraband();
+            miRemoveAllContraband.Text = String.Format("Remove all contraband ({0})", numContraband);
+            miRemoveAllContraband.Enabled = (numContraband > 0);
+
+            int numTrees = prison.Objects.OtherObjects
+                                 .Values .Count(obj => obj.Type == "Tree");
+            miRemoveAllTrees.Text = String.Format("Remove all trees ({0})", numTrees);
+            miRemoveAllTrees.Enabled = (numTrees > 0);
         }
 
-        #endregion
-
-
-        #region Saving
 
         void miFileSaveAs_Click(object sender, EventArgs e) {
             if (saveAsDialog.ShowDialog() == DialogResult.OK) {

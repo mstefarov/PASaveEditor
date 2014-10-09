@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using PASaveEditor.FileModel;
 
@@ -16,7 +17,7 @@ namespace PASaveEditor {
 
 
         public Prison Load(Stream stream) {
-            var reader = new StreamReader(stream);
+            var reader = new StreamReader(stream, Encoding.ASCII);
             var nodes = new Stack<Node>();
             Node currentNode = new Prison();
             int lineNum = 0;

@@ -110,9 +110,29 @@ namespace PASaveEditor.FileModel {
 
         public virtual void WriteNodes(Writer writer) {}
 
-
         public override string ToString() {
             return "Node(" + Label + ")";
+        }
+
+
+        public Node TryGetNode(string label) {
+            if (Nodes == null) return null;
+            List<Node> list;
+            if (!Nodes.TryGetValue(label, out list)) {
+                return null;
+            }
+            if (list.Count == 0) return null;
+            return list[0];
+        }
+
+        public string TryGetProperty(string key) {
+            if (Properties == null) return null;
+            List<string> list;
+            if (!Properties.TryGetValue(key, out list)) {
+                return null;
+            }
+            if (list.Count == 0) return null;
+            return list[0];
         }
     }
 }
