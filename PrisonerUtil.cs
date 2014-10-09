@@ -21,6 +21,11 @@ namespace PASaveEditor {
         }
 
 
+        public static string InternalToInGameCatName(string catName) {
+            return CategoryNames[catName];
+        }
+
+
         // Converts index (0-4) to short in-savegame name
         public static int CategoryNameToIndex(string catName) {
             return Array.IndexOf(CategoryNames.Keys.ToArray(), catName);
@@ -34,9 +39,22 @@ namespace PASaveEditor {
                          .Select(prisoner => prisoner.Id)
                          .ToArray();
         }
+        public static int CountPrisoners(Prison prison, Predicate<Prisoner> predicate) {
+            return prison.Objects.Prisoners.Values
+                         .Count(prisoner => predicate(prisoner));
+        }
 
 
-        // Releases (eliminates) all prisoners who match the given predicate
+        // Eliminates all prisoners who match the given predicate
+        public static int Eliminate(Prison prison, Predicate<Prisoner> predicate) {
+            int[] idsToRemove = FindPrisoners(prison, predicate);
+            foreach (int id in idsToRemove) {
+                EliminatePrisoner(prison, id);
+            }
+            return idsToRemove.Length;
+        }
+        
+        // Schedules all prisoners who match the given predicate for release
         public static int Release(Prison prison, Predicate<Prisoner> predicate) {
             int[] idsToRemove = FindPrisoners(prison, predicate);
             foreach (int id in idsToRemove) {
@@ -46,8 +64,8 @@ namespace PASaveEditor {
         }
 
 
-        // Releases (eliminates) a single prisoner, by ID
-        public static void ReleasePrisoner(Prison prison, int id) {
+        // Eliminates a single prisoner, by ID. Erases all traces of their existence.
+        public static void EliminatePrisoner(Prison prison, int id) {
             prison.Objects.Prisoners.Remove(id);
             prison.Contraband.Child.Prisoners.Remove(id);
             prison.Informants.Child.Prisoners.RemoveAll(informant => informant.PrisonerId == id);
@@ -58,6 +76,13 @@ namespace PASaveEditor {
             }
             // TODO Diggers
             prison.Victory.Child.Log.RemoveAll(entry => entry.PrisonerId == id);
+        }
+
+
+        // Schedules a single prisoner for release, by ID.
+        public static void ReleasePrisoner(Prison prison, int id) {
+            PrisonerBio bio = prison.Objects.Prisoners[id].Bio;
+            bio.Served = bio.Sentence;
         }
 
 

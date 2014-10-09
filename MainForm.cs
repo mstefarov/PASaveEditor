@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -41,9 +40,26 @@ namespace PASaveEditor {
                 InitialDirectory = paSavePath
             };
 
+            miEliminateProtected.Click += delegate { Eliminate("Protected"); };
+            miEliminateMinSec.Click += delegate { Eliminate("MinSec"); };
+            miEliminateNormal.Click += delegate { Eliminate("Normal"); };
+            miEliminateMaxSec.Click += delegate { Eliminate("MaxSec"); };
+            miEliminateSuperMax.Click += delegate { Eliminate("SuperMax"); };
+            miEliminateAll.Click += delegate { EliminateAll(); };
+
+            miReleaseProtected.Click += delegate { Release("Protected"); };
+            miReleaseMinSec.Click += delegate { Release("MinSec"); };
+            miReleaseNormal.Click += delegate { Release("Normal"); };
+            miReleaseMaxSec.Click += delegate { Release("MaxSec"); };
+            miReleaseSuperMax.Click += delegate { Release("SuperMax"); };
+            miReleaseAll.Click += delegate { ReleaseAll(); };
+
+            miExit.Click += delegate { Close(); };
+
             // Disable the GUI until a prison file is loaded
             Enabled = false;
         }
+
 
 
         void AssignTooltips() {
@@ -88,32 +104,42 @@ namespace PASaveEditor {
         }
 
 
-        // Update counts in the menu items under "Release prisoners" shortcut menu.
+        void UpdatePrisonerCategoryItem(ToolStripMenuItem miEliminate, ToolStripMenuItem miRelease, string categoryName,
+                                        string label) {
+            int allCount;
+            if (categoryName == null) {
+                allCount = prison.Objects.Prisoners.Count;
+            } else {
+                allCount = PrisonerUtil.CountPrisoners(prison, p => p.Category == categoryName);
+            }
+            miEliminate.Text = String.Format("{0} ({1})", label, allCount);
+            miEliminate.Enabled = (allCount > 0);
+
+            int nonReleasedCount;
+
+            if (categoryName == null) {
+                nonReleasedCount = PrisonerUtil.CountPrisoners(prison, p => p.Bio.Served < p.Bio.Sentence);
+            } else {
+                nonReleasedCount =
+                    PrisonerUtil.CountPrisoners(prison,
+                                                p => p.Category == categoryName &&
+                                                     p.Bio.Served < p.Bio.Sentence);
+            }
+            miRelease.Text = String.Format("{0} ({1})", label, nonReleasedCount);
+            miRelease.Enabled = (nonReleasedCount > 0);
+        }
+
+
+        // Update counts in the menu items under "Eliminate prisoners" shortcut menu.
         // If there are no prisoners to release in this category, option is grayed out.
         void UpdatePrisonerCounts() {
-            int countProtected = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "Protected").Length;
-            miReleaseProtectiveCustody.Text = string.Format("Protective Custody ({0})", countProtected);
-            miReleaseProtectiveCustody.Enabled = (countProtected > 0);
-
-            int countMinSec = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "MinSec").Length;
-            miReleaseMinimumSecurity.Text = string.Format("Minimum Security ({0})", countMinSec);
-            miReleaseMinimumSecurity.Enabled = (countMinSec > 0);
-
-            int countNormal = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "Normal").Length;
-            miReleaseNormalSecurity.Text = string.Format("Normal Security ({0})", countNormal);
-            miReleaseNormalSecurity.Enabled = (countNormal > 0);
-
-            int countMaxSec = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "MaxSec").Length;
-            miReleaseMaximumSecurity.Text = string.Format("Maximum Security ({0})", countMaxSec);
-            miReleaseMaximumSecurity.Enabled = (countMaxSec > 0);
-
-            int countSuperMax = PrisonerUtil.FindPrisoners(prison, prisoner => prisoner.Category == "SuperMax").Length;
-            miReleaseSuperMax.Text = string.Format("SuperMax ({0})", countSuperMax);
-            miReleaseSuperMax.Enabled = (countSuperMax > 0);
-
-            int countAll = prison.Objects.Prisoners.Count;
-            miReleaseAll.Text = string.Format("All ({0})", countAll);
-            miReleaseAll.Enabled = (countAll > 0);
+            // Count all Protective Custody prisoners
+            UpdatePrisonerCategoryItem(miEliminateProtected, miReleaseProtected, "Protected", "Protective Custody");
+            UpdatePrisonerCategoryItem(miEliminateMinSec, miReleaseMinSec, "MinSec", "Minimum Security");
+            UpdatePrisonerCategoryItem(miEliminateNormal, miReleaseNormal, "Normal", "Normal Security");
+            UpdatePrisonerCategoryItem(miEliminateMaxSec, miReleaseMaxSec, "MaxSec", "Maximum Security");
+            UpdatePrisonerCategoryItem(miEliminateSuperMax, miReleaseSuperMax, "SuperMax", "SuperMax");
+            UpdatePrisonerCategoryItem(miEliminateAll, miReleaseAll, null, "All");
 
             int hiddenReputations =
                 prison.Objects.Prisoners.Values
@@ -174,15 +200,11 @@ namespace PASaveEditor {
 
 
         void bRelease_Click(object sender, EventArgs e) {
-            PrisonerUtil.ReleasePrisoner(prison, SelectedPrisoner.Id);
+            PrisonerUtil.EliminatePrisoner(prison, SelectedPrisoner.Id);
             SelectedPrisoner = null;
             UpdatePrisoners();
         }
 
-        
-        private void miExit_Click(object sender, EventArgs e) {
-            Close();
-        }
 
         #region Shortcuts
 
@@ -209,48 +231,6 @@ namespace PASaveEditor {
         }
 
 
-        void miReleaseProtectiveCustody_Click(object sender, EventArgs e) {
-            int released = PrisonerUtil.Release(prison, prisoner => prisoner.Category == "Protected");
-            MessageBox.Show(String.Format("{0} Protective Custody prisoners released.", released));
-            UpdatePrisoners();
-        }
-
-
-        void miReleaseMinimumSecurity_Click(object sender, EventArgs e) {
-            int released = PrisonerUtil.Release(prison, prisoner => prisoner.Category == "MinSec");
-            MessageBox.Show(string.Format("{0} Minimum Security prisoners released.", released));
-            UpdatePrisoners();
-        }
-
-
-        void miReleaseNormalSecurity_Click(object sender, EventArgs e) {
-            int released = PrisonerUtil.Release(prison, prisoner => prisoner.Category == "Normal");
-            MessageBox.Show(string.Format("{0} Normal Security prisoners released.", released));
-            UpdatePrisoners();
-        }
-
-
-        void miReleaseMaximumSecurity_Click(object sender, EventArgs e) {
-            int released = PrisonerUtil.Release(prison, prisoner => prisoner.Category == "MaxSec");
-            MessageBox.Show(string.Format("{0} Maximum Security prisoners released.", released));
-            UpdatePrisoners();
-        }
-
-
-        void miReleaseSuperMax_Click(object sender, EventArgs e) {
-            int released = PrisonerUtil.Release(prison, prisoner => prisoner.Category == "SuperMax");
-            MessageBox.Show(string.Format("{0} SuperMax prisoners released.", released));
-            UpdatePrisoners();
-        }
-
-
-        void miReleaseAll_Click(object sender, EventArgs e) {
-            int released = PrisonerUtil.Release(prison, prisoner => true);
-            MessageBox.Show(string.Format("All {0} prisoners released.", released));
-            UpdatePrisoners();
-        }
-
-
         void miRemoveAllContraband_Click(object sender, EventArgs e) {
             // TODO
         }
@@ -259,12 +239,42 @@ namespace PASaveEditor {
         void miRevealReputations_Click(object sender, EventArgs e) {
             var toReveal =
                 prison.Objects.Prisoners.Values
-                  .Where(p => p.Bio.Reputations != null && !p.Bio.ReputationRevealed)
-                  .ToList();
-            
-                  toReveal.ForEach(p => p.Bio.ReputationRevealed = true);
-            MessageBox.Show(string.Format("{0} prisoner reputations revealed.", toReveal.Count));
+                      .Where(p => p.Bio.Reputations != null && !p.Bio.ReputationRevealed)
+                      .ToList();
+
+            toReveal.ForEach(p => p.Bio.ReputationRevealed = true);
+            MessageBox.Show(String.Format("{0} prisoner reputations revealed.", toReveal.Count));
             UpdatePrisonerCounts();
+        }
+
+
+        void EliminateAll() {
+            int released = PrisonerUtil.Eliminate(prison, prisoner => true);
+            MessageBox.Show(String.Format("All {0} prisoners eliminated.", released));
+            UpdatePrisoners();
+        }
+
+
+        void Eliminate(string categoryName) {
+            string groupLabel = PrisonerUtil.InternalToInGameCatName(categoryName);
+            int released = PrisonerUtil.Eliminate(prison, prisoner => prisoner.Category == categoryName);
+            MessageBox.Show(String.Format("{0} {1} prisoners eliminated.", released, groupLabel));
+            UpdatePrisoners();
+        }
+
+
+        void ReleaseAll() {
+            int released = PrisonerUtil.Release(prison, prisoner => true);
+            MessageBox.Show(String.Format("All {0} prisoners scheduled for release.", released));
+            UpdatePrisoners();
+        }
+
+
+        void Release(string categoryName) {
+            string groupLabel = PrisonerUtil.InternalToInGameCatName(categoryName);
+            int released = PrisonerUtil.Release(prison, prisoner => prisoner.Category == categoryName);
+            MessageBox.Show(String.Format("{0} {1} prisoners scheduled for release.", released, groupLabel));
+            UpdatePrisoners();
         }
 
         #endregion
