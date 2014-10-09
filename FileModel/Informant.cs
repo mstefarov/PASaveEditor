@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace PASaveEditor.FileModel {
-    class Informant : Node {
+    internal class Informant : Node {
         public int PrisonerId;
         public double Coverage;
         public double Suspicion;
@@ -34,10 +34,10 @@ namespace PASaveEditor.FileModel {
 
 
         public override void WriteProperties(Writer writer) {
-            writer.WriteProperty("Prisoner.i",PrisonerId);
-            writer.WriteProperty("Coverage",Coverage);
-            writer.WriteProperty("Suspicion",Suspicion);
-            writer.WriteProperty("HighestSuspicion",HighestSuspicion);
+            writer.WriteProperty("Prisoner.i", PrisonerId);
+            writer.WriteProperty("Coverage", Coverage);
+            writer.WriteProperty("Suspicion", Suspicion);
+            writer.WriteProperty("HighestSuspicion", HighestSuspicion);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 namespace PASaveEditor {
-    static class Program {
+    internal static class Program {
         // The main entry point for the application.
         [STAThread]
         static void Main() {

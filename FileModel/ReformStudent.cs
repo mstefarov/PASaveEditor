@@ -1,8 +1,9 @@
 ﻿using System;
 
 namespace PASaveEditor.FileModel {
-    class ReformStudent : Node {
+    internal class ReformStudent : Node {
         public int Id;
+
 
         public ReformStudent(string label)
             : base(label) {}

@@ -2,8 +2,9 @@
 using System.Text.RegularExpressions;
 
 namespace PASaveEditor.FileModel {
-    struct Pos {
+    internal struct Pos {
         public int X, Y;
+
 
         public static Pos ParsePos(string str) {
             int spaceIdx = str.IndexOf(' ');
@@ -14,7 +15,10 @@ namespace PASaveEditor.FileModel {
             return newPos;
         }
 
+
         static readonly Regex PosRegex = new Regex("^\\d+ \\d+$", RegexOptions.Compiled);
+
+
         public static bool IsPos(string str) {
             return PosRegex.IsMatch(str);
         }

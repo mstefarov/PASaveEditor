@@ -1,12 +1,13 @@
 ﻿using System;
 
 namespace PASaveEditor.FileModel {
-    class WrapperNode<T> : Node where T:Node {
+    internal class WrapperNode<T> : Node where T : Node {
         public T Child;
         readonly string wrappedNodeName;
-        readonly Func<string,T> creationFunc;
+        readonly Func<string, T> creationFunc;
 
-        public WrapperNode(string label, string wrappedNodeName, Func<string,T> creationFunc )
+
+        public WrapperNode(string label, string wrappedNodeName, Func<string, T> creationFunc)
             : base(label, true) {
             this.wrappedNodeName = wrappedNodeName;
             this.creationFunc = creationFunc;

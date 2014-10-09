@@ -56,13 +56,11 @@ namespace PASaveEditor {
                     } else {
                         currentNode.DoNotInline = true;
                     }
-
                 } else if ("END".Equals(tokens[0])) {
                     // end of multi-line section
                     Node upperNode = nodes.Pop();
                     upperNode.FinishedReadingNode(currentNode);
                     currentNode = upperNode;
-
                 } else {
                     // inside a multi-line section
                     string key = tokens[0];

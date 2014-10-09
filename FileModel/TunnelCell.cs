@@ -5,7 +5,9 @@ namespace PASaveEditor.FileModel {
         public Pos Pos;
         public bool IsEntrance;
 
-        public TunnelCell(string label) : base(label) {
+
+        public TunnelCell(string label)
+            : base(label) {
             Pos = Pos.ParsePos(label);
         }
 

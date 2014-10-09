@@ -1,12 +1,12 @@
 ﻿using System;
 
 namespace PASaveEditor.FileModel {
-    class Penalty: Node {
+    internal class Penalty : Node {
         public int ObjectId;
 
+
         public Penalty(string label)
-            : base(label) {
-        }
+            : base(label) {}
 
 
         public override void ReadKey(string key, string value) {

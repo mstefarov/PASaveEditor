@@ -33,7 +33,6 @@ namespace PASaveEditor {
             "ExtraGrant"
         };
 
-
         static readonly Dictionary<string, string> AltNames = new Dictionary<string, string> {
             { "MentalHealth", "Psychology" },
             { "Cctv", "CCTV" },
