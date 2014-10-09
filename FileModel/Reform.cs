@@ -3,8 +3,8 @@
         public ReformPrograms Programs;
 
 
-        public Reform(string label)
-            : base(label, true) {}
+        public Reform()
+            : base("Reform", true) {}
 
 
         public override Node CreateNode(string label) {

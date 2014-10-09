@@ -91,8 +91,8 @@
             this.miEliminateAll = new System.Windows.Forms.ToolStripMenuItem();
             this.miRevealReputations = new System.Windows.Forms.ToolStripMenuItem();
             this.miUnlockAllResearch = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoveTunnels = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllTrees = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveTunnels = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
@@ -783,19 +783,20 @@
             this.miUnlockAllResearch.Text = "Unlock all research";
             this.miUnlockAllResearch.Click += new System.EventHandler(this.miUnlockAllResearch_Click);
             // 
-            // miRemoveTunnels
-            // 
-            this.miRemoveTunnels.Enabled = false;
-            this.miRemoveTunnels.Name = "miRemoveTunnels";
-            this.miRemoveTunnels.Size = new System.Drawing.Size(196, 22);
-            this.miRemoveTunnels.Text = "Remove all tunnels";
-            // 
             // miRemoveAllTrees
             // 
             this.miRemoveAllTrees.Name = "miRemoveAllTrees";
             this.miRemoveAllTrees.Size = new System.Drawing.Size(196, 22);
             this.miRemoveAllTrees.Text = "Remove all trees";
             this.miRemoveAllTrees.Click += new System.EventHandler(this.miRemoveAllTrees_Click);
+            // 
+            // miRemoveTunnels
+            // 
+            this.miRemoveTunnels.Enabled = false;
+            this.miRemoveTunnels.Name = "miRemoveTunnels";
+            this.miRemoveTunnels.Size = new System.Drawing.Size(196, 22);
+            this.miRemoveTunnels.Text = "Remove all tunnels";
+            this.miRemoveTunnels.Click += new System.EventHandler(this.miRemoveTunnels_Click);
             // 
             // miRemoveAllContraband
             // 

@@ -10,8 +10,8 @@ namespace PASaveEditor.FileModel {
         public int Ownership;
 
 
-        public Finance(string label)
-            : base(label) {}
+        public Finance()
+            : base("Finance") {}
 
 
         public override void ReadKey(string key, string value) {

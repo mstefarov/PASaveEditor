@@ -14,7 +14,6 @@ namespace PASaveEditor {
             { "SuperMax", "SuperMax" }
         };
 
-
         // Converts short in-savegame name to index (0-4)
         public static string CategoryIndexToName(int index) {
             return CategoryNames.Keys.ToArray()[index];
@@ -39,6 +38,8 @@ namespace PASaveEditor {
                          .Select(prisoner => prisoner.Id)
                          .ToArray();
         }
+
+
         public static int CountPrisoners(Prison prison, Predicate<Prisoner> predicate) {
             return prison.Objects.Prisoners.Values
                          .Count(prisoner => predicate(prisoner));
@@ -53,7 +54,8 @@ namespace PASaveEditor {
             }
             return idsToRemove.Length;
         }
-        
+
+
         // Schedules all prisoners who match the given predicate for release
         public static int Release(Prison prison, Predicate<Prisoner> predicate) {
             int[] idsToRemove = FindPrisoners(prison, predicate);
@@ -74,7 +76,7 @@ namespace PASaveEditor {
             foreach (ReformProgram program in prison.Reform.Programs.Programs) {
                 program.Students.Students.Remove(id);
             }
-            // TODO Diggers
+            prison.Tunnels.Diggers.Prisoners.RemoveAll(p => p.PrisonerId == id);
             prison.Victory.Child.Log.RemoveAll(entry => entry.PrisonerId == id);
         }
 

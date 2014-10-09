@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace PASaveEditor.FileModel {
-    internal class Informants : Node {
-        public readonly List<Informant> Prisoners = new List<Informant>();
+    internal class Diggers : Node {
+        public readonly List<Digger> Prisoners = new List<Digger>();
 
 
-        public Informants(string label)
-            : base(label, true) {}
+        public Diggers()
+            : base("Diggers", true) {}
 
 
         public override void ReadKey(string key, string value) {
@@ -19,9 +19,9 @@ namespace PASaveEditor.FileModel {
 
         public override Node CreateNode(string label) {
             if (Parser.IsId(label)) {
-                var informant = new Informant(label);
-                Prisoners.Add(informant);
-                return informant;
+                var digger = new Digger(label);
+                Prisoners.Add(digger);
+                return digger;
             } else {
                 return base.CreateNode(label);
             }
@@ -35,9 +35,9 @@ namespace PASaveEditor.FileModel {
 
         public override void WriteNodes(Writer writer) {
             for (int i = 0; i < Prisoners.Count; i++) {
-                Informant informant = Prisoners[i];
-                informant.Label = "[i " + i + "]";
-                writer.WriteNode(informant);
+                Digger digger = Prisoners[i];
+                digger.Label = "[i " + i + "]";
+                writer.WriteNode(digger);
             }
         }
     }

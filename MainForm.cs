@@ -56,9 +56,7 @@ namespace PASaveEditor {
 
             miExit.Click += delegate { Close(); };
 
-            Shown += delegate {
-                miFileOpen.PerformClick();
-            };
+            Shown += delegate { miFileOpen.PerformClick(); };
 
             // Disable the GUI until a prison file is loaded
             Enabled = false;
@@ -99,7 +97,6 @@ namespace PASaveEditor {
                 }
             }
         }
-
 
         // Update counts in the menu items under "Eliminate prisoners" shortcut menu.
         // If there are no prisoners to release in this category, option is grayed out.
@@ -272,6 +269,14 @@ namespace PASaveEditor {
             UpdatePrisoners();
         }
 
+
+        void miRemoveTunnels_Click(object sender, EventArgs e) {
+            var cellLabels = prison.Tunnels.Nodes.Keys.Where(Pos.IsPos).ToList();
+            cellLabels.ForEach(label => prison.Tunnels.Nodes.Remove(label));
+            prison.Tunnels.Diggers.Prisoners.Clear();
+            prison.Tunnels.Nodes.Remove("Rooms");
+        }
+
         #endregion
 
 
@@ -437,6 +442,5 @@ namespace PASaveEditor {
         }
 
         #endregion
-
     }
 }

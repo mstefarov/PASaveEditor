@@ -12,16 +12,29 @@ namespace PASaveEditor.FileModel {
         public bool UnlimitedFunds;
         public bool EnabledIntake;
 
-        public WrapperNode<ContrabandPrisoners> Contraband;
-        public Finance Finance;
-        public WrapperNode<Informants> Informants;
-        public Misconduct Misconduct;
-        public Objects Objects;
-        public WrapperNode<Penalties> Penalties;
-        public Reform Reform;
-        public Research Research;
-        public Tunnels Tunnels;
-        public WrapperNode<VictoryLog> Victory;
+        public readonly WrapperNode<ContrabandPrisoners> Contraband =
+            new WrapperNode<ContrabandPrisoners>("Contraband", "Prisoners", l => new ContrabandPrisoners(l));
+
+        public readonly Finance Finance = new Finance();
+
+        public readonly WrapperNode<Informants> Informants
+            = new WrapperNode<Informants>("Informants", "Informants", l => new Informants(l));
+
+        public readonly Misconduct Misconduct = new Misconduct();
+
+        public readonly Objects Objects = new Objects();
+
+        public readonly WrapperNode<Penalties> Penalties
+            = new WrapperNode<Penalties>("Penalties", "Penalties", l => new Penalties(l));
+
+        public readonly Reform Reform = new Reform();
+
+        public readonly Research Research = new Research();
+
+        public readonly Tunnels Tunnels = new Tunnels();
+
+        public readonly WrapperNode<VictoryLog> Victory
+            = new WrapperNode<VictoryLog>("Victory", "Log", l => new VictoryLog(l));
 
 
         public Prison()
@@ -64,45 +77,25 @@ namespace PASaveEditor.FileModel {
         public override Node CreateNode(string label) {
             switch (label) {
                 case "Contraband":
-                    Contraband = new WrapperNode<ContrabandPrisoners>(label, "Prisoners", l => new ContrabandPrisoners(l));
                     return Contraband;
-
                 case "Finance":
-                    Finance = new Finance(label);
                     return Finance;
-
                 case "Informants":
-                    Informants = new WrapperNode<Informants>(label, "Informants", l => new Informants(l));
                     return Informants;
-
                 case "Misconduct":
-                    Misconduct = new Misconduct(label);
                     return Misconduct;
-
                 case "Objects":
-                    Objects = new Objects(label);
                     return Objects;
-
                 case "Penalties":
-                    Penalties = new WrapperNode<Penalties>(label, "Penalties", l => new Penalties(l));
                     return Penalties;
-
                 case "Reform":
-                    Reform = new Reform(label);
                     return Reform;
-
                 case "Research":
-                    Research = new Research(label);
                     return Research;
-
                 case "Tunnels":
-                    Tunnels = new Tunnels(label);
                     return Tunnels;
-
                 case "Victory":
-                    Victory = new WrapperNode<VictoryLog>(label, "Log", l => new VictoryLog(l));
                     return Victory;
-
                 default:
                     return base.CreateNode(label);
             }
@@ -124,7 +117,7 @@ namespace PASaveEditor.FileModel {
                 Nodes.Remove("Visibility");
             }
             if (EnabledDecay) {
-                writer.WriteProperty("EnabledDecay",EnabledDecay);
+                writer.WriteProperty("EnabledDecay", EnabledDecay);
             } else {
                 // erase all dirt
                 var cellNodes = Nodes["Cells"][0].ListNodes().ToList();

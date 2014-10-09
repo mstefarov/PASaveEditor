@@ -2,13 +2,12 @@
 using System.Linq;
 
 namespace PASaveEditor.FileModel {
-    class Research : Node {
+    internal class Research : Node {
         public readonly List<ResearchItem> Items = new List<ResearchItem>();
 
 
-        public Research(string label)
-            : base(label, true) {
-        }
+        public Research()
+            : base("Research", true) {}
 
 
         public override Node CreateNode(string label) {
@@ -29,7 +28,7 @@ namespace PASaveEditor.FileModel {
             ResearchItem researchedItem = Items.FirstOrDefault(item => item.Label == itemName);
             if (researchedItem == null) {
                 researchedItem = new ResearchItem(itemName);
-                researchedItem.PushProperty("Desired","false");
+                researchedItem.PushProperty("Desired", "false");
             }
             researchedItem.Progress = 1;
         }

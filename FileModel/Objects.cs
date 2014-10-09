@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 
 namespace PASaveEditor.FileModel {
-    class Objects : Node {
+    internal class Objects : Node {
         public readonly Dictionary<int, ObjectBase> OtherObjects = new Dictionary<int, ObjectBase>();
         public readonly Dictionary<int, Prisoner> Prisoners = new Dictionary<int, Prisoner>();
 
 
-        public Objects(string label)
-            : base(label, true) {}
+        public Objects()
+            : base("Objects", true) {}
 
 
         public override Node CreateNode(string label) {

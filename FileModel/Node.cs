@@ -9,7 +9,7 @@ namespace PASaveEditor.FileModel {
         }
 
 
-        public readonly string Label;
+        public string Label;
         public Dictionary<string, List<string>> Properties;
         public Dictionary<string, List<Node>> Nodes;
         public bool DoNotInline;
@@ -107,7 +107,6 @@ namespace PASaveEditor.FileModel {
 
 
         public virtual void WriteProperties(Writer writer) {}
-
 
         public virtual void WriteNodes(Writer writer) {}
 

@@ -6,8 +6,8 @@ namespace PASaveEditor.FileModel {
         public double TimeWithoutIncident;
 
 
-        public Misconduct(string label)
-            : base(label, true) {}
+        public Misconduct()
+            : base("Misconduct", true) {}
 
 
         public override void ReadKey(string key, string value) {
