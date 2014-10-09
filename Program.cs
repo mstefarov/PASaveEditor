@@ -10,5 +10,8 @@ namespace PASaveEditor {
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+
+
+        public const string Version = "r32 [9 October 2014]";
     }
 }

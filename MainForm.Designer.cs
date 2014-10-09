@@ -538,7 +538,6 @@
             // 
             // bRelease
             // 
-            this.bRelease.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bRelease.Location = new System.Drawing.Point(198, 137);
             this.bRelease.Name = "bRelease";
             this.bRelease.Size = new System.Drawing.Size(75, 23);
@@ -608,7 +607,6 @@
             // 
             // bEliminate
             // 
-            this.bEliminate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bEliminate.Location = new System.Drawing.Point(198, 166);
             this.bEliminate.Name = "bEliminate";
             this.bEliminate.Size = new System.Drawing.Size(75, 23);

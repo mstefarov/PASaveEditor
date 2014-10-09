@@ -88,7 +88,7 @@ namespace PASaveEditor {
         }
 
 
-        static Dictionary<int, string> UnnamedPrisoners = new Dictionary<int, string> {
+        static readonly Dictionary<int, string> UnnamedPrisoners = new Dictionary<int, string> {
             { 93446, "SoulCake" },
             { 94805, "BrawnyFanta" },
             { 95177, "Neotin" },

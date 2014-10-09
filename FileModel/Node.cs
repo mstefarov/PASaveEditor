@@ -67,17 +67,6 @@ namespace PASaveEditor.FileModel {
         }
 
 
-        public string PopProperty(string key) {
-            List<string> list = Properties[key];
-            string valueToRemove = list[list.Count - 1];
-            list.RemoveAt(list.Count - 1);
-            if (list.Count == 0) {
-                Properties.Remove(key);
-            }
-            return valueToRemove;
-        }
-
-
         public void ReparseProperties(Node other) {
             foreach (var property in other.ListProperties()) {
                 ReadKey(property.Key, property.Value);
