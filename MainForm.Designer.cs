@@ -471,11 +471,6 @@
             0,
             0,
             0});
-            this.nBankLoanAmount.Minimum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            -2147483648});
             this.nBankLoanAmount.Name = "nBankLoanAmount";
             this.nBankLoanAmount.Size = new System.Drawing.Size(75, 20);
             this.nBankLoanAmount.TabIndex = 12;
