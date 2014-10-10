@@ -233,7 +233,7 @@
             lDisclaimer.AutoSize = true;
             lDisclaimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lDisclaimer.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            lDisclaimer.Location = new System.Drawing.Point(8, 250);
+            lDisclaimer.Location = new System.Drawing.Point(8, 152);
             lDisclaimer.Name = "lDisclaimer";
             lDisclaimer.Size = new System.Drawing.Size(384, 48);
             lDisclaimer.TabIndex = 9;
@@ -265,7 +265,7 @@
             this.tabs.Location = new System.Drawing.Point(0, 24);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(484, 388);
+            this.tabs.Size = new System.Drawing.Size(434, 338);
             this.tabs.TabIndex = 0;
             // 
             // tpGeneral
@@ -275,7 +275,7 @@
             this.tpGeneral.Controls.Add(this.groupBox1);
             this.tpGeneral.Location = new System.Drawing.Point(4, 22);
             this.tpGeneral.Name = "tpGeneral";
-            this.tpGeneral.Size = new System.Drawing.Size(476, 362);
+            this.tpGeneral.Size = new System.Drawing.Size(426, 312);
             this.tpGeneral.TabIndex = 4;
             this.tpGeneral.Text = "General";
             this.tpGeneral.UseVisualStyleBackColor = true;
@@ -291,7 +291,7 @@
             this.groupBox2.Controls.Add(this.xContinuousIntake);
             this.groupBox2.Location = new System.Drawing.Point(8, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(460, 143);
+            this.groupBox2.Size = new System.Drawing.Size(202, 143);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prison Settings";
@@ -355,9 +355,9 @@
             this.groupBox1.Controls.Add(this.nDay);
             this.groupBox1.Controls.Add(this.lDay);
             this.groupBox1.Controls.Add(this.lTime);
-            this.groupBox1.Location = new System.Drawing.Point(8, 152);
+            this.groupBox1.Location = new System.Drawing.Point(216, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(460, 95);
+            this.groupBox1.Size = new System.Drawing.Size(202, 143);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In-game time";
@@ -435,7 +435,7 @@
             this.tpFinance.Location = new System.Drawing.Point(4, 22);
             this.tpFinance.Name = "tpFinance";
             this.tpFinance.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFinance.Size = new System.Drawing.Size(476, 362);
+            this.tpFinance.Size = new System.Drawing.Size(426, 312);
             this.tpFinance.TabIndex = 5;
             this.tpFinance.Text = "Finance";
             this.tpFinance.UseVisualStyleBackColor = true;
@@ -531,7 +531,7 @@
             this.tpPrisoners.Controls.Add(this.lbPrisoners);
             this.tpPrisoners.Location = new System.Drawing.Point(4, 22);
             this.tpPrisoners.Name = "tpPrisoners";
-            this.tpPrisoners.Size = new System.Drawing.Size(476, 362);
+            this.tpPrisoners.Size = new System.Drawing.Size(426, 312);
             this.tpPrisoners.TabIndex = 2;
             this.tpPrisoners.Text = "Prisoners";
             this.tpPrisoners.UseVisualStyleBackColor = true;
@@ -630,7 +630,7 @@
             this.lbPrisoners.FormattingEnabled = true;
             this.lbPrisoners.Location = new System.Drawing.Point(8, 29);
             this.lbPrisoners.Name = "lbPrisoners";
-            this.lbPrisoners.Size = new System.Drawing.Size(120, 329);
+            this.lbPrisoners.Size = new System.Drawing.Size(120, 277);
             this.lbPrisoners.TabIndex = 0;
             this.lbPrisoners.SelectedIndexChanged += new System.EventHandler(this.lbPrisoners_SelectedIndexChanged);
             // 
@@ -639,7 +639,7 @@
             this.tpResearch.Controls.Add(this.clbResearch);
             this.tpResearch.Location = new System.Drawing.Point(4, 22);
             this.tpResearch.Name = "tpResearch";
-            this.tpResearch.Size = new System.Drawing.Size(476, 362);
+            this.tpResearch.Size = new System.Drawing.Size(426, 312);
             this.tpResearch.TabIndex = 3;
             this.tpResearch.Text = "Research";
             this.tpResearch.UseVisualStyleBackColor = true;
@@ -651,7 +651,7 @@
             this.clbResearch.FormattingEnabled = true;
             this.clbResearch.Location = new System.Drawing.Point(0, 0);
             this.clbResearch.Name = "clbResearch";
-            this.clbResearch.Size = new System.Drawing.Size(476, 362);
+            this.clbResearch.Size = new System.Drawing.Size(426, 312);
             this.clbResearch.TabIndex = 0;
             // 
             // menu
@@ -662,7 +662,7 @@
             this.miHelp});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(484, 24);
+            this.menu.Size = new System.Drawing.Size(434, 24);
             this.menu.TabIndex = 1;
             this.menu.Text = "menuStrip1";
             // 
@@ -880,7 +880,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 412);
+            this.ClientSize = new System.Drawing.Size(434, 362);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
