@@ -100,6 +100,8 @@
             this.miRemoveAllContraband = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReleaseDeathRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.miEliminateDeathRow = new System.Windows.Forms.ToolStripMenuItem();
             lOwnershipUnits = new System.Windows.Forms.Label();
             lBankLoanAmontUnits = new System.Windows.Forms.Label();
             lBankLoanAmount = new System.Windows.Forms.Label();
@@ -577,7 +579,8 @@
             "Minimum Security",
             "Normal Security",
             "Maximum Security",
-            "SuperMax"});
+            "SuperMax",
+            "Death Row"});
             this.cCategory.Location = new System.Drawing.Point(198, 81);
             this.cCategory.Name = "cCategory";
             this.cCategory.Size = new System.Drawing.Size(121, 21);
@@ -724,6 +727,7 @@
             this.miReleaseNormal,
             this.miReleaseMaxSec,
             this.miReleaseSuperMax,
+            this.miReleaseDeathRow,
             sReleasePrisonersSeparator,
             this.miReleaseAll});
             this.miReleasePrisoners.Name = "miReleasePrisoners";
@@ -774,6 +778,7 @@
             this.miEliminateNormal,
             this.miEliminateMaxSec,
             this.miEliminateSuperMax,
+            this.miEliminateDeathRow,
             this.sEliminatePrisonersSeparator,
             this.miEliminateAll});
             this.miEliminatePrisoners.Name = "miEliminatePrisoners";
@@ -870,6 +875,18 @@
             this.miAbout.Size = new System.Drawing.Size(107, 22);
             this.miAbout.Text = "About";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
+            // 
+            // miReleaseDeathRow
+            // 
+            this.miReleaseDeathRow.Name = "miReleaseDeathRow";
+            this.miReleaseDeathRow.Size = new System.Drawing.Size(174, 22);
+            this.miReleaseDeathRow.Text = "Death Row";
+            // 
+            // miEliminateDeathRow
+            // 
+            this.miEliminateDeathRow.Name = "miEliminateDeathRow";
+            this.miEliminateDeathRow.Size = new System.Drawing.Size(174, 22);
+            this.miEliminateDeathRow.Text = "Death Row";
             // 
             // MainForm
             // 
@@ -969,6 +986,8 @@
         private System.Windows.Forms.Button bRelease;
         private System.Windows.Forms.ToolStripMenuItem miHelp;
         private System.Windows.Forms.ToolStripMenuItem miAbout;
+        private System.Windows.Forms.ToolStripMenuItem miReleaseDeathRow;
+        private System.Windows.Forms.ToolStripMenuItem miEliminateDeathRow;
     }
 }
 
