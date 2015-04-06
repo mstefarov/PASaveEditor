@@ -98,7 +98,7 @@ namespace PASaveEditor {
                     tName.Text = bio.Forname;
                     tSurname.Text = bio.Surname;
                     cCategory.SelectedIndex = PrisonerUtil.CategoryNameToIndex(selectedPrisoner.Category);
-                    pbServed.Value = (int)Math.Round(bio.Served*100d/bio.Sentence);
+                    pbServed.Value = (int)Math.Min(Math.Round(bio.Served * 100d / bio.Sentence), 100);
                     lServedStats.Text = String.Format("{0:0.#} of {1} years", bio.Served, bio.Sentence);
                     bRelease.Enabled = (bio.Served < bio.Sentence);
                 }
