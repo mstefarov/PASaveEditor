@@ -11,10 +11,11 @@ namespace PASaveEditor {
             { "MinSec", "Minimum Security" },
             { "Normal", "Normal Security" },
             { "MaxSec", "Maximum Security" },
-            { "SuperMax", "SuperMax" }
+            { "SuperMax", "SuperMax" },
+            { "DeathRow", "Death Row" }
         };
 
-        // Converts short in-savegame name to index (0-4)
+        // Converts short in-savegame name to index (0-5)
         public static string CategoryIndexToName(int index) {
             return CategoryNames.Keys.ToArray()[index];
         }
@@ -25,7 +26,7 @@ namespace PASaveEditor {
         }
 
 
-        // Converts index (0-4) to short in-savegame name
+        // Converts index (0-5) to short in-savegame name
         public static int CategoryNameToIndex(string catName) {
             return Array.IndexOf(CategoryNames.Keys.ToArray(), catName);
         }

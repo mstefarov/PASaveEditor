@@ -45,6 +45,7 @@ namespace PASaveEditor {
             miEliminateNormal.Click += delegate { Eliminate("Normal"); };
             miEliminateMaxSec.Click += delegate { Eliminate("MaxSec"); };
             miEliminateSuperMax.Click += delegate { Eliminate("SuperMax"); };
+            miEliminateDeathRow.Click += delegate { Eliminate("DeathRow"); };
             miEliminateAll.Click += delegate { EliminateAll(); };
 
             miReleaseProtected.Click += delegate { Release("Protected"); };
@@ -52,6 +53,7 @@ namespace PASaveEditor {
             miReleaseNormal.Click += delegate { Release("Normal"); };
             miReleaseMaxSec.Click += delegate { Release("MaxSec"); };
             miReleaseSuperMax.Click += delegate { Release("SuperMax"); };
+            miReleaseDeathRow.Click += delegate { Release("DeathRow"); };
             miReleaseAll.Click += delegate { ReleaseAll(); };
 
             miExit.Click += delegate { Close(); };
@@ -115,6 +117,7 @@ namespace PASaveEditor {
             UpdatePrisonerCategoryItem(miEliminateNormal, miReleaseNormal, "Normal", "Normal Security");
             UpdatePrisonerCategoryItem(miEliminateMaxSec, miReleaseMaxSec, "MaxSec", "Maximum Security");
             UpdatePrisonerCategoryItem(miEliminateSuperMax, miReleaseSuperMax, "SuperMax", "SuperMax");
+            UpdatePrisonerCategoryItem(miEliminateDeathRow, miReleaseDeathRow, "DeathRow", "Death Row");
             UpdatePrisonerCategoryItem(miEliminateAll, miReleaseAll, null, "All");
 
             int hiddenReputations =
